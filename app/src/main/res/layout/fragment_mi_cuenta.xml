@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_general"
+    android:fillViewport="false"
+    tools:context=".MiCuentaFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/volverPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="40dp"
+            android:clickable="true"
+            android:drawablePadding="10dp"
+            android:focusable="true"
+            android:fontFamily="@font/poppins"
+            android:text="Mi cuenta"
+            android:textColor="@color/rojo_general_texto"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/volveratraslogo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            app:alignContent="space_between"
+            app:flexDirection="column"
+            app:flexWrap="wrap"
+            app:layout_constraintTop_toBottomOf="@+id/volverPerfil">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/primeroMicuenta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:id="@+id/usuarioFoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="50dp"
+                    android:maxHeight="70dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/imagenusuarioprimeraopinion"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/nombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:text="Nombre"
+                    android:textColor="@color/rojo_general_texto"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/usuarioFoto"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/apellido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="Apellido"
+                    android:textColor="@color/rojo_general_texto"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nombre"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/segundoMicuenta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/miIdentidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/rojo_general_texto"
+                    android:fontFamily="@font/poppins"
+                    android:text="Identidad"
+                    android:textColor="@color/granate"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/usuariologo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/primerDesplazarse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@color/fondo_general"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:focusable="true"
+                    android:src="@drawable/logovolverderecha"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/segundoNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="20dp"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/gris_texto"
+                    android:fontFamily="@font/poppins"
+                    android:text="Nombre"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintRight_toLeftOf="@id/primerDesplazarse"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terceroMicuenta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:id="@+id/miCumpleanios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/rojo_general_texto"
+                    android:fontFamily="@font/poppins"
+                    android:text="Cumpleaños"
+                    android:textColor="@color/granate"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/logocalendario"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/SegundoDesplazarse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@color/fondo_general"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:focusable="true"
+                    android:src="@drawable/logovolverderecha"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/segundoCumpleanios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="20dp"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/gris_texto"
+                    android:fontFamily="@font/poppins"
+                    android:text="Fecha cumple"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintRight_toLeftOf="@id/SegundoDesplazarse"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cuartoMicuenta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:id="@+id/miEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/rojo_general_texto"
+                    android:fontFamily="@font/poppins"
+                    android:text="Email"
+                    android:textColor="@color/granate"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/logoemail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/terceroDesplazarse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@color/fondo_general"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:focusable="true"
+                    android:src="@drawable/logovolverderecha"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/terceroMiEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="20dp"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/gris_texto"
+                    android:fontFamily="@font/poppins"
+                    android:text="Email"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintRight_toLeftOf="@id/terceroDesplazarse"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/quintoMicuenta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:id="@+id/miTelefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/rojo_general_texto"
+                    android:fontFamily="@font/poppins"
+                    android:text="Num telefono"
+                    android:textColor="@color/granate"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/logomovil"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/cuartoDesplazarse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@color/fondo_general"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:focusable="true"
+                    android:src="@drawable/logovolverderecha"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cuartoTelefono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="20dp"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/gris_texto"
+                    android:fontFamily="@font/poppins"
+                    android:text="tu telefono"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintRight_toLeftOf="@id/cuartoDesplazarse"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sextoMicuenta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:id="@+id/miContrasenia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/rojo_general_texto"
+                    android:fontFamily="@font/poppins"
+                    android:text="Cambiar contraseña"
+                    android:textColor="@color/granate"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/logopassword"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/sextoDesplazarse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@color/fondo_general"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:focusable="true"
+                    android:src="@drawable/logovolverderecha"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/sextoCambiarContra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="20dp"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/gris_texto"
+                    android:fontFamily="@font/poppins"
+                    android:text="tu contrasenia"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintRight_toLeftOf="@id/sextoDesplazarse"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.flexbox.FlexboxLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

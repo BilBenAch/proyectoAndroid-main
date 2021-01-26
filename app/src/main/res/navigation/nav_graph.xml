@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.proyectoandroid.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registrarse"
+            app:destination="@id/registrarse" />
+        <action
+            android:id="@+id/action_loginFragment_to_bottom_home_fragment2"
+            app:destination="@id/bottom_home_fragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrarse"
+        android:name="com.example.proyectoandroid.RegistrarseFragment"
+        android:label="fragment_registrarse"
+        tools:layout="@layout/fragment_registrarse" >
+        <action
+            android:id="@+id/action_registrarse_to_cuentaCreada"
+            app:destination="@id/cuentaCreada" />
+    </fragment>
+    <fragment
+        android:id="@+id/recuperarContraseniaEmail"
+        android:name="com.example.proyectoandroid.RecuperarContraseniaEmail"
+        android:label="fragment_recuperar_contrasenia_email"
+        tools:layout="@layout/fragment_recuperar_contrasenia_email" />
+    <fragment
+        android:id="@+id/recuperarContrasenia"
+        android:name="com.example.proyectoandroid.RecuperarContraseniaFragment"
+        android:label="fragment_recuperar_contrasenia"
+        tools:layout="@layout/fragment_recuperar_contrasenia" />
+    <fragment
+        android:id="@+id/contraseniaCambiada"
+        android:name="com.example.proyectoandroid.ContraseniaCambiadaFragment"
+        android:label="fragment_contrasenia_cambiada"
+        tools:layout="@layout/fragment_contrasenia_cambiada" />
+    <fragment
+        android:id="@+id/cuentaCreada"
+        android:name="com.example.proyectoandroid.CuentaCreadaFragment"
+        android:label="fragment_cuenta_creada"
+        tools:layout="@layout/fragment_cuenta_creada" >
+        <action
+            android:id="@+id/action_cuentaCreada_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bottom_carrito_fragment"
+        android:name="com.example.proyectoandroid.bottom_carrito_fragment"
+        android:label="fragment_bottom_carrito_fragment"
+        tools:layout="@layout/fragment_bottom_carrito" />
+    <fragment
+        android:id="@+id/bottom_favoritos_fragment2"
+        android:name="com.example.proyectoandroid.bottom_favoritos_fragment"
+        android:label="fragment_bottom_favoritos_fragment"
+        tools:layout="@layout/fragment_bottom_favoritos" />
+    <fragment
+        android:id="@+id/bottom_explorar_fragment2"
+        android:name="com.example.proyectoandroid.bottom_explorar_fragment"
+        android:label="fragment_bottom_explorar_fragment"
+        tools:layout="@layout/fragment_bottom_explorar" />
+    <fragment
+        android:id="@+id/bottom_home_fragment2"
+        android:name="com.example.proyectoandroid.bottom_home_fragment"
+        android:label="fragment_bottom_home_fragment"
+        tools:layout="@layout/fragment_bottom_home" />
+    <fragment
+        android:id="@+id/bottom_perfil_fragment"
+        android:name="com.example.proyectoandroid.bottom_perfil_fragment"
+        android:label="fragment_bottom_perfil_fragment"
+        tools:layout="@layout/fragment_bottom_perfil" />
+    <fragment
+        android:id="@+id/productosFragment"
+        android:name="com.example.proyectoandroid.productosFragment"
+        android:label="fragment_productos"
+        tools:layout="@layout/fragment_productos" /><action android:id="@+id/action_global_productosFragment" app:destination="@id/productosFragment"/>
+    <fragment
+        android:id="@+id/anadirProductoFragment"
+        android:name="com.example.proyectoandroid.AnadirProductoFragment"
+        android:label="fragment_anadir_producto"
+        tools:layout="@layout/fragment_anadir_producto" />
+    <action android:id="@+id/action_global_anadirProductoFragment" app:destination="@id/anadirProductoFragment" />
+    <fragment
+        android:id="@+id/home_Fragment2"
+        android:name="com.example.proyectoandroid.Home_Fragment2"
+        android:label="fragment_home_2"
+        tools:layout="@layout/fragment_home_2" />
+    <fragment
+        android:id="@+id/mostrarProducto"
+        android:name="com.example.proyectoandroid.MostrarProductoFragment"
+        android:label="fragment_mostrar_producto"
+        tools:layout="@layout/fragment_mostrar_producto" /><action android:id="@+id/action_global_mostrarProducto" app:destination="@id/mostrarProducto"/>
+    <fragment
+        android:id="@+id/searchView"
+        android:name="com.example.proyectoandroid.SearchViewFragment"
+        android:label="fragment_search_view"
+        tools:layout="@layout/fragment_search_view" />
+    <action android:id="@+id/action_global_searchView" app:destination="@id/searchView" />
+    <action android:id="@+id/action_global_bottom_explorar_fragment2" app:destination="@id/bottom_explorar_fragment2" />
+    <fragment
+        android:id="@+id/bandeja_notificaciones"
+        android:name="com.example.proyectoandroid.BandejaNotificacionesFragment"
+        android:label="fragment_bandeja_notificaciones"
+        tools:layout="@layout/fragment_bandeja_notificaciones" /><action android:id="@+id/action_global_bandeja_notificaciones" app:destination="@id/bandeja_notificaciones"/><action android:id="@+id/action_global_bottom_favoritos_fragment2" app:destination="@id/bottom_favoritos_fragment2"/><action android:id="@+id/action_global_bottom_favoritos_fragment22" app:destination="@id/bottom_favoritos_fragment2"/>
+    <fragment
+        android:id="@+id/opinionesFragment"
+        android:name="com.example.proyectoandroid.OpinionesFragment"
+        android:label="fragment_opiniones"
+        tools:layout="@layout/fragment_opiniones" /><action android:id="@+id/action_global_opinionesFragment" app:destination="@id/opinionesFragment"/>
+    <fragment
+        android:id="@+id/miCuentaFragment"
+        android:name="com.example.proyectoandroid.MiCuentaFragment"
+        android:label="fragment_mi_cuenta"
+        tools:layout="@layout/fragment_mi_cuenta" /><action android:id="@+id/action_global_miCuentaFragment" app:destination="@id/miCuentaFragment"/>
+    <fragment
+        android:id="@+id/micuentaCamioDeNombreFragment"
+        android:name="com.example.proyectoandroid.MicuentaCamioDeNombreFragment"
+        android:label="fragment_micuenta_camio_de_nombre"
+        tools:layout="@layout/fragment_micuenta_cambio_de_nombre" />
+    <action android:id="@+id/action_global_micuentaCamioDeNombreFragment" app:destination="@id/micuentaCamioDeNombreFragment" />
+    <fragment
+        android:id="@+id/miCuentaEmailFragment"
+        android:name="com.example.proyectoandroid.MiCuentaEmailFragment"
+        android:label="fragment_mi_cuenta_email"
+        tools:layout="@layout/fragment_mi_cuenta_email" />
+    <action android:id="@+id/action_global_miCuentaEmailFragment" app:destination="@id/miCuentaEmailFragment" />
+    <fragment
+        android:id="@+id/cambiarTelefonoFragment"
+        android:name="com.example.proyectoandroid.CambiarTelefonoFragment"
+        android:label="fragment_cambiar_telefono"
+        tools:layout="@layout/fragment_cambiar_telefono" />
+    <action android:id="@+id/action_global_cambiarTelefonoFragment" app:destination="@id/cambiarTelefonoFragment" />
+    <fragment
+        android:id="@+id/miCuentaCambiarContraseniaFragment"
+        android:name="com.example.proyectoandroid.MiCuentaCambiarContraseniaFragment"
+        android:label="fragment_mi_cuenta_cambiar_contrasenia"
+        tools:layout="@layout/fragment_mi_cuenta_cambiar_contrasenia" /><action android:id="@+id/action_global_miCuentaCambiarContraseniaFragment" app:destination="@id/miCuentaCambiarContraseniaFragment"/>
+
+</navigation>

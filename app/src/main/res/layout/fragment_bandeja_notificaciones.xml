@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/bandeja_notificaciones"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_general"
+    android:layout_margin="10dp"
+    tools:context=".BandejaNotificacionesFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imagen_like"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/banejaNotificaciones"
+        android:src="@drawable/correctologo"/>
+    <TextView
+        android:id="@+id/banejaNotificaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/graciasPorComprar"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_marginBottom="24dp"
+        android:textColor="@color/rojo_general_texto"
+        android:text="Banadeja de notificaciones Vacía"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/graciasPorComprar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/banejaNotificaciones"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="@color/grist_texto_logins"
+        android:text="Gracias por comprar en Doble B"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAlignment="center" />
+    <!--mañana comentarle a dani si dejarlo asi o no porque no se alinia del todo bien y hay mucho espacio-->
+    <Button
+        android:id="@+id/VolverExplorador"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/poppins_light"
+        android:padding="21dp"
+        android:text="Volver al explorador"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/graciasPorComprar"/>
+    <!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

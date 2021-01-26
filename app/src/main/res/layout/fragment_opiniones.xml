@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_general"
+    android:fillViewport="false"
+    tools:context=".OpinionesFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/volver"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="40dp"
+            android:drawableStart="@drawable/volveratraslogo"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppins"
+            android:inputType="textPersonName"
+            android:text="Opiniones"
+            android:textColor="@color/rojo_general_texto"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--        Preguntar a Dani porque si lo hago fuera, no se hace correctamente-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/textoTodasOpiniones"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="40dp"-->
+        <!--            android:drawablePadding="10dp"-->
+        <!--            android:fontFamily="@font/poppins"-->
+        <!--            android:clickable="true"-->
+        <!--            android:focusable="true"-->
+        <!--            android:inputType="textPersonName"-->
+        <!--            android:text="Todas Opiniones"-->
+        <!--            android:textColor="@color/rojo_general_texto"-->
+        <!--            android:textSize="16sp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            android:padding="20dp"-->
+        <!--            android:background="#FADBD8"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/buscarProducto"/>-->
+        <HorizontalScrollView
+            android:id="@+id/horitzontalscroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/volver">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textoTodasOpiniones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#FADBD8"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:focusable="true"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="textPersonName"
+                    android:padding="20dp"
+                    android:text="Todas Opiniones"
+                    android:textColor="@color/rojo_general_texto"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/fondo_general"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="7dp"
+                    android:src="@drawable/boton1estrella" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/fondo_general"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:outlineSpotShadowColor="@color/black"
+                    android:padding="7dp"
+                    android:src="@drawable/boton2estrellas" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/fondo_general"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:outlineSpotShadowColor="@color/black"
+                    android:padding="7dp"
+                    android:src="@drawable/boton3estrellas" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/fondo_general"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:outlineSpotShadowColor="@color/black"
+                    android:padding="7dp"
+                    android:src="@drawable/boton4estrellas" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/fondo_general"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:outlineSpotShadowColor="@color/black"
+                    android:padding="7dp"
+                    android:src="@drawable/boton5estrellas" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:alignContent="space_between"
+            app:flexDirection="column"
+            app:flexWrap="wrap"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horitzontalscroll">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:id="@+id/imagenPrimerComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="50dp"
+                    android:maxHeight="70dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/imagenusuarioprimeraopinion"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textoPrimerComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Manolo Lama"
+                    android:textColor="@color/granate"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/imagenPrimerComentario"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/imagenestrellas"
+                    app:layout_constraintStart_toEndOf="@id/imagenPrimerComentario"
+                    app:layout_constraintTop_toBottomOf="@+id/textoPrimerComentario" />
+
+                <TextView
+                    android:id="@+id/textoPrimeraOpinion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="La chaqueta cumple completamente con las expectativas deseadas, sin lugar a dudas se nota la calidad del producto."
+                    android:textColor="@color/grist_texto_logins"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imagenPrimerComentario" />
+
+                <ImageView
+                    android:id="@+id/primeraImagenProducto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="50dp"
+                    android:maxHeight="70dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/abrigo1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textoPrimeraOpinion" />
+
+                <ImageView
+                    android:id="@+id/segundoImagenProducto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="50dp"
+                    android:maxHeight="70dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/abrigo1"
+                    app:layout_constraintStart_toEndOf="@id/primeraImagenProducto"
+                    app:layout_constraintTop_toBottomOf="@+id/textoPrimeraOpinion" />
+
+                <ImageView
+                    android:id="@+id/terceraImagenProducto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="50dp"
+                    android:maxHeight="70dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/abrigo1"
+                    app:layout_constraintStart_toEndOf="@id/segundoImagenProducto"
+                    app:layout_constraintTop_toBottomOf="@+id/textoPrimeraOpinion" />
+
+                <TextView
+                    android:id="@+id/textoPrimeraFechaComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="enero 10, 2020"
+                    android:textColor="@color/grist_texto_logins"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/primeraImagenProducto" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:id="@+id/imagenSegundoComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="50dp"
+                    android:maxHeight="70dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/imagenusuariosegundaopinion"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textoSegundoComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Cabeza Almendra"
+                    android:textColor="@color/granate"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/imagenSegundoComentario"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/imagenestrellas"
+                    app:layout_constraintStart_toEndOf="@id/imagenSegundoComentario"
+                    app:layout_constraintTop_toBottomOf="@+id/textoSegundoComentario" />
+
+                <TextView
+                    android:id="@+id/textoSegundaOpinion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="Muy buen producto cumple con todo."
+                    android:textColor="@color/grist_texto_logins"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imagenSegundoComentario" />
+
+                <TextView
+                    android:id="@+id/textoSegundaFechaComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="febrero 11, 2020"
+                    android:textColor="@color/grist_texto_logins"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textoSegundaOpinion" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:id="@+id/imagenTercerComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="50dp"
+                    android:maxHeight="70dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/imagenusuarioterceraopinion"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textoTercerComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Filetón Tostado"
+                    android:textColor="@color/granate"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/imagenTercerComentario"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/imagenestrellas"
+                    app:layout_constraintStart_toEndOf="@id/imagenTercerComentario"
+                    app:layout_constraintTop_toBottomOf="@+id/textoTercerComentario" />
+
+                <TextView
+                    android:id="@+id/textoTerceraOpinion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="Buen trato, volvería a comprar, el producto es mejor de lo esperado"
+                    android:textColor="@color/grist_texto_logins"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imagenTercerComentario" />
+
+                <TextView
+                    android:id="@+id/textoTerceraFechaComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="febrero 11, 2020"
+                    android:textColor="@color/grist_texto_logins"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textoTerceraOpinion" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:id="@+id/imagenCuartoComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="50dp"
+                    android:maxHeight="70dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/imagenusuariocuartaopinion"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textoCuartoComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Spider Man"
+                    android:textColor="@color/granate"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/imagenCuartoComentario"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/imagenestrellas"
+                    app:layout_constraintStart_toEndOf="@id/imagenCuartoComentario"
+                    app:layout_constraintTop_toBottomOf="@+id/textoCuartoComentario" />
+
+                <TextView
+                    android:id="@+id/textoCuartaOpinion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="Buen producto, like"
+                    android:textColor="@color/grist_texto_logins"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imagenCuartoComentario" />
+
+                <TextView
+                    android:id="@+id/textoCuartaFechaComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="febrero 11, 2020"
+                    android:textColor="@color/grist_texto_logins"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textoCuartaOpinion" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

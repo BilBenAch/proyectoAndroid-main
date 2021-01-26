@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_general"
+    android:fillViewport="false"
+    tools:context=".MostrarProductoFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/buscarProducto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="40dp"
+            android:drawableStart="@drawable/volveratraslogo"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppins"
+            android:inputType="textPersonName"
+            android:text="Volver a tienda"
+            android:textColor="@color/rojo_general_texto"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/favoritosHome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/favoritosHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/logofavoritos"
+            app:layout_constraintStart_toEndOf="@id/buscarProducto"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/rojo_general_texto" />
+
+        <ImageView
+            android:id="@+id/notificacionesHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="38dp"
+            android:paddingEnd="24dp"
+            android:src="@drawable/notificacioneslogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/favoritosHome"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/rojo_general_texto" />
+
+        <HorizontalScrollView
+            android:id="@+id/horitzontalscroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buscarProducto">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imagen1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="35dp"
+                    android:src="@drawable/abrigo2"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/favorito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:adjustViewBounds="true"
+                    android:button="@drawable/favorito"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|end"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:id="@+id/imagen2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/abrigo3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/imagen1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imagen3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/abrigo4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/imagen2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </HorizontalScrollView>
+        <TextView
+            android:id="@+id/marcaProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grist_texto_logins"
+            android:text="la marca"
+            android:layout_marginLeft="18dp"
+            android:textSize="10sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horitzontalscroll"/>
+
+        <TextView
+            android:id="@+id/nombreProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="nombre producto"
+            android:layout_marginLeft="18dp"
+            android:textSize="10sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/marcaProducto"/>
+        <TextView
+            android:id="@+id/tipoProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="tipo producto"
+            android:layout_marginLeft="18dp"
+            android:textSize="10sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toRightOf="@+id/nombreProducto"
+            app:layout_constraintTop_toBottomOf="@+id/marcaProducto"/>
+        <TextView
+            android:id="@+id/PrecioProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="precio producto"
+            android:layout_marginLeft="18dp"
+            android:textSize="10sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombreProducto"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grist_texto_logins"
+            android:text="IVA incluido"
+            android:layout_marginLeft="18dp"
+            android:textSize="8sp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintLeft_toRightOf="@+id/nombreProducto"
+            app:layout_constraintTop_toBottomOf="@+id/nombreProducto"/>
+
+        <TextView
+            android:id="@+id/ColorProductotextofijo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grist_texto_logins"
+            android:text="Color:"
+            android:layout_marginLeft="18dp"
+            android:textSize="8sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PrecioProducto"/>
+        <TextView
+            android:id="@+id/ColorProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="color producto"
+            android:layout_marginLeft="18dp"
+            android:textSize="10sp"
+            android:layout_marginTop="17dp"
+            app:layout_constraintLeft_toRightOf="@+id/ColorProductotextofijo"
+            app:layout_constraintTop_toBottomOf="@+id/PrecioProducto"/>
+
+        <ImageView
+            android:id="@+id/imagenOpiniones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="17dp"
+            android:scaleType="fitCenter"
+            android:background="@color/fondo_general"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ColorProductotextofijo"
+            android:src="@drawable/imagenestrellas"/>
+        <TextView
+            android:id="@+id/textOpiniones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/rojo_general_texto"
+            android:text="@string/opiniones"
+            android:layout_marginLeft="18dp"
+            android:textSize="10sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagenOpiniones"/>
+
+
+        <ImageButton
+            android:id="@+id/imagenabrigodani"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="17dp"
+            android:maxWidth="50dp"
+            android:adjustViewBounds="true"
+            android:maxHeight="70dp"
+            android:scaleType="fitCenter"
+            android:background="@color/fondo_general"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textOpiniones"
+            android:src="@drawable/abrigo1"/>
+
+        <ImageButton
+            android:id="@+id/imagenabrigodani2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/fondo_general"
+            android:layout_marginLeft="18dp"
+            android:textSize="10sp"
+            android:maxWidth="50dp"
+            android:adjustViewBounds="true"
+            android:maxHeight="70dp"
+            android:scaleType="fitCenter"
+            android:clickable="true"
+            android:layout_marginTop="17dp"
+            app:layout_constraintLeft_toRightOf="@+id/imagenabrigodani"
+            app:layout_constraintTop_toBottomOf="@+id/textOpiniones"/>
+
+
+        <!--    Libreria para spinner-->
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:layout_marginTop="50dp"
+            android:drawSelectorOnTop="true"
+            android:drawablePadding="7dp"
+            android:entries="@array/array_name"
+            android:spinnerMode="dialog"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagenabrigodani" />
+
+        <Button
+            android:id="@+id/comprar"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="25dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/mybutton"
+            android:fontFamily="@font/poppins"
+            android:text="Añadir a bolsa"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="50dp"
+            android:src="@drawable/envio"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comprar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".RecuperarContraseniaEmail">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <TextView
+        android:id="@+id/bienvenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="8dp"
+        android:gravity="bottom"
+        android:text="Bienvenido a Doble B"
+        android:textColor="@color/granate_principal"
+        android:textSize="10.4413sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/iniciarSesionPagPrincipal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bienvenido"
+        android:layout_marginTop="24dp"
+        android:gravity="bottom"
+        android:text="Introduce tu email para poder"
+        android:textColor="@color/gris_texto"
+        android:textSize="7.83sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bienvenido"></TextView>
+
+
+        <TextView
+            android:id="@+id/emailRecuperarContra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bienvenido"
+            android:layout_marginTop="5dp"
+            android:gravity="bottom"
+            android:text="Recuperar la contraseña"
+            android:textColor="@color/gris_texto"
+            android:textSize="7.83sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iniciarSesionPagPrincipal"></TextView>
+        <EditText
+            android:id="@+id/crearCuentaNombreUsuario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/logoemail"
+            android:drawablePadding="15dp"
+            android:ems="10"
+            android:textSize="12sp"
+            android:hint="Introduce tu email"
+            android:inputType="textPersonName"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailRecuperarContra"></EditText>
+
+        <Button
+            android:id="@+id/botonEnviarEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/mybutton"
+            android:fontFamily="@font/poppins_light"
+            android:padding="21dp"
+            android:text="Enviar Email"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crearCuentaNombreUsuario" />
+
+        <TextView
+            android:id="@+id/YaEresMiembroIniciaSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/ya_eres_miembro_inicia"
+            android:textAlignment="center"
+            android:textColor="@color/rojo_general_texto"
+            android:textSize="11.44sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/botonEnviarEmail" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

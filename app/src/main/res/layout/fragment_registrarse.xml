@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".RegistrarseFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#F2EDED">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+        <TextView
+            android:id="@+id/bienvenido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_marginTop="8dp"
+            android:gravity="bottom"
+            android:text="Bienvenido a Doble B"
+            android:textColor="@color/granate_principal"
+            android:textSize="10.4413sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/iniciarSesionPagPrincipal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bienvenido"
+            android:layout_marginTop="24dp"
+            android:gravity="bottom"
+            android:text="Inicia sesion para poder continuar"
+            android:textColor="@color/gris_texto"
+            android:textSize="7.83sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bienvenido">
+        </TextView>
+
+        <EditText
+            android:id="@+id/crearCuentaNombreUsuario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/usuariologo"
+            android:drawablePadding="15dp"
+            android:ems="10"
+            android:textSize="12sp"
+            android:hint="Tu nombre de usuario"
+            android:inputType="textPersonName"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iniciarSesionPagPrincipal"></EditText>
+
+
+        <EditText
+            android:id="@+id/crearCrearCuentaEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/logoemail"
+            android:drawablePadding="15dp"
+            android:ems="10"
+            android:fontFamily="@font/poppins_light"
+            android:hint="Tu email"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crearCuentaNombreUsuario"></EditText>
+
+        <EditText
+            android:id="@+id/crearCuentaContrasenia1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/logopassword"
+            android:drawablePadding="15dp"
+            android:ems="10"
+            android:fontFamily="@font/poppins_light"
+            android:hint="Tu contraseña"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crearCrearCuentaEmail"></EditText>
+
+        <EditText
+            android:id="@+id/crearCuentaContrasenia2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/logopassword"
+            android:drawablePadding="15dp"
+            android:ems="10"
+            android:fontFamily="@font/poppins_light"
+            android:hint="Repite tu contraseña"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crearCuentaContrasenia1"></EditText>
+
+        <Button
+            android:id="@+id/botonCrearCuenta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/mybutton"
+            android:fontFamily="@font/poppins_light"
+            android:padding="21dp"
+            android:text="Crear Cuenta"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crearCuentaContrasenia2" />
+
+        <TextView
+            android:id="@+id/YaEresMiembroRegsitrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/ya_eres_miembro_inicia"
+            android:textAlignment="center"
+            android:textColor="@color/rojo_general_texto"
+            android:textSize="11.44sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/botonCrearCuenta" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

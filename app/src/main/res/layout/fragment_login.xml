@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F2EDED"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/bienvenido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logo"
+                android:layout_marginTop="16dp"
+                android:gravity="bottom"
+                android:text="Bienvenido a Doble B"
+                android:textColor="@color/granate_principal"
+                android:textSize="10.4413sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/iniciarSesionPagPrincipal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bienvenido"
+                android:layout_marginTop="16dp"
+                android:gravity="bottom"
+                android:text="Inicia sesion para poder continuar"
+                android:textColor="@color/gris_texto"
+                android:textSize="7.83sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bienvenido">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/editTextNombreUsuario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/edit_text_border"
+                android:drawableStart="@drawable/logoemail"
+                android:drawablePadding="7dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins"
+                android:hint="EMAIL"
+                android:inputType="textPersonName"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iniciarSesionPagPrincipal">
+
+            </EditText>
+
+
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edit_text_border"
+                android:drawableStart="@drawable/logopassword"
+                android:drawablePadding="7dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins_light"
+                android:hint="CONTRASEÑA"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextNombreUsuario">
+
+            </EditText>
+
+            <Button
+                android:id="@+id/botonInicioSesion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/mybutton"
+                android:fontFamily="@font/poppins_light"
+                android:padding="21dp"
+                android:text="Iniciar sesión"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+
+            <TextView
+                android:id="@+id/textViewDebajoBoton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="O"
+                android:textColor="@color/rojo_general_texto"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/botonInicioSesion" />
+
+            <Button
+                android:id="@+id/botonInicioSesionGoogle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_text_border"
+                android:drawableStart="@drawable/googlelogo"
+                android:fontFamily="@font/poppins"
+                android:padding="21dp"
+                android:text="Login con GOOGLE"
+                android:textColor="@color/grist_texto_logins"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDebajoBoton" />
+
+            <Button
+                android:id="@+id/botonInicioSesionFacebook"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edit_text_border"
+                android:drawableStart="@drawable/logofacebook"
+                android:fontFamily="@font/poppins"
+                android:padding="21dp"
+                android:text="Login con GOOGLE"
+                android:textColor="@color/grist_texto_logins"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/botonInicioSesionGoogle" />
+
+
+            <TextView
+                android:id="@+id/textoHasOlvidadoLaContrasenya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins"
+                android:text="¿Has olvidado la contraseña?"
+                android:textColor="@color/rojo_general_texto"
+                android:textSize="11.44sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/botonInicioSesionFacebook" />
+
+            <TextView
+                android:id="@+id/noEresMiembroRegsitrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/no_eres_miembro_resistrate"
+                android:textAlignment="center"
+                android:textColor="@color/rojo_general_texto"
+                android:textSize="11.44sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textoHasOlvidadoLaContrasenya" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
