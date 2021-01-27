@@ -64,19 +64,19 @@ public class productosRepositorio {
     //metodo para incrementar o decrementar un producto en carrito
     public void insertarCarritoUpdate(int userId, int productoId) {
         executor.execute(() -> {
-        if (ProductosDao.obtenerCarrito(userId,productoId)== null) {
-            ProductosDao.insertarCarrito(new Carrito(userId, productoId));
-        }
-        else ProductosDao.incrementarCarrito(userId, productoId);
+            if (ProductosDao.obtenerCarrito(userId, productoId) == null) {
+                ProductosDao.insertarCarrito(new Carrito(userId, productoId));
+            } else ProductosDao.incrementarCarrito(userId, productoId);
         });
     }
 
     public void eliminarCarritoUpdate(int userId, int productoId) {
         executor.execute(() -> {
-            if (ProductosDao.obtenerCarrito(userId,productoId) != null) {
+            if (ProductosDao.obtenerCarrito(userId, productoId) != null) {
                 ProductosDao.updateCantidadDecrementar(userId, productoId);
-                if(ProductosDao.obtenerCantidad(userId , productoId) <= 0 ){
-                    ProductosDao.eliminarCarrito(new Carrito(userId,productoId));
+                //me devuelve la cantidad de un elemento en carrito
+                if (ProductosDao.obtenerCantidad(userId, productoId) <= 0) {
+                    ProductosDao.eliminarCarrito(new Carrito(userId, productoId));
                 }
             }
         });
@@ -91,29 +91,50 @@ public class productosRepositorio {
 
     */
 
+
     //productos carrito
     public LiveData<List<Producto>> obtenerProductosCarrito(int userId) {
         return ProductosDao.obtenerProductosCarrito(userId);
     }
 
-    //devuelve la cantidad de productos en carrito
+    //devuelve la cantidad de productos totales en carrito
     public LiveData<Integer> getRowCount(int userId) {
         return ProductosDao.getRowCount(userId);
     }
 
-    public LiveData<Integer> getincremento( int userId, int productoId) {
-        return ProductosDao.getincremento( userId, productoId);
+
+    //devuelve la cantidad de un producto en carrito
+    //public LiveData<Integer> getCantidadUnProducuto(int userId, int productoId) {
+    //  return ProductosDao.getCantidadUnProducuto(userId, productoId);
+    //}
+
+
+    public LiveData<Integer> getincremento(int userId, int productoId) {
+        return ProductosDao.getincremento(userId, productoId);
     }
 
 
-//    buscar
+    //    buscar
     public LiveData<List<ProductoFavorito>> buscar(String d, int userId) {
-        if(d.isEmpty()){
+        if (d.isEmpty()) {
             return null;
-        }else {
+        } else {
             return ProductosDao.buscar(d, userId);
         }
     }
+
+//comprobar si es favorito un producto en carrito o en cualquier otro fragment sin necesidad de joins
+    public LiveData<Integer> isFavorite(int userId, int productId) {
+        return ProductosDao.isFavorite(userId, productId);
+    }
+
+    public void eliminarDelCarrito(int userId, int productoId){
+        executor.execute(() -> {
+        ProductosDao.eliminarCarrito(new Carrito(userId, productoId));
+        });
+    }
+
+
 
 }
 

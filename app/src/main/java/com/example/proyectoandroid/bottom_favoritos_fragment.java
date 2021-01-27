@@ -46,16 +46,26 @@ public class bottom_favoritos_fragment extends Fragment {
         navController = Navigation.findNavController(view);
         FavoritosAdapter favoritosAdapter = new FavoritosAdapter();
         binding.listaProductos.setAdapter(favoritosAdapter);
-        binding.emptyView.setText("asadasdasd");
         appViewModel.usuarioAutenticado.observe(getViewLifecycleOwner(), usuario -> {
             userId = usuario.id;
 
             appViewModel.obtenerProductosFavoritos(usuario.id).observe(getViewLifecycleOwner(), productosList -> {
-                favoritosAdapter.establecerFavoritoList(productosList);
-                if(productosList.size() == 0){
-                    //aqui funciona
-                   // navController.navigate(R.id.action_global_mostrarProducto);
+                if(productosList == null || productosList.size() == 0) {
+                    // Log.e("ZERO", "RESULTS");
+                    binding.listaProductos.setVisibility(View.GONE);
+                    binding.zeroresults.setVisibility(View.VISIBLE);
+                    binding.productosEncontrados.setVisibility(View.GONE);
+                } else {
+                    binding.listaProductos.setVisibility(View.VISIBLE);
+                    binding.productosEncontrados.setText(productosList.size()+" Productos encontrados");
+                    binding.productosEncontrados.setVisibility(View.VISIBLE);
+                    binding.zeroresults.setVisibility(View.GONE);
                 }
+                favoritosAdapter.establecerFavoritoList(productosList);
+//                if(productosList.size() == 0){
+//                    //aqui funciona
+//                   // navController.navigate(R.id.action_global_mostrarProducto);
+//                }
             });
         });
     }
@@ -74,7 +84,7 @@ public class bottom_favoritos_fragment extends Fragment {
             Producto producto = listaProductos.get(position);
 
             //modificar esto
-            binding.numeroApariciones.setText(getItemCount() + "productos encontrados");
+            //binding.numeroApariciones.setText(getItemCount() + "productos encontrados");
 
             holder.binding.nombre.setText(producto.nombre);
 

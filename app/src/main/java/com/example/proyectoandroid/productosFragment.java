@@ -44,11 +44,14 @@ public class productosFragment extends BaseFragment {
             userId = usuario.id;
 
             appViewModel.resultadoBusqueda.observe(getViewLifecycleOwner(), productos -> {
+
+                binding.volverExplorador.setOnClickListener(v -> {
+                    navController.navigate(R.id.action_global_bottom_explorar_fragment2);
+                });
+                binding.productosEncontrados.setText(productos.size()+" Resultados ");//Preguntar  a Gerard como obtener el nombre del elemento buscado
                 productosAdapter.establecerProductosList(productos);
             });
         });
-        //LiveData<List<ProductoFavorito>> obtenerElementos(){
-        //  return elementosViewModel.obtener();
     }
 
 
@@ -65,6 +68,7 @@ public class productosFragment extends BaseFragment {
         public void onBindViewHolder(@NonNull ProductosViewHolder holder, int position) {
             ProductoFavorito producto = productoList.get(position);
 
+            //binding.productosEncontrados.setText(producto.);
 
             holder.binding.nombre.setText(producto.nombre);
 

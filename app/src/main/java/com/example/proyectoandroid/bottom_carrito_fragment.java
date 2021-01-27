@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,14 +21,17 @@ import com.example.proyectoandroid.model.ProductoFavorito;
 import java.util.List;
 
 
-public class bottom_carrito_fragment extends Fragment {
+public class bottom_carrito_fragment extends BaseFragment {
     private FragmentBottomCarritoBinding binding;
     //private ProductosViewModel productosViewModel;
     AppViewModel appViewModel;
     private com.example.proyectoandroid.model.productosRepositorio productosRepositorio;
     private int contadorProducto;
     private int userId;
+    private int fav;
+    Integer cantidadIndividual;
     Favorito favorito;
+
     List<ProductoFavorito> productoFavoritosList = null;
 
     @Override
@@ -52,12 +54,51 @@ public class bottom_carrito_fragment extends Fragment {
         appViewModel.usuarioAutenticado.observe(getViewLifecycleOwner(), usuario -> {
             userId = usuario.id;
             appViewModel.getRowCount(userId).observe(getViewLifecycleOwner(), integer -> {
-                if(integer != null) {
+                if (integer != null) {
                     contadorProducto = integer;
+
                     appViewModel.obtenerProductosCarrito(usuario.id).observe(getViewLifecycleOwner(), productosList -> {
+                        if (productosList == null || productosList.size() == 0) {
+                            // Log.e("ZERO", "RESULTS");
+                            binding.listaProductos.setVisibility(View.GONE);
+                            binding.zeroresults.setVisibility(View.VISIBLE);
+                            binding.productosEncontrados.setVisibility(View.GONE);
+                            binding.flexboxCarrito.setVisibility(View.VISIBLE);
+                            binding.flexboxCarrito.setVisibility(View.GONE);
+                            binding.VolverExplorador.setOnClickListener(v ->
+                                    navController.navigate(R.id.action_global_bottom_explorar_fragment2));
+                        } else {
+                            binding.listaProductos.setVisibility(View.VISIBLE);
+                            binding.productosEncontrados.setText(productosList.size() + " Productos en carrito");
+                            binding.productosEncontrados.setVisibility(View.VISIBLE);
+                            binding.zeroresults.setVisibility(View.GONE);
+                            binding.cantidadTotal.setText(String.valueOf(contadorProducto));
+                        }
                         carritoAdaper.establecerCarritoList(productosList);
 
                     });
+                } else {
+                    appViewModel.obtenerProductosCarrito(usuario.id).observe(getViewLifecycleOwner(), productosList -> {
+                        if (productosList == null || productosList.size() == 0) {
+                            // Log.e("ZERO", "RESULTS");
+                            binding.listaProductos.setVisibility(View.GONE);
+                            binding.zeroresults.setVisibility(View.VISIBLE);
+                            binding.productosEncontrados.setVisibility(View.GONE);
+                            binding.flexboxCarrito.setVisibility(View.GONE);
+                            binding.VolverExplorador.setOnClickListener(v ->
+                                    navController.navigate(R.id.action_global_bottom_explorar_fragment2));
+                        } else {
+                            binding.listaProductos.setVisibility(View.VISIBLE);
+                            binding.productosEncontrados.setText(productosList.size() + " Productos en carrito");
+                            binding.productosEncontrados.setVisibility(View.VISIBLE);
+                            binding.flexboxCarrito.setVisibility(View.VISIBLE);
+                            binding.zeroresults.setVisibility(View.GONE);
+                            binding.cantidadTotal.setText(String.valueOf(contadorProducto));
+                        }
+                        carritoAdaper.establecerCarritoList(productosList);
+
+                    });
+
                 }
             });
         });
@@ -80,35 +121,48 @@ public class bottom_carrito_fragment extends Fragment {
 
             holder.binding.nombre.setText(producto.nombre);
 
-            // holder.binding.favoritosProductos.setImageResource(R.drawable.favoritostodorojo);
+            holder.binding.precio.setText("350542€");
+            holder.binding.productoColor.setText("Azulgrana");
 
             Glide.with(holder.itemView).load(producto.imagenes.get(0)).into(holder.binding.imagen);
 
-            //System.out.println("para");
-            /*if(productoFavoritosList.get(position).esFavorito){
-                holder.binding.favoritosProductos.setImageResource(R.drawable.favoritostodorojo);
-            }
-            else holder.binding.favoritosProductos.setImageResource(R.drawable.logofavoritosprueba);
-            System.out.println("para");
 
-             */
+            //comprobar si es favorito
+            appViewModel.isFavorite(userId, producto.id).observe(getViewLifecycleOwner(), integer3 -> {
+                fav = integer3;
+                if (fav == 1) {
+                    holder.binding.favoritosProductos.setImageResource(R.drawable.favoritostodorojo);
+                } else
+                    holder.binding.favoritosProductos.setImageResource(R.drawable.logofavoritosprueba);
 
-            holder.binding.nombre.setOnClickListener(v -> {
+            });
+
+            holder.binding.favoritosProductos.setOnClickListener(v -> {
+                appViewModel.invertirFavorito(userId, producto.id);
+            });
+
+            holder.binding.botonDecrementar.setOnClickListener(v -> {
                 appViewModel.eliminarCarritoUpdate(userId, producto.id);
-                //System.out.println("para");
+
             });
 
 
-            holder.binding.imagen.setOnClickListener(v -> {
-                // productosViewModel.invertirFavorito(userId, producto.id);
+            holder.binding.botonIncrementar.setOnClickListener(v -> {
                 appViewModel.incrementarCarrito(userId, producto.id);
-                //appViewModel.getincremento(userId, producto.id);
-                // System.out.println("para");
+
 
             });
-            //appViewModel.getincremento(userId, producto.id).getValue();
-           // holder.binding.cantidad.setText(String.valueOf();
-           // holder.binding.cantidad.setText(String.valueOf(appViewModel.getincremento(userId, producto.id).getValue()));
+
+            holder.binding.eliminarProducto.setOnClickListener(v -> {
+                appViewModel.eliminarDelCarrito(userId, producto.id);
+            });
+
+            appViewModel.getincremento(userId, producto.id).observe(getViewLifecycleOwner(), integer2 -> {
+                cantidadIndividual = integer2;
+                holder.binding.cantidad.setText(String.valueOf(cantidadIndividual));
+            });
+
+//            binding.cantidadTotal.setText(String.valueOf(contadorProducto));
         }
 
         @Override

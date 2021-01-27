@@ -112,13 +112,15 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         @Insert(onConflict = OnConflictStrategy.REPLACE)
         void insertarCarrito(Carrito carrito);
 
-
+        //Incrementa la cantidad individual del producto en carrito
         @Query("UPDATE Carrito SET cantidad = cantidad + 1 WHERE userId = :userId AND productoId = :productoId")
         void incrementarCarrito(int userId, int productoId);
 
+        //Obtiene la cantidad individual del carrito, si lo pongo como live data no funciona
         @Query("SELECT cantidad From Carrito WHERE userId = :userId AND productoId = :productoId")
         int obtenerCantidad(int userId, int productoId);
 
+        //Resta uno a la cantidad del carrito
         @Query("UPDATE carrito  SET cantidad = cantidad - 1  WHERE userId = :userId AND productoId = :productoId")
         void updateCantidadDecrementar(int userId, int productoId);
 
@@ -129,13 +131,19 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         @Query("SELECT * FROM Producto AS p JOIN Carrito as carr  ON p.id = carr.productoId WHERE carr.userId = :userId")
         LiveData<List<Producto>> obtenerProductosCarrito(int userId);
 
-        @Query("SELECT cantidad FROM carrito WHERE userId = :userId")
+        //Devuelve cantidad total de productos añadidos a la cesta en carrito
+        @Query("SELECT SUM (cantidad) FROM carrito WHERE userId = :userId")
         LiveData<Integer> getRowCount(int userId);
 
 
+        //Devuelve cantidad de cada producto del carrito
         @Query("SELECT cantidad FROM carrito WHERE userId = :userId AND productoId = :productoId")
         LiveData<Integer> getincremento(int userId, int productoId);
 
+
+        //comprobar si un producto es favorito en carrito
+        @Query("SELECT EXISTS (SELECT 1 FROM Favorito WHERE userId=:userId AND productoId = :productId)")
+        LiveData<Integer> isFavorite(int userId, int productId);
     }
 
 

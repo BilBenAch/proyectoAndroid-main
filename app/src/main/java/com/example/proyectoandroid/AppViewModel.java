@@ -1,7 +1,6 @@
 package com.example.proyectoandroid;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.arch.core.util.Function;
@@ -218,6 +217,10 @@ public class AppViewModel extends AndroidViewModel {
     public LiveData<Integer> getincremento( int userId, int productoId) {
         return productosRepositorio.getincremento( userId, productoId);
     }
+    //eliminar elementos del carrito
+    public void eliminarDelCarrito(int userId, int productoId){
+        productosRepositorio.eliminarDelCarrito(userId, productoId);
+    }
 
 
     //buscar
@@ -226,7 +229,7 @@ public class AppViewModel extends AndroidViewModel {
     LiveData<List<ProductoFavorito>> resultadoBusqueda = Transformations.switchMap(terminoBusqueda, new Function<String, LiveData<List<ProductoFavorito>>>() {
         @Override
         public LiveData<List<ProductoFavorito>> apply(String input) {
-            Log.e("TERMINO B", "["+input+"]");
+            //Log.e("TERMINO B", "["+input+"]");
             return productosRepositorio.buscar(input, usuarioAutenticado.getValue().id);
         }
     });
@@ -235,4 +238,9 @@ public class AppViewModel extends AndroidViewModel {
     void buscar(String s) {
         terminoBusqueda.setValue(s);
     }
+
+    public LiveData<Integer> isFavorite(int userId, int productId) {
+        return productosRepositorio.isFavorite(userId, productId);
+    }
+
 }
