@@ -66,7 +66,7 @@ public class productosRepositorio {
         executor.execute(() -> {
             if (ProductosDao.obtenerCarrito(userId, productoId) == null) {
                 ProductosDao.insertarCarrito(new Carrito(userId, productoId));
-            } else ProductosDao.incrementarCarrito(userId, productoId);
+            } else {ProductosDao.incrementarCarrito(userId, productoId);}
         });
     }
 
@@ -132,6 +132,11 @@ public class productosRepositorio {
         executor.execute(() -> {
         ProductosDao.eliminarCarrito(new Carrito(userId, productoId));
         });
+    }
+
+    //devuelve precio total de los productos
+    public LiveData<Integer> precioTotal(int userId) {
+        return ProductosDao.precioTotal(userId);
     }
 
 

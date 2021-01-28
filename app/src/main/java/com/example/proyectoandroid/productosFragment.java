@@ -74,6 +74,7 @@ public class productosFragment extends BaseFragment {
 
             Glide.with(holder.itemView).load(producto.imagenes.get(0)).into(holder.binding.imagen);
 
+            holder.binding.precio.setText(String.valueOf(producto.precioProducto)+"€");
             // holder.binding.favoritosProductos.setChecked(producto.esFavorito);
             if (producto.esFavorito) {
                 holder.binding.favoritosProductos.setImageResource(R.drawable.favoritostodorojo);

@@ -140,6 +140,6 @@
         android:id="@+id/miCuentaCambiarContraseniaFragment"
         android:name="com.example.proyectoandroid.MiCuentaCambiarContraseniaFragment"
         android:label="fragment_mi_cuenta_cambiar_contrasenia"
-        tools:layout="@layout/fragment_mi_cuenta_cambiar_contrasenia" /><action android:id="@+id/action_global_miCuentaCambiarContraseniaFragment" app:destination="@id/miCuentaCambiarContraseniaFragment"/>
+        tools:layout="@layout/fragment_mi_cuenta_cambiar_contrasenia" /><action android:id="@+id/action_global_miCuentaCambiarContraseniaFragment" app:destination="@id/miCuentaCambiarContraseniaFragment"/><action android:id="@+id/action_global_bottom_perfil_fragment" app:destination="@id/bottom_perfil_fragment"/><action android:id="@+id/action_global_bottom_home_fragment2" app:destination="@id/bottom_home_fragment2"/>
 
 </navigation>

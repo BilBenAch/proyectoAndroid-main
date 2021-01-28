@@ -11,6 +11,11 @@ public class Producto {
     @PrimaryKey(autoGenerate = true)
     public int id;
     public String nombre;
+    public String tipoProducto;
+    public String colorProducto;
+    public String etiqueta;
+    public Double precioProducto;
+
     @TypeConverters(ListIntegerConverter.class)
     public List<Integer> imagenes;
     public Integer valoracion;
@@ -31,10 +36,27 @@ public class Producto {
         return valoracion;
     }
 
-    public Producto(String nombre, List<Integer> imagenes) {
+    public String getTipoProducto() {
+        return tipoProducto;
+    }
+
+    public String getColorProducto() {
+        return colorProducto;
+    }
+
+    public Double getPrecioProducto() {
+        return precioProducto;
+    }
+
+    public Producto(String nombre, String tipoProducto, String colorProducto, Double precioProducto , String etiqueta ,List<Integer> imagenes) {
         this.nombre = nombre;
+        this.tipoProducto = tipoProducto;
+        this.colorProducto = colorProducto;
+        this.precioProducto = precioProducto;
+        this.etiqueta = etiqueta;
         this.imagenes = imagenes;
         this.valoracion = 0;
     }
+
 
 }

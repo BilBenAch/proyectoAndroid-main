@@ -10,10 +10,16 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.example.proyectoandroid.modelLogin.Usuario;
+
 public class BaseFragment extends Fragment {
 
     public NavController navController;
     public AppViewModel appViewModel;
+    Usuario usuario;
+    public int userId;
+
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

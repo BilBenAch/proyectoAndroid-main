@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.proyectoandroid.databinding.FragmentBottomCarritoBinding;
@@ -29,6 +30,7 @@ public class bottom_carrito_fragment extends BaseFragment {
     private int contadorProducto;
     private int userId;
     private int fav;
+    Integer precioTotal;
     Integer cantidadIndividual;
     Favorito favorito;
 
@@ -50,7 +52,12 @@ public class bottom_carrito_fragment extends BaseFragment {
         CarritoAdapter carritoAdaper = new CarritoAdapter();
 
         binding.listaProductos.setAdapter(carritoAdaper);
-
+        binding.notificacionesHome.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_bandeja_notificaciones);
+        });
+        binding.favoritosHome.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_bottom_favoritos_fragment2);
+        });
         appViewModel.usuarioAutenticado.observe(getViewLifecycleOwner(), usuario -> {
             userId = usuario.id;
             appViewModel.getRowCount(userId).observe(getViewLifecycleOwner(), integer -> {
@@ -121,8 +128,8 @@ public class bottom_carrito_fragment extends BaseFragment {
 
             holder.binding.nombre.setText(producto.nombre);
 
-            holder.binding.precio.setText("350542€");
-            holder.binding.productoColor.setText("Azulgrana");
+            holder.binding.precio.setText(String.valueOf(producto.precioProducto) + " €");
+            holder.binding.productoColor.setText(producto.colorProducto);
 
             Glide.with(holder.itemView).load(producto.imagenes.get(0)).into(holder.binding.imagen);
 
@@ -132,13 +139,27 @@ public class bottom_carrito_fragment extends BaseFragment {
                 fav = integer3;
                 if (fav == 1) {
                     holder.binding.favoritosProductos.setImageResource(R.drawable.favoritostodorojo);
-                } else
-                    holder.binding.favoritosProductos.setImageResource(R.drawable.logofavoritosprueba);
+                    //Toast.makeText(getContext(), "Producto añadido de favs", Toast.LENGTH_SHORT).show();
 
+                } else {
+                    holder.binding.favoritosProductos.setImageResource(R.drawable.logofavoritosprueba);
+                    //Toast.makeText(getContext(), "Producto quitado de favs", Toast.LENGTH_SHORT).show();
+                }
             });
 
             holder.binding.favoritosProductos.setOnClickListener(v -> {
+                //comprobar si es favorito
                 appViewModel.invertirFavorito(userId, producto.id);
+                appViewModel.isFavorite(userId, producto.id).observe(getViewLifecycleOwner(), integer5 -> {
+                    fav = integer5;
+                    if (fav == 1) {
+                        Toast.makeText(getContext(), "Producto añadido de favs", Toast.LENGTH_SHORT).show();
+
+                    }
+                    else {
+                        Toast.makeText(getContext(), "Producto quitado de favs", Toast.LENGTH_SHORT).show();
+                    }
+                });
             });
 
             holder.binding.botonDecrementar.setOnClickListener(v -> {
@@ -162,7 +183,11 @@ public class bottom_carrito_fragment extends BaseFragment {
                 holder.binding.cantidad.setText(String.valueOf(cantidadIndividual));
             });
 
-//            binding.cantidadTotal.setText(String.valueOf(contadorProducto));
+            appViewModel.precioTotal(userId).observe(getViewLifecycleOwner(), integer4 -> {
+                precioTotal = integer4;
+                binding.precioTotal.setText(String.valueOf(precioTotal) + " €");
+                binding.cantidadPrecioTotal.setText(String.valueOf(precioTotal) + " €");
+            });
         }
 
         @Override

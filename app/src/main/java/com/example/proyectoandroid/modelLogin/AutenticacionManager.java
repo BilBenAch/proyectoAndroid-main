@@ -1,6 +1,9 @@
 package com.example.proyectoandroid.modelLogin;
 
 import android.app.Application;
+
+import androidx.lifecycle.LiveData;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -90,6 +93,60 @@ public class AutenticacionManager {
 
             }
         });
+    }
+
+
+
+
+    public void cambiarNombreApellido(String nombre,String apellido, int userId) {
+        {
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    dao.cambiarNombreApellido(nombre, apellido, userId);
+                }
+            });
+        }
+    }
+
+    public void cambiarEmail(String email, int userId) {
+        {
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    dao.cambiarEmail(email, userId);
+                }
+            });
+        }
+    }
+
+
+    public void cambiarTelefono(String telefono, int userId) {
+        {
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    dao.cambiarTelefono(telefono, userId);
+                }
+            });
+        }
+    }
+
+
+    public void cambiarContra(String contra, int userId) {
+        {
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    dao.cambiarContrasenia(contra, userId);
+                }
+            });
+        }
+    }
+
+
+    public LiveData<Usuario> obtenerUsuario(int userId){
+        return dao.getUser(userId);
     }
 
 }

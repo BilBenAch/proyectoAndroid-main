@@ -34,11 +34,13 @@ public class bottom_home_fragment extends Fragment {
 
         navController = Navigation.findNavController(view);
         binding.botonComprarAbrigoHombre.setOnClickListener(v -> {
+            appViewModel.buscar("abrigo hombre");
             navController.navigate(R.id.action_global_productosFragment);
 
         });
-        binding.botonAnadirProductos.setOnClickListener(v -> {
-            navController.navigate(R.id.action_global_anadirProductoFragment);
+        binding.botonComprarAbrigoMujer.setOnClickListener(v -> {
+            appViewModel.buscar("vestido");
+            navController.navigate(R.id.action_global_productosFragment);
 
         });
 
@@ -48,6 +50,18 @@ public class bottom_home_fragment extends Fragment {
 
         binding.notificacionesHome.setOnClickListener(v -> {
             navController.navigate(R.id.action_global_bandeja_notificaciones);
+        });
+
+        binding.favoritosHome.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_bottom_favoritos_fragment2);
+        });
+        binding.botonComprarHombre.setOnClickListener(v -> {
+            appViewModel.buscar("hombre");
+            navController.navigate(R.id.action_global_productosFragment);
+        });
+        binding.botonComprarMujer.setOnClickListener(v -> {
+            appViewModel.buscar("mujer");
+            navController.navigate(R.id.action_global_productosFragment);
         });
     }
 }

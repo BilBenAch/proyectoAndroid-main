@@ -47,16 +47,40 @@
             android:layout_gravity="top"
             android:padding="8dp"
             android:textColor="@color/granate"
-            android:textSize="9sp"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/imagen" />
+
+        <ImageView
+            android:id="@+id/imagenOpiniones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/imagenestrellas"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombre" />
 
         <TextView
             android:id="@+id/precio"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:textSize="16sp"
-            android:text="2000 euros iva incluido"
-            app:layout_constraintTop_toBottomOf="@+id/nombre" />
+            android:layout_marginLeft="8dp"
+            android:text="215151"
+            android:textColor="@color/rojo_general_texto"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagenOpiniones" />
+        <TextView
+            android:id="@+id/textofijoIvaIncluido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="4dp"
+            android:text=" iva incluido"
+            android:textColor="@color/granate"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:paddingBottom="10dp"
+            app:layout_constraintLeft_toRightOf="@+id/precio"
+            app:layout_constraintTop_toBottomOf="@+id/imagenOpiniones" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

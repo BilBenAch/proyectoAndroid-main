@@ -26,15 +26,15 @@ public class bottom_explorar_fragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         //redireccion productos hombres
         binding.imagenComprarAbrigos.setOnClickListener(v -> {
-            appViewModel.buscar("abrigo");
+            appViewModel.buscar("abrigo hombre");
             navController.navigate(R.id.action_global_productosFragment);
         });
         binding.imagenComprarComplementosHombre.setOnClickListener(v -> {
-            appViewModel.buscar("complemento");
+            appViewModel.buscar("complementos hombre");
             navController.navigate(R.id.action_global_productosFragment);
         });
         binding.imagenComprarCamisetaHombre.setOnClickListener(v -> {
-            appViewModel.buscar("camiseta hombre");
+            appViewModel.buscar("camisetas hombre");
             navController.navigate(R.id.action_global_productosFragment);
         });
         binding.imagenCalzadoHombre.setOnClickListener(v -> {
@@ -42,7 +42,7 @@ public class bottom_explorar_fragment extends BaseFragment {
             navController.navigate(R.id.action_global_productosFragment);
         });
         binding.imagenPantalonesHombre.setOnClickListener(v -> {
-            appViewModel.buscar("pantalon hombre");
+            appViewModel.buscar("pantalones hombre");
             navController.navigate(R.id.action_global_productosFragment);
         });
         binding.imagenComprarRopaInterior.setOnClickListener(v -> {
@@ -58,15 +58,15 @@ public class bottom_explorar_fragment extends BaseFragment {
             navController.navigate(R.id.action_global_productosFragment);
         });
         binding.imagenPantalonesMujer.setOnClickListener(v -> {
-            appViewModel.buscar("pantalon mujer");
+            appViewModel.buscar("pantalones mujer");
             navController.navigate(R.id.action_global_productosFragment);
         });
         binding.imagenFaldasMujer.setOnClickListener(v -> {
-            appViewModel.buscar("falda");
+            appViewModel.buscar("faldas");
             navController.navigate(R.id.action_global_productosFragment);
         });
         binding.imagenBolsos.setOnClickListener(v -> {
-            appViewModel.buscar("bolso");
+            appViewModel.buscar("bolsos");
             navController.navigate(R.id.action_global_productosFragment);
         });
         binding.imagenCalzadoMujer.setOnClickListener(v -> {

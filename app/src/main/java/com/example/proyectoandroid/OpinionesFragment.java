@@ -38,9 +38,9 @@ import com.example.proyectoandroid.modelLogin.Usuario;
 
             @Override
             public void onChanged(ProductoFavorito productoFavorito) {
-                binding.primeraImagenProducto.setImageResource(productoFavorito.imagenes.get(1));
-                binding.segundoImagenProducto.setImageResource(productoFavorito.imagenes.get(2));
-                binding.terceraImagenProducto.setImageResource(productoFavorito.imagenes.get(3));
+                binding.primeraImagenProducto.setImageResource(productoFavorito.imagenes.get(0));
+                binding.segundoImagenProducto.setImageResource(productoFavorito.imagenes.get(1));
+                binding.terceraImagenProducto.setImageResource(productoFavorito.imagenes.get(2));
 
                 binding.volver.setOnClickListener(v -> {
                     navController.navigate(R.id.action_global_bottom_explorar_fragment2);

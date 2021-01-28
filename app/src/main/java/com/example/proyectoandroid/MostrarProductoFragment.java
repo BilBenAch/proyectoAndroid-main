@@ -1,6 +1,7 @@
 package com.example.proyectoandroid;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import com.example.proyectoandroid.databinding.FragmentMostrarProductoBinding;
 import com.example.proyectoandroid.model.ProductoFavorito;
 import com.example.proyectoandroid.modelLogin.Usuario;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
@@ -30,9 +33,11 @@ public class MostrarProductoFragment extends BaseFragment {
     private FragmentMostrarProductoBinding binding;
     private Usuario usuario;
     private int userId;
-    private boolean favorito;
+    private Integer fav;
+    private boolean comprobar = false;
     String selected, spinner_item;
     private int id;
+    Snackbar snackbar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +50,7 @@ public class MostrarProductoFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
 //        if(comprobarFavorito()){
 //            binding.imagen.setImageResource(R.drawable.favoritostodorojo);
 //        }
@@ -55,34 +61,61 @@ public class MostrarProductoFragment extends BaseFragment {
 //        });
 //
 //        */
-
+        BottomNavigationView navBar = getActivity().findViewById(R.id.bottom_navigation);
+        //preguntar a Gerard si es lo mismo ponerlo asi o no
         usuario = appViewModel.usuarioAutenticado.getValue();
         userId = usuario.id;
         //System.out.println("para");
+//        appViewModel.usuarioAutenticado.observe(getViewLifecycleOwner(), usuario -> {
+//            userId = usuario.id;
+//        });
 
         appViewModel.seleccionado().observe(getViewLifecycleOwner(), new Observer<ProductoFavorito>() {
 
             @Override
             public void onChanged(ProductoFavorito productoFavorito) {
-                binding.imagen1.setImageResource(productoFavorito.imagenes.get(1));
-                binding.imagen2.setImageResource(productoFavorito.imagenes.get(2));
-                binding.imagen3.setImageResource(productoFavorito.imagenes.get(3));
-                binding.imagenabrigodani.setImageResource(productoFavorito.imagenes.get(1));
+                binding.imagen1.setImageResource(productoFavorito.imagenes.get(0));
+                binding.imagen2.setImageResource(productoFavorito.imagenes.get(1));
+                binding.imagen3.setImageResource(productoFavorito.imagenes.get(2));
+                binding.imagenabrigodani.setImageResource(productoFavorito.imagenes.get(0));
                 binding.nombreProducto.setText(productoFavorito.nombre);
+                binding.PrecioProducto.setText(String.valueOf(productoFavorito.precioProducto) + "€");
+                binding.tipoProducto.setText(productoFavorito.tipoProducto);
+                binding.ColorProducto.setText(productoFavorito.colorProducto);
+
                 id = productoFavorito.id;
                 binding.favorito.setChecked(productoFavorito.esFavorito);
-                //descometnar luego
-                binding.comprar.setOnClickListener(v -> {
-                    appViewModel.insertarCarritoUpdate(userId, productoFavorito.id);
 
-                });
-                binding.favorito.setOnClickListener(v -> {
-                    appViewModel.invertirFavorito(userId, productoFavorito.id);
+                appViewModel.isFavorite(userId, productoFavorito.id).observe(getViewLifecycleOwner(), integer3 -> {
+                    fav = integer3;
+                    binding.favorito.setOnClickListener(v -> {
+                        appViewModel.invertirFavorito(userId, productoFavorito.id);
+
+                        if (fav != 1) {
+                            Snackbar snackbar = Snackbar.make(view, "Producto añadido a favoritos", Snackbar.LENGTH_SHORT);
+                            snackbar.setAnchorView(navBar);
+                            snackbar.show();
+
+                        } else {
+                            Snackbar snackbar = Snackbar.make(view, "Producto quitado de favoritos", Snackbar.LENGTH_SHORT);
+                            snackbar.setAnchorView(navBar);
+                            snackbar.show();
+                        }
+
+                    });
+
                 });
                 binding.textOpiniones.setOnClickListener(v -> {
                     navController.navigate(R.id.action_global_opinionesFragment);
                 });
 
+                binding.notificacionesHome.setOnClickListener(v -> {
+                    navController.navigate(R.id.action_global_bandeja_notificaciones);
+                });
+
+                binding.favoritosHome.setOnClickListener(v -> {
+                    navController.navigate(R.id.action_global_bottom_favoritos_fragment2);
+                });
                 //descomentar luego
                 MaterialSpinner spinner = (MaterialSpinner) binding.spinner;
                 spinner.setItems("Selecciona tu talla ", "S", "M", "L", "XL Actualmente no disponible");
@@ -90,12 +123,22 @@ public class MostrarProductoFragment extends BaseFragment {
 
                     @Override
                     public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                        if (position == 0 ) {
-                            Snackbar.make(view, "Debes de seleccionar una talla valida", Snackbar.LENGTH_LONG).show();
+                        if (position == 0) {
+                            Snackbar snackbar = Snackbar.make(view, "Debes de seleccionar una talla valida", Snackbar.LENGTH_SHORT);
+                            snackbar.setAnchorView(navBar);
+                            snackbar.show();
                         } else {
-                            Snackbar.make(view, "Talla " + item, Snackbar.LENGTH_LONG).show();
-                            if(position==4){
+                            if (position == 4) {
                                 //navController.navigate(R.id.action_global_bandeja_notificaciones);
+                                Snackbar snackbar = Snackbar.make(view, "Talla " + item, Snackbar.LENGTH_SHORT);
+                                snackbar.setAnchorView(navBar);
+                                snackbar.show();
+                            } else {
+                                comprobar = true;
+                                comprobarTalla(comprobar);
+                                Snackbar snackbar = Snackbar.make(view, "Talla " + item +" Seleccionada", Snackbar.LENGTH_SHORT);
+                                snackbar.setAnchorView(navBar);
+                                snackbar.show();
                             }
                         }
                     }
@@ -107,11 +150,30 @@ public class MostrarProductoFragment extends BaseFragment {
                 });
 
 
+                binding.comprar.setOnClickListener(v -> {
+                    if (comprobarTalla(comprobar)) {
+                        appViewModel.insertarCarritoUpdate(userId, productoFavorito.id);
+                        Snackbar snackbar = Snackbar.make(view, "Producto añadido a la cesta", Snackbar.LENGTH_SHORT);
+                        snackbar.setAnchorView(navBar);
+                        snackbar.show();
+                    } else {
+                        Snackbar snackbar = Snackbar.make(view, "Debes de seleccionar una talla correcta", Snackbar.LENGTH_SHORT);
+                        snackbar.setAnchorView(navBar);
+                        snackbar.show();
+                    }
+                });
             }
 
 
         });
 
+
+
+    }
+
+    public boolean comprobarTalla(boolean comprobar) {
+
+        return comprobar;
     }
 
 

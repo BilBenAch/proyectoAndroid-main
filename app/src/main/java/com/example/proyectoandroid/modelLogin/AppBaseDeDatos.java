@@ -22,7 +22,7 @@ import com.example.proyectoandroid.model.ProductoFavorito;
 
 import java.util.List;
 
-@Database(entities = {Usuario.class, Producto.class, Favorito.class, Carrito.class}, version =  3, exportSchema = false)
+@Database(entities = {Usuario.class, Producto.class, Favorito.class, Carrito.class}, version =  5, exportSchema = false)
 public abstract class AppBaseDeDatos extends RoomDatabase {
 
     //public abstract AppDao obtenerDao();
@@ -57,7 +57,7 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         void updateContrasenia(Usuario usuario);
 
         @Query("SELECT * FROM Usuario WHERE id =:userID")
-        Usuario getUser(int userID);
+        LiveData<Usuario> getUser(int userID);
 
         @Query("SELECT * FROM Usuario WHERE username = :nombre AND password = :contrasenya")
         Usuario autenticar(String nombre, String contrasenya);
@@ -67,6 +67,24 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
 
         @Query("SELECT * FROM Usuario WHERE username = :nombre AND email = :email AND password = :password")
         Usuario comprobarContraseniaCorrecta(String nombre, String email, String password);
+
+        ///cambiar nombre y apellido
+        @Query("Update Usuario SET nombre = :nombre, apellido = :apellido WHERE id = :userId")
+        void cambiarNombreApellido(String nombre, String apellido, int userId);
+
+        ///cambiar email
+        @Query("Update Usuario SET email = :email  WHERE id = :userId")
+        void cambiarEmail(String email, int userId);
+
+        ///cambiar Telefono
+        @Query("Update Usuario SET numeroTelefono = :telefono  WHERE id = :userId")
+        void cambiarTelefono(String telefono, int userId);
+
+        //cambiar contraseña
+        @Query("Update Usuario SET password = :contrasenia, password2 = :contrasenia  WHERE id = :userId")
+        void cambiarContrasenia(String contrasenia, int userId);
+
+
     }
         //Producto
 
@@ -75,7 +93,7 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         @Insert
         void insertar(Producto producto);
 
-        @Query("SELECT Producto.id, Producto.nombre, Producto.imagenes, CASE WHEN userId IS NOT NULL THEN 1 ELSE 0 END as esFavorito FROM Producto LEFT JOIN (SELECT * FROM Favorito WHERE userId = :userId) AS Fav ON Producto.id = Fav.productoId")
+        @Query("SELECT Producto.id, Producto.nombre, Producto.tipoProducto, Producto.colorProducto, Producto.precioProducto , Producto.imagenes, CASE WHEN userId IS NOT NULL THEN 1 ELSE 0 END as esFavorito FROM Producto LEFT JOIN (SELECT * FROM Favorito WHERE userId = :userId) AS Fav ON Producto.id = Fav.productoId")
         LiveData<List<ProductoFavorito>> obtenerProductos(int userId);
 
         @Query("SELECT * FROM Favorito WHERE userId = :userId AND productoId = :productoId")
@@ -92,7 +110,7 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
 
 
         //buscar
-        @Query("SELECT Producto.id, Producto.nombre, Producto.imagenes, CASE WHEN userId IS NOT NULL THEN 1 ELSE 0 END as esFavorito FROM Producto Producto LEFT JOIN (SELECT * FROM Favorito WHERE userId = :userId) AS Fav ON Producto.id = Fav.productoId WHERE nombre LIKE '%' || :d || '%'")
+        @Query("SELECT Producto.id, Producto.nombre, Producto.tipoProducto, Producto.colorProducto, Producto.precioProducto , Producto.imagenes, CASE WHEN userId IS NOT NULL THEN 1 ELSE 0 END as esFavorito FROM Producto Producto LEFT JOIN (SELECT * FROM Favorito WHERE userId = :userId) AS Fav ON Producto.id = Fav.productoId WHERE tipoProducto LIKE '%' || :d || '%' OR nombre LIKE '%' || :d || '%' OR etiqueta LIKE '%' || :d || '%'")
         LiveData<List<ProductoFavorito>> buscar(String d, int userId);
 
 
@@ -144,6 +162,13 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         //comprobar si un producto es favorito en carrito
         @Query("SELECT EXISTS (SELECT 1 FROM Favorito WHERE userId=:userId AND productoId = :productId)")
         LiveData<Integer> isFavorite(int userId, int productId);
+
+
+
+
+        //Devuelve Suma de la cantidad total de productos en carrito
+        @Query("SELECT SUM (precioProducto * cantidad) FROM producto AS PROD JOIN Carrito AS CARR ON PROD.id = CARR.productoId WHERE CARR.userId = :userId")
+        LiveData<Integer> precioTotal(int userId);
     }
 
 

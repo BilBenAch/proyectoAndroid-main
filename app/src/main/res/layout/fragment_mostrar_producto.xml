@@ -57,24 +57,30 @@
 
         <HorizontalScrollView
             android:id="@+id/horitzontalscroll"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:fillViewport="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buscarProducto">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/imagen1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="35dp"
+                    android:maxWidth="450dp"
+                    android:minWidth="450dp"
+                    android:maxHeight="380dip"
+                    android:minHeight="380dip"
+                    android:layout_marginLeft="50dp"
                     android:src="@drawable/abrigo2"
-
+                    android:adjustViewBounds="true"
+                    android:ems="5"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -94,11 +100,14 @@
 
                 <ImageView
                     android:id="@+id/imagen2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginRight="8dp"
                     android:paddingLeft="20dp"
+                    android:maxWidth="450dp"
+                    android:maxHeight="380dp"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/abrigo3"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/imagen1"
@@ -106,28 +115,20 @@
 
                 <ImageView
                     android:id="@+id/imagen3"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="15dp"
+                    android:maxWidth="450dp"
+                    android:maxHeight="380dp"
+                    android:adjustViewBounds="true"
                     android:layout_marginRight="8dp"
                     android:src="@drawable/abrigo4"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/imagen2"
                     app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </LinearLayout>
         </HorizontalScrollView>
-        <TextView
-            android:id="@+id/marcaProducto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/grist_texto_logins"
-            android:text="la marca"
-            android:layout_marginLeft="18dp"
-            android:textSize="10sp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horitzontalscroll"/>
 
         <TextView
             android:id="@+id/nombreProducto"
@@ -136,10 +137,9 @@
             android:textColor="@color/black"
             android:text="nombre producto"
             android:layout_marginLeft="18dp"
-            android:textSize="10sp"
             android:layout_marginTop="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/marcaProducto"/>
+            app:layout_constraintTop_toBottomOf="@+id/horitzontalscroll"/>
         <TextView
             android:id="@+id/tipoProducto"
             android:layout_width="wrap_content"
@@ -147,18 +147,15 @@
             android:textColor="@color/black"
             android:text="tipo producto"
             android:layout_marginLeft="18dp"
-            android:textSize="10sp"
             android:layout_marginTop="20dp"
             app:layout_constraintLeft_toRightOf="@+id/nombreProducto"
-            app:layout_constraintTop_toBottomOf="@+id/marcaProducto"/>
+            app:layout_constraintTop_toBottomOf="@+id/horitzontalscroll"/>
         <TextView
             android:id="@+id/PrecioProducto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="precio producto"
             android:layout_marginLeft="18dp"
-            android:textSize="10sp"
             android:layout_marginTop="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nombreProducto"/>
@@ -168,7 +165,7 @@
             android:textColor="@color/grist_texto_logins"
             android:text="IVA incluido"
             android:layout_marginLeft="18dp"
-            android:textSize="8sp"
+            android:textSize="10sp"
             android:layout_marginTop="22dp"
             app:layout_constraintLeft_toRightOf="@+id/nombreProducto"
             app:layout_constraintTop_toBottomOf="@+id/nombreProducto"/>
@@ -180,7 +177,6 @@
             android:textColor="@color/grist_texto_logins"
             android:text="Color:"
             android:layout_marginLeft="18dp"
-            android:textSize="8sp"
             android:layout_marginTop="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PrecioProducto"/>
@@ -191,8 +187,7 @@
             android:textColor="@color/black"
             android:text="color producto"
             android:layout_marginLeft="18dp"
-            android:textSize="10sp"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintLeft_toRightOf="@+id/ColorProductotextofijo"
             app:layout_constraintTop_toBottomOf="@+id/PrecioProducto"/>
 

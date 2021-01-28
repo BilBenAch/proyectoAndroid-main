@@ -25,10 +25,11 @@ import java.util.List;
 public class bottom_favoritos_fragment extends Fragment {
     private FragmentBottomFavoritosBinding binding;
     private Usuario usuario;
-   // private ProductosViewModel productosViewModel;
+    // private ProductosViewModel productosViewModel;
     com.example.proyectoandroid.model.productosRepositorio productosRepositorio;
     AppViewModel appViewModel;
     private int userId;
+
     private NavController navController;
 
     @Override
@@ -46,26 +47,29 @@ public class bottom_favoritos_fragment extends Fragment {
         navController = Navigation.findNavController(view);
         FavoritosAdapter favoritosAdapter = new FavoritosAdapter();
         binding.listaProductos.setAdapter(favoritosAdapter);
+        binding.notificacionesHome.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_bandeja_notificaciones);
+        });
+        binding.favoritosHome.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_bottom_favoritos_fragment2);
+        });
         appViewModel.usuarioAutenticado.observe(getViewLifecycleOwner(), usuario -> {
             userId = usuario.id;
 
             appViewModel.obtenerProductosFavoritos(usuario.id).observe(getViewLifecycleOwner(), productosList -> {
-                if(productosList == null || productosList.size() == 0) {
+                if (productosList == null || productosList.size() == 0) {
                     // Log.e("ZERO", "RESULTS");
                     binding.listaProductos.setVisibility(View.GONE);
                     binding.zeroresults.setVisibility(View.VISIBLE);
                     binding.productosEncontrados.setVisibility(View.GONE);
                 } else {
                     binding.listaProductos.setVisibility(View.VISIBLE);
-                    binding.productosEncontrados.setText(productosList.size()+" Productos encontrados");
+                    binding.productosEncontrados.setText(productosList.size() + " Productos encontrados");
                     binding.productosEncontrados.setVisibility(View.VISIBLE);
                     binding.zeroresults.setVisibility(View.GONE);
                 }
+
                 favoritosAdapter.establecerFavoritoList(productosList);
-//                if(productosList.size() == 0){
-//                    //aqui funciona
-//                   // navController.navigate(R.id.action_global_mostrarProducto);
-//                }
             });
         });
     }
@@ -87,9 +91,13 @@ public class bottom_favoritos_fragment extends Fragment {
             //binding.numeroApariciones.setText(getItemCount() + "productos encontrados");
 
             holder.binding.nombre.setText(producto.nombre);
+            holder.binding.nombre.setOnClickListener(v -> {
+                navController.navigate(R.id.action_global_mostrarProducto);
+            });
 
             Glide.with(holder.itemView).load(producto.imagenes.get(0)).into(holder.binding.imagen);
 
+            holder.binding.precio.setText(String.valueOf(producto.precioProducto) + "€");
 
             holder.binding.imagen.setOnClickListener(v -> {
                 appViewModel.invertirFavorito(userId, producto.id);

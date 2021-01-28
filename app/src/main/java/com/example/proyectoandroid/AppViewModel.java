@@ -43,13 +43,23 @@ public class AppViewModel extends AndroidViewModel {
         CONTRASENIA_CAMBIADA
     }
 
+   /* enum EstadoDelCambioDeNombre {
+        INICIO_DEL_CAMBIO,
+        NOMBRE_NO_DISPONIBLE,
+        CAMBIO_COMPLETADO
+    }
+
+    */
+
     MutableLiveData<EstadoDeLaAutenticacion> estadoDeLaAutenticacion = new MutableLiveData<>(EstadoDeLaAutenticacion.NO_AUTENTICADO);
     MutableLiveData<Usuario> usuarioAutenticado = new MutableLiveData<>();
     MutableLiveData<EstadoDelRegistro> estadoDelRegistro = new MutableLiveData<>(EstadoDelRegistro.INICIO_DEL_REGISTRO);
     MutableLiveData<EstadoDelRegistro> usuarioRegistrado = new MutableLiveData<>();
-
     //cambio contrasenia
     MutableLiveData<EstadoDelCambioDePassword> estadoUsuarioContrasenia = new MutableLiveData<>();
+
+    //estado cambio y apellido
+    //MutableLiveData<EstadoDelCambioDeNombre> estadoDelCambiodeNombre = new MutableLiveData<>(EstadoDelCambioDeNombre.INICIO_DEL_CAMBIO);
 
 
     AutenticacionManager autenticacionManager;
@@ -101,6 +111,7 @@ public class AppViewModel extends AndroidViewModel {
                             estadoDelRegistro.postValue(EstadoDelRegistro.INICIO_DEL_REGISTRO);
                         } else {
                             estadoDelRegistro.postValue(EstadoDelRegistro.REGISTRO_COMPLETADO);
+
                         }
                     }
 
@@ -210,15 +221,16 @@ public class AppViewModel extends AndroidViewModel {
 
 
     //devuelve la cantidad de productos en carrito
-    public LiveData<Integer> getRowCount( int userId) {
-        return productosRepositorio.getRowCount( userId);
+    public LiveData<Integer> getRowCount(int userId) {
+        return productosRepositorio.getRowCount(userId);
     }
 
-    public LiveData<Integer> getincremento( int userId, int productoId) {
-        return productosRepositorio.getincremento( userId, productoId);
+    public LiveData<Integer> getincremento(int userId, int productoId) {
+        return productosRepositorio.getincremento(userId, productoId);
     }
+
     //eliminar elementos del carrito
-    public void eliminarDelCarrito(int userId, int productoId){
+    public void eliminarDelCarrito(int userId, int productoId) {
         productosRepositorio.eliminarDelCarrito(userId, productoId);
     }
 
@@ -242,5 +254,37 @@ public class AppViewModel extends AndroidViewModel {
     public LiveData<Integer> isFavorite(int userId, int productId) {
         return productosRepositorio.isFavorite(userId, productId);
     }
+
+
+    //devuelve precio total de los productos
+    public LiveData<Integer> precioTotal(int userId) {
+        return productosRepositorio.precioTotal(userId);
+    }
+
+
+    //cambiar nombre y apellido
+    public void cambiarNombreApellido(String nombre,String apellido, int userId){
+        autenticacionManager.cambiarNombreApellido(nombre, apellido, userId);
+    }
+    //cambiar email
+    public void cambiarEmail(String email, int userId){
+        autenticacionManager.cambiarEmail(email, userId);
+    }
+
+    //cambiar telefono
+    public void cambiarTelefono(String telefono, int userId){
+        autenticacionManager.cambiarTelefono(telefono, userId);
+    }
+
+    //cambiar contraseña fragment perfil
+    public void cambiarContra(String contra, int userId){
+        autenticacionManager.cambiarContra(contra, userId);
+    }
+
+    //obtener contenido usuario para ver cambio nombre irl
+    LiveData<Usuario> obtenerUsuario(int userId){
+        return autenticacionManager.obtenerUsuario(userId);
+    }
+
 
 }
