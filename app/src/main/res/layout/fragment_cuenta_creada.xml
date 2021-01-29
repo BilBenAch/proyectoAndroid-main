@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="40dp">
 
         <ImageView
             android:id="@+id/logo"
@@ -18,7 +19,7 @@
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></ImageView>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/bienvenido"
@@ -27,7 +28,7 @@
             android:layout_below="@id/logo"
             android:layout_marginTop="8dp"
             android:gravity="bottom"
-            android:text="Bienvenido a Doble B"
+            android:text="@string/bienvenido_a_doble_b"
             android:textColor="@color/granate_principal"
             android:textSize="10.4413sp"
             android:textStyle="bold"
@@ -44,7 +45,7 @@
             android:layout_below="@id/bienvenido"
             android:layout_marginTop="24dp"
             android:gravity="bottom"
-            android:text="Cuenta creada"
+            android:text="@string/cuenta_creada"
             android:textColor="@color/gris_texto"
             android:textSize="7.83sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
             android:fontFamily="@font/poppins"
-            android:text="Cuenta creada con éxito"
+            android:text="@string/cuenta_creada_con_xito"
             android:textAlignment="center"
             android:textColor="@color/rojo_general_texto"
             android:textSize="17sp"

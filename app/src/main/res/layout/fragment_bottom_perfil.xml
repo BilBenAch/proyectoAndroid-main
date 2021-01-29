@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="40dp">
 
 
         <TextView
@@ -21,7 +22,7 @@
             android:layout_marginTop="40dp"
             android:drawablePadding="10dp"
             android:fontFamily="@font/poppins"
-            android:text="Perfil"
+            android:text="@string/perfil"
             android:textColor="@color/rojo_general_texto"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -51,7 +52,7 @@
                 android:drawableTint="@color/rojo_general_texto"
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins"
-                android:text="Mi cuenta"
+                android:text="@string/mi_cuenta"
                 android:textColor="@color/granate"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -72,7 +73,7 @@
                     android:layout_marginTop="40dp"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Mis Pedidos"
+                    android:text="@string/mis_pedidos"
                     android:textColor="@color/granate"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -92,7 +93,7 @@
                     android:layout_marginTop="40dp"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Notificaciones"
+                    android:text="@string/notificaciones"
                     android:textColor="@color/granate"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -113,7 +114,7 @@
                     android:layout_marginTop="40dp"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Pulsa para añadir Productos"
+                    android:text="@string/pulsa_para_a_adir_productos"
                     android:textColor="@color/granate"
                     android:textSize="16sp"
                     android:textStyle="bold"

@@ -29,16 +29,6 @@ public class LoginFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // su main activity de su login
-        //preguntar referente a mi pagina de búsqueda
-        //preguntar referente al mensaje de crear una cuenta
-        //preguntar como cambiar contraseña
-       /* String text = "¿No eres miembro?Registrate";
-        SpannableString ss = new SpannableString(text);
-        ForegroundColorSpan fcsRed = new ForegroundColorSpan(Color.GRAY);
-        ss.setSpan(fcsRed, 1, 3, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        textView.setText(ss);
-        */
 
 
         return (binding = FragmentLoginBinding.inflate(inflater, container, false)).getRoot();
@@ -49,14 +39,14 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        //appViewModel.noAutenticado();
         appViewModel = new ViewModelProvider(requireActivity()).get(AppViewModel.class);
         navController = Navigation.findNavController(view);
-        binding.noEresMiembroRegsitrate.setOnClickListener(v ->{
+        binding.noEresMiembroRegsitrate.setOnClickListener(v -> {
             //no hace nada
             //appViewModel.usuarioRegistrado.postValue(NOMBRE_NO_DISPONIBLE);
             navController.navigate(R.id.action_loginFragment_to_registrarse);
-        } );
+        });
 
         BottomNavigationView navBar = getActivity().findViewById(R.id.bottom_navigation);
         navBar.setVisibility(View.GONE);
@@ -69,10 +59,34 @@ public class LoginFragment extends Fragment {
                 appViewModel.iniciarSesion(username, password);
             }
         });
-        appViewModel.estadoDeLaAutenticacion.observe(getViewLifecycleOwner(), new Observer<AppViewModel.EstadoDeLaAutenticacion>() {
+        binding.botonInicioSesionGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = binding.editTextNombreUsuario.getText().toString();
+                String password = binding.editPassword.getText().toString();
+                appViewModel.iniciarSesion(username, password);
+            }
+        });
+        binding.botonInicioSesionFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = binding.editTextNombreUsuario.getText().toString();
+                String password = binding.editPassword.getText().toString();
+                appViewModel.iniciarSesion(username, password);
+            }
+        });
+
+        binding.textoHasOlvidadoLaContrasenya.setOnClickListener(v -> {
+           // appViewModel.estadoDeLaAutenticacion.postValue(AppViewModel.EstadoDeLaAutenticacion.AUTENTICADO);
+            navController.navigate(R.id.action_global_recuperarContraseniaEmail);
+        });
+
+
+
+                appViewModel.estadoDeLaAutenticacion.observe(getViewLifecycleOwner(), new Observer<AppViewModel.EstadoDeLaAutenticacion>() {
             @Override
             public void onChanged(AppViewModel.EstadoDeLaAutenticacion estadoDeLaAutenticacion) {
-                switch (estadoDeLaAutenticacion){
+                switch (estadoDeLaAutenticacion) {
                     case AUTENTICADO:
                         navController.navigate(R.id.action_loginFragment_to_bottom_home_fragment2);
                         navBar.setVisibility(View.VISIBLE);

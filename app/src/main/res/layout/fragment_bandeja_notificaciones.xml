@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/bandeja_notificaciones"
+<androidx.core.widget.NestedScrollView android:id="@+id/bandeja_notificaciones"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="@color/fondo_general"
     tools:context=".BandejaNotificacionesFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="40dp">
 
     <ImageView
         android:id="@+id/imagen_like"
@@ -28,7 +33,7 @@
         android:textSize="24sp"
         android:layout_marginBottom="24dp"
         android:textColor="@color/rojo_general_texto"
-        android:text="Banadeja de notificaciones Vacía"
+        android:text="@string/banadeja_de_notificaciones_vac_a"
         android:textAlignment="center" />
     <TextView
         android:id="@+id/graciasPorComprar"
@@ -39,7 +44,7 @@
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="@color/grist_texto_logins"
-        android:text="Gracias por comprar en Doble B"
+        android:text="@string/gracias_por_comprar_en_doble_b"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -54,12 +59,12 @@
         android:background="@drawable/mybutton"
         android:fontFamily="@font/poppins_light"
         android:padding="21dp"
-        android:text="Volver al explorador"
+        android:text="@string/volver_al_explorador"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/graciasPorComprar"/>
     <!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

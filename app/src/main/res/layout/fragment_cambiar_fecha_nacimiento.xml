@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondo_general"
-    android:focusable="false"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="false"
+    android:focusable="false"
     tools:context=".CambiarFechaNacimientoFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/volverMiCuenta"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="40dp"
-        android:drawableStart="@drawable/volveratraslogo"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/poppins"
-        android:inputType="textPersonName"
-        android:text="Cambiar fecha nacimiento"
-        android:textColor="@color/rojo_general_texto"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:paddingBottom="40dp">
 
-
+        <TextView
+            android:id="@+id/volverMiCuenta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="40dp"
+            android:drawableStart="@drawable/volveratraslogo"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppins"
+            android:inputType="textPersonName"
+            android:text="@string/cambiar_fecha_nacimiento"
+            android:textColor="@color/rojo_general_texto"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <EditText
             android:id="@+id/editTextDireccion"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
             android:background="@drawable/edit_text_border"
             android:drawablePadding="7dp"
             android:ems="10"
-            android:layout_marginTop="25dp"
             android:fontFamily="@font/poppins"
-            android:hint="Tu Fecha de nacimiento"
-            android:inputType="textPersonName"
+            android:hint="Tu Fecha de nacimiento (debes de pulsar dos veces para que se te abra el calendario y seleccionar tu nueva fecha)"
+            android:inputType="textMultiLine"
             android:padding="20dp"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/volverMiCuenta"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/volverMiCuenta" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

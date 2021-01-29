@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="40dp">
 
         <TextView
             android:id="@+id/volverCarrito"
@@ -22,7 +23,7 @@
             android:drawablePadding="10dp"
             android:focusable="true"
             android:fontFamily="@font/poppins"
-            android:text="Direccion de envío"
+            android:text="@string/direccion_de_env_o"
             android:textColor="@color/rojo_general_texto"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -50,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Introduce tu dirección"
+                    android:text="@string/introduce_tu_direcci_n"
                     android:textColor="@color/granate"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -74,7 +75,7 @@
                     android:drawablePadding="7dp"
                     android:ems="10"
                     android:fontFamily="@font/poppins"
-                    android:hint="Tu direccion"
+                    android:hint="@string/tu_direccion"
                     android:inputType="textPersonName"
                     android:padding="20dp"
                     android:textSize="12sp"
@@ -94,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Introduce tu número de teléfono"
+                    android:text="@string/introduce_tu_n_mero_de_tel_fono"
                     android:textColor="@color/granate"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -118,7 +119,7 @@
                     android:drawablePadding="7dp"
                     android:ems="10"
                     android:fontFamily="@font/poppins"
-                    android:hint="tu numero de telefono"
+                    android:hint="@string/tu_numero_de_telefono"
                     android:inputType="textPersonName"
                     android:padding="20dp"
                     android:textSize="12sp"
@@ -143,7 +144,7 @@
                     android:background="@drawable/mybutton"
                     android:fontFamily="@font/poppins_light"
                     android:padding="21dp"
-                    android:text="Guardar"
+                    android:text="@string/guardar"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"

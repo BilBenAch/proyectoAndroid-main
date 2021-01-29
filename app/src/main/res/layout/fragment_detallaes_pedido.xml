@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="40dp">
 
         <TextView
             android:id="@+id/volverMiCuenta"
@@ -22,7 +23,7 @@
             android:drawablePadding="10dp"
             android:focusable="true"
             android:fontFamily="@font/poppins"
-            android:text="Detalle pedido"
+            android:text="@string/detalle_pedido"
             android:textColor="@color/rojo_general_texto"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -53,7 +54,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                >
 
                 <TextView
                     android:layout_width="match_parent"
@@ -62,7 +64,7 @@
                     android:drawablePadding="10dp"
                     android:drawableTint="@color/rojo_general_texto"
                     android:fontFamily="@font/poppins"
-                    android:text="Producto"
+                    android:text="@string/producto"
                     android:textColor="@color/granate"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -211,7 +213,7 @@
                     android:drawablePadding="10dp"
                     android:drawableTint="@color/rojo_general_texto"
                     android:fontFamily="@font/poppins"
-                    android:text="Detalles del envío"
+                    android:text="@string/detalles_del_env_o"
                     android:textColor="@color/granate"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -243,7 +245,7 @@
                         android:layout_marginStart="24dp"
                         android:drawablePadding="10dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Fecha compra:"
+                        android:text="@string/fecha_compra"
                         android:textColor="@color/grist_texto_logins"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -278,7 +280,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Envio"
+                        android:text="@string/env_o"
                         android:textColor="@color/grist_texto_logins"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -312,7 +314,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/poppins"
-                        android:text="No.id"
+                        android:text="@string/no_id"
                         android:textColor="@color/grist_texto_logins"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -348,7 +350,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Correo"
+                        android:text="@string/correo"
                         android:textColor="@color/grist_texto_logins"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -384,7 +386,7 @@
                     android:drawablePadding="10dp"
                     android:drawableTint="@color/rojo_general_texto"
                     android:fontFamily="@font/poppins"
-                    android:text="Detalles del pago"
+                    android:text="@string/detalles_del_pago"
                     android:textColor="@color/granate"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -415,7 +417,7 @@
                         android:layout_marginStart="24dp"
                         android:drawablePadding="10dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Items()"
+                        android:text="@string/items"
                         android:textColor="@color/grist_texto_logins"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -450,7 +452,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/poppins"
-                        android:text="PVP envío"
+                        android:text="@string/pvp_env_o"
                         android:textColor="@color/grist_texto_logins"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -484,7 +486,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Cargos adicionales"
+                        android:text="@string/cargos_adicionales"
                         android:textColor="@color/grist_texto_logins"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -520,7 +522,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Precio total"
+                        android:text="@string/precio_total"
                         android:textColor="@color/granate"
                         android:textSize="12sp"
                         android:textStyle="bold"

@@ -37,10 +37,8 @@ public class AppViewModel extends AndroidViewModel {
     }
 
     enum EstadoDelCambioDePassword {
-        NOMBRE_INCORRECTO,
-        CONTRASENIA_INCORRECTA,
-        EMAIL_INCORRECTO,
-        EMAIL_USUARIO_INCORRECTO,
+        INICIO_DEL_CAMBIO,
+        USUARIO_INCORRECTO,
         CONTRASENIA_CAMBIADA
     }
 
@@ -100,6 +98,12 @@ public class AppViewModel extends AndroidViewModel {
 
     }
 
+
+//    void noAutenticado() {
+//        estadoDeLaAutenticacion.postValue(EstadoDeLaAutenticacion.NO_AUTENTICADO);
+//
+//    }
+
     //Seguir aqui
     void crearCuenta(String username, String email, String password, String password2) {
         executor.execute(new Runnable() {
@@ -145,29 +149,20 @@ public class AppViewModel extends AndroidViewModel {
 
                     @Override
                     public void cuandoContraseniaCambiada() {
-                        estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.CONTRASENIA_CAMBIADA);
-                        actualizarPassword(usuario, email, password);
+                        if (estadoUsuarioContrasenia.equals(EstadoDelCambioDePassword.CONTRASENIA_CAMBIADA)) {
+                            //actualizarPassword(usuario, email, password);
+                            estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.INICIO_DEL_CAMBIO);
+                        }
+                        else {
+                            estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.CONTRASENIA_CAMBIADA);
+                        }
                     }
 
                     @Override
-                    public void cuandoEmailYUsuarioNoCoinciden() {
-                        estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.EMAIL_USUARIO_INCORRECTO);
+                    public void cuandoUsuarioNoExiste() {
+                        estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.USUARIO_INCORRECTO);
                     }
 
-                    @Override
-                    public void cuandoUsuariooEsVacio() {
-                        estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.NOMBRE_INCORRECTO);
-                    }
-
-                    @Override
-                    public void cuandoEmailEsVacio() {
-                        estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.EMAIL_INCORRECTO);
-                    }
-
-                    @Override
-                    public void cuandoConstraseniaEsVacio() {
-                        estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.EMAIL_INCORRECTO);
-                    }
                 });
             }
         });
@@ -264,32 +259,33 @@ public class AppViewModel extends AndroidViewModel {
 
 
     //cambiar nombre y apellido
-    public void cambiarNombreApellido(String nombre,String apellido, int userId){
+    public void cambiarNombreApellido(String nombre, String apellido, int userId) {
         autenticacionManager.cambiarNombreApellido(nombre, apellido, userId);
     }
+
     //cambiar email
-    public void cambiarEmail(String email, int userId){
+    public void cambiarEmail(String email, int userId) {
         autenticacionManager.cambiarEmail(email, userId);
     }
 
     //cambiar telefono
-    public void cambiarTelefono(String telefono, int userId){
+    public void cambiarTelefono(String telefono, int userId) {
         autenticacionManager.cambiarTelefono(telefono, userId);
     }
 
     //cambiar contraseña fragment perfil
-    public void cambiarContra(String contra, int userId){
+    public void cambiarContra(String contra, int userId) {
         autenticacionManager.cambiarContra(contra, userId);
     }
 
     //obtener contenido usuario para ver cambio nombre irl
-    LiveData<Usuario> obtenerUsuario(int userId){
+    LiveData<Usuario> obtenerUsuario(int userId) {
         return autenticacionManager.obtenerUsuario(userId);
     }
 
 
     //obtener contenido usuario para ver cambio nombre irl
-    LiveData<List<Direccion>> obtenerDirecciones(int userId){
+    LiveData<List<Direccion>> obtenerDirecciones(int userId) {
         return autenticacionManager.obtenerDirecciones(userId);
     }
 
@@ -308,6 +304,15 @@ public class AppViewModel extends AndroidViewModel {
         autenticacionManager.eliminarDireccion(direccion, telefono, userId);
     }
 
+//no respeta programación reactiva, borrar después o modificar
 
+    public void cambiarContraUsuarioEmail(String userName, String email, String newPassword) {
+        autenticacionManager.cambiarContraUsuarioEmail(userName, email, newPassword);
+    }
+
+    //Obtener contenidoUser segun Email
+    public LiveData<Usuario> obtenerContenidoUsuarioEmail(String email) {
+        return autenticacionManager.obtenerContenidoUsuarioEmail(email);
+    }
 
 }

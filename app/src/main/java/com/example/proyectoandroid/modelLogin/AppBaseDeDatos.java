@@ -85,7 +85,14 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         @Query("Update Usuario SET password = :contrasenia, password2 = :contrasenia  WHERE id = :userId")
         void cambiarContrasenia(String contrasenia, int userId);
 
+        //no esta del todo bien, borrar después
+        @Query("Update Usuario SET password = :newPassword, password2 = :newPassword  WHERE username = :userName AND email = :email")
+        void cambiarContraUsuarioEmail(String userName, String email, String newPassword);
 
+
+        //obtener todo de un usuario según su email
+        @Query("SELECT * FROM USUARIO where email = :email")
+        LiveData<Usuario> obtenerContenidoSegunEmail(String email);
 
         //Direccion
 
@@ -111,6 +118,11 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         //compruebo que existe el usuario en la bdd (es temporal modificar luego)
         @Query("SELECT * FROM Direccion WHERE userId = :userId")
         Direccion comprobarDireccionUsuario(int userId);
+
+
+
+        @Query("SELECT * FROM Usuario WHERE username = :nombre AND email = :email AND password = :password")
+        Usuario comprobarCambioContra(String nombre, String email, String password);
 
     }
         //Producto

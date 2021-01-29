@@ -3,29 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:layout_margin="5dp"
-    app:cardUseCompatPadding="false">
+    android:background="@color/white"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@drawable/bordes_direccion"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="40dp">
 
         <TextView
             android:id="@+id/nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:text="Tu nombre"
-            android:textColor="@color/granate"
-            android:fontFamily="@font/poppins"
-            android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:adjustViewBounds="true"
+            android:fontFamily="@font/poppins"
             android:padding="20dp"
+            android:text="@string/tu_nombre"
+            android:textColor="@color/granate"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,36 +45,39 @@
             android:id="@+id/numeroTelefono"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/grist_texto_logins"
-            android:text="5487458"
             android:padding="20dp"
+            android:text="5487458"
+            android:textColor="@color/grist_texto_logins"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/direccion" />
+
         <Button
             android:id="@+id/editarDireccion"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Editar"
-            android:textAlignment="center"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
-            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/mybutton"
-           app:layout_constraintTop_toBottomOf="@+id/numeroTelefono" />
+            android:text="@string/editar"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numeroTelefono" />
 
         <ImageButton
             android:id="@+id/desechar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
             android:background="#F2EDED"
             android:clickable="true"
             android:focusable="true"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp"
             android:src="@drawable/logobasura"
             app:layout_constraintLeft_toRightOf="@+id/editarDireccion"
-            app:layout_constraintTop_toBottomOf="@id/numeroTelefono"/>
+            app:layout_constraintTop_toBottomOf="@id/numeroTelefono" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

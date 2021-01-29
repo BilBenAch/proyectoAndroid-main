@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".RegistrarseFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#F2EDED">
+    android:paddingBottom="20dp"
+    android:background="@color/fondo_general">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="40dp">
 
         <ImageView
             android:id="@+id/logo"
@@ -19,7 +21,7 @@
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></ImageView>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/bienvenido"
@@ -28,7 +30,7 @@
             android:layout_below="@id/logo"
             android:layout_marginTop="8dp"
             android:gravity="bottom"
-            android:text="Bienvenido a Doble B"
+            android:text="@string/bienvenido_a_doble_b"
             android:textColor="@color/granate_principal"
             android:textSize="10.4413sp"
             android:textStyle="bold"
@@ -45,7 +47,7 @@
             android:layout_below="@id/bienvenido"
             android:layout_marginTop="24dp"
             android:gravity="bottom"
-            android:text="Inicia sesion para poder continuar"
+            android:text="@string/inicia_sesion_para_poder_continuar"
             android:textColor="@color/gris_texto"
             android:textSize="7.83sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,12 +67,12 @@
             android:drawablePadding="15dp"
             android:ems="10"
             android:textSize="12sp"
-            android:hint="Tu nombre de usuario"
+            android:hint="@string/introduce_el_nombre_de_usuario"
             android:inputType="textPersonName"
             android:fontFamily="@font/poppins"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iniciarSesionPagPrincipal"></EditText>
+            app:layout_constraintTop_toBottomOf="@+id/iniciarSesionPagPrincipal"/>
 
 
         <EditText
@@ -85,13 +87,13 @@
             android:drawablePadding="15dp"
             android:ems="10"
             android:fontFamily="@font/poppins_light"
-            android:hint="Tu email"
+            android:hint="@string/introduce_tu_email"
             android:inputType="textPersonName"
             android:padding="12dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/crearCuentaNombreUsuario"></EditText>
+            app:layout_constraintTop_toBottomOf="@+id/crearCuentaNombreUsuario"/>
 
         <EditText
             android:id="@+id/crearCuentaContrasenia1"
@@ -111,7 +113,7 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/crearCrearCuentaEmail"></EditText>
+            app:layout_constraintTop_toBottomOf="@+id/crearCrearCuentaEmail"/>
 
         <EditText
             android:id="@+id/crearCuentaContrasenia2"
@@ -125,13 +127,13 @@
             android:drawablePadding="15dp"
             android:ems="10"
             android:fontFamily="@font/poppins_light"
-            android:hint="Repite tu contraseña"
+            android:hint="@string/repite_tu_contrase_a"
             android:inputType="textPassword"
             android:padding="12dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/crearCuentaContrasenia1"></EditText>
+            app:layout_constraintTop_toBottomOf="@+id/crearCuentaContrasenia1"/>
 
         <Button
             android:id="@+id/botonCrearCuenta"
@@ -143,7 +145,7 @@
             android:background="@drawable/mybutton"
             android:fontFamily="@font/poppins_light"
             android:padding="21dp"
-            android:text="Crear Cuenta"
+            android:text="@string/crear_cuenta"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -170,4 +172,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</FrameLayout>
+</androidx.core.widget.NestedScrollView>

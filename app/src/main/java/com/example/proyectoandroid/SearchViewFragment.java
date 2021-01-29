@@ -87,6 +87,14 @@ public class SearchViewFragment extends BaseFragment {
         //LiveData<List<ProductoFavorito>> obtenerElementos(){
         //  return elementosViewModel.obtener();
 
+        binding.notificacionesHome.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_bandeja_notificaciones);
+        });
+
+        binding.favoritosHome.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_bottom_favoritos_fragment2);
+        });
+
     }
     //mirar esto o enviarle a gerard
     @Override

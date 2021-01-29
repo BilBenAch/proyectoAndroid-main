@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F2EDED">
+        android:background="@color/fondo_general"
+        android:paddingBottom="40dp">
 
         <EditText
             android:id="@+id/buscarProducto"

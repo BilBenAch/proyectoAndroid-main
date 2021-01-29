@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -202,5 +202,25 @@
         android:name="com.example.proyectoandroid.CambiarFechaNacimientoFragment"
         android:label="fragment_cambiar_fecha_nacimiento"
         tools:layout="@layout/fragment_cambiar_fecha_nacimiento" /><action android:id="@+id/action_global_cambiarFechaNacimientoFragment" app:destination="@id/cambiarFechaNacimientoFragment"/><action android:id="@+id/action_global_pedidoFragment" app:destination="@id/pedidoFragment"/>
-
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.proyectoandroid.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <action android:id="@+id/action_global_splashScreenFragment" app:destination="@id/splashScreenFragment" />
+    <fragment
+        android:id="@+id/mensajeEmailEnviadoFragment"
+        android:name="com.example.proyectoandroid.MensajeEmailEnviadoFragment"
+        android:label="fragment_mensaje_email_enviado"
+        tools:layout="@layout/fragment_mensaje_email_enviado" /><action android:id="@+id/action_global_mensajeEmailEnviadoFragment" app:destination="@id/mensajeEmailEnviadoFragment"/>
+    <action android:id="@+id/action_global_loginFragment" app:destination="@id/loginFragment" />
+    <fragment
+        android:id="@+id/contraseniaCambiadaLoginFragment"
+        android:name="com.example.proyectoandroid.ContraseniaCambiadaLoginFragment"
+        android:label="fragment_contrasenia_cambiada_login"
+        tools:layout="@layout/fragment_contrasenia_cambiada_login" /><action android:id="@+id/action_global_contraseniaCambiadaLoginFragment" app:destination="@id/contraseniaCambiadaLoginFragment"/>
 </navigation>

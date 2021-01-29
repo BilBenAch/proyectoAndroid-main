@@ -32,7 +32,9 @@ import com.example.proyectoandroid.modelLogin.Usuario;
         super.onViewCreated(view, savedInstanceState);
         usuario = appViewModel.usuarioAutenticado.getValue();
         userId = usuario.id;
-
+        binding.volver.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_bottom_explorar_fragment2);
+        });
 
         appViewModel.seleccionado().observe(getViewLifecycleOwner(), new Observer<ProductoFavorito>() {
 
@@ -42,9 +44,6 @@ import com.example.proyectoandroid.modelLogin.Usuario;
                 binding.segundoImagenProducto.setImageResource(productoFavorito.imagenes.get(1));
                 binding.terceraImagenProducto.setImageResource(productoFavorito.imagenes.get(2));
 
-                binding.volver.setOnClickListener(v -> {
-                    navController.navigate(R.id.action_global_bottom_explorar_fragment2);
-                });
             }
 
 

@@ -6,12 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".bottom_home_fragment"
+    android:background="@color/fondo_general"
     android:fillViewport="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F2EDED">
+        android:paddingBottom="40dp"
+        android:background="@color/fondo_general">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/buscarProducto"
@@ -24,7 +26,7 @@
             android:drawablePadding="7dp"
             android:ems="10"
             android:fontFamily="@font/poppins"
-            android:hint="Buscar"
+            android:hint="@string/buscar"
             android:inputType="textPersonName"
             android:textSize="12sp"
             android:layout_marginLeft="24dp"
@@ -137,7 +139,7 @@
             android:fontFamily="@font/poppins"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="Comprar Hombre"
+            android:text="@string/comprar_hombre"
             android:textColor="@color/white"
             android:textSize="9sp"
             app:layout_constraintEnd_toStartOf="@+id/botonComprarMujer"
@@ -155,7 +157,7 @@
             android:fontFamily="@font/poppins"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="Comprar Mujer"
+            android:text="@string/comprar_mujer"
             android:textColor="@color/white"
             android:textSize="9sp"
             android:layout_marginLeft="32dp"

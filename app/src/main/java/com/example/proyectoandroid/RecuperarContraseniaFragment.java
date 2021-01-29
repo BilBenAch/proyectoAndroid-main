@@ -17,56 +17,81 @@ import androidx.navigation.Navigation;
 import com.example.proyectoandroid.databinding.FragmentRecuperarContraseniaBinding;
 
 
-public class RecuperarContraseniaFragment extends Fragment {
+public class RecuperarContraseniaFragment extends BaseFragment {
 
     private FragmentRecuperarContraseniaBinding binding;
-    private NavController navController;
-    private AppViewModel appViewModel;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recuperar_contrasenia, container, false);
+        return (binding = FragmentRecuperarContraseniaBinding.inflate(inflater, container, false)).getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        appViewModel = new ViewModelProvider(requireActivity()).get(AppViewModel.class);
-        navController = Navigation.findNavController(view);
 
+//        usuario = appViewModel.usuarioAutenticado.getValue();
+//        assert usuario != null;
+//        userId = usuario.id;
+
+//        appViewModel.usuarioAutenticado.observe(getViewLifecycleOwner(), usuario -> {
+//            userId = usuario.id;
+//        });
+
+        binding.YaEresMiembroIniciaSesion.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_loginFragment);
+        });
+
+
+        //preguntar a Gerard como hacer con callbacks
         binding.botonCambiarContrasenia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = binding.introducirUsuario.getText().toString();
-                String email = binding.introducirEmail.getText().toString();
-                String password = binding.botonCambiarContrasenia.getText().toString();
-                appViewModel.actualizarPassword(username,email,password);
+                String nombreUsuario = binding.introducirUsuario.getText().toString();
+                String emailUsuario = binding.introducirEmail.getText().toString();
+                String nuevaContra = binding.introducirContrasenia.getText().toString();
+//                    appViewModel.actualizarPassword(nombreUsuario, emailUsuario, nuevaContra);
+                boolean error = false;
+
+
+                if (nombreUsuario.isEmpty()) {
+                    binding.introducirUsuario.setError("Este campo no puede estar vacío ");
+                    error = true;
+                }
+                if (emailUsuario.isEmpty()) {
+                    binding.introducirEmail.setError("Este campo no puede estar vacío ");
+                    error = true;
+                }
+                if (nuevaContra.isEmpty()) {
+                    binding.introducirContrasenia.setError("Este campo no puede estar vacío ");
+                    error = true;
+                }
+
+
+                if (!error) {
+                    appViewModel.actualizarPassword(nombreUsuario, emailUsuario, nuevaContra);
+                    //navController.navigate(R.id.action_global_contraseniaCambiadaLoginFragment);
+                }
             }
         });
-
+        //Preguntar a Gerard
         appViewModel.estadoUsuarioContrasenia.observe(getViewLifecycleOwner(), new Observer<AppViewModel.EstadoDelCambioDePassword>() {
             @Override
             public void onChanged(AppViewModel.EstadoDelCambioDePassword estadoDelCambioDePassword) {
-                switch (estadoDelCambioDePassword){
-                    case NOMBRE_INCORRECTO:
-                        Toast.makeText(getContext(), "NOMBRE DE USUARIO NO VALIDO", Toast.LENGTH_SHORT).show();
-                        break;
-                    case CONTRASENIA_INCORRECTA:
-                        Toast.makeText(getContext(), "CONTRASEÑA NO VALIDA O VACÍA", Toast.LENGTH_SHORT).show();
-                        break;
-                    case EMAIL_INCORRECTO:
-                        Toast.makeText(getContext(), "EMAIL INCORRECTO", Toast.LENGTH_SHORT).show();
-                        break;
-                    case EMAIL_USUARIO_INCORRECTO:
-                        Toast.makeText(getContext(), "USUARIO Y CONTRASEÑA NO COINCIDEN", Toast.LENGTH_SHORT).show();
-                        break;
+                switch (estadoDelCambioDePassword) {
                     case CONTRASENIA_CAMBIADA:
-                        Toast.makeText(getContext(), "CONTRASEÑA CAMBIADA CON ÉXITO", Toast.LENGTH_SHORT).show();
-                        //navController.navigate(R.id.action_cuentaCreada_to_loginFragment);
+                        navController.navigate(R.id.action_global_contraseniaCambiadaLoginFragment);
+
+                        break;
+
+                    case USUARIO_INCORRECTO:
+                        Toast.makeText(getContext(), "No existe este usuario en el sistema comprueba los datos", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
         });
+
     }
 }

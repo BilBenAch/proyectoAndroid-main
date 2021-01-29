@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="4dp"
-            android:text=" iva incluido"
+            android:text="@string/iva_incluido"
             android:textColor="@color/granate"
             android:textSize="10dp"
             android:textStyle="bold"

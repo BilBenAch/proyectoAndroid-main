@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AnadirProductoFragment">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/fondo_general"
+    android:fillViewport="true"
+    tools:context=".MensajeEmailEnviadoFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +20,7 @@
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/bienvenido"
@@ -45,12 +46,13 @@
             android:layout_below="@id/bienvenido"
             android:layout_marginTop="24dp"
             android:gravity="bottom"
-            android:text="@string/a_adir_productos"
+            android:text="@string/email_enviado_con_exito"
             android:textColor="@color/gris_texto"
             android:textSize="7.83sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bienvenido"/>
+            app:layout_constraintTop_toBottomOf="@+id/bienvenido">
+        </TextView>
 
         <TextView
             android:id="@+id/cuentaCreada"
@@ -58,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
             android:fontFamily="@font/poppins"
-            android:text="@string/productos_a_adidos_con_xito"
+            android:text="@string/email_enviado_con_exito"
             android:textAlignment="center"
             android:textColor="@color/rojo_general_texto"
             android:textSize="17sp"
@@ -68,4 +70,6 @@
             app:layout_constraintTop_toBottomOf="@+id/cuentaCreadaLogo" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+
+
+</androidx.core.widget.NestedScrollView>

@@ -31,14 +31,8 @@ public class AutenticacionManager {
     //cambiar contrasenia aqui añado los errores
     public interface CambiarContraseniaCallback {
         void cuandoContraseniaCambiada();
+        void cuandoUsuarioNoExiste();
 
-        void cuandoEmailYUsuarioNoCoinciden();
-
-        void cuandoUsuariooEsVacio();
-
-        void cuandoEmailEsVacio();
-
-        void cuandoConstraseniaEsVacio();
     }
 
     AppBaseDeDatos.UsuariosDao dao;
@@ -77,25 +71,17 @@ public class AutenticacionManager {
         });
     }
 
-    //cambiar contraseña incompleto
+    //cambiar contraseña testeo
     public void cambiarContrasenia(String username, String email, String password, CambiarContraseniaCallback callback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 Usuario usuario = dao.comprobarContraseniaCorrecta(username, email, password);
-                Usuario usuario1 = dao.autenticar(username, password);
-                if (usuario == null) {
-                    callback.cuandoUsuariooEsVacio();
-                } else if (email == null) {
-                    callback.cuandoEmailEsVacio();
-                } else if (password == null) {
-                    callback.cuandoConstraseniaEsVacio();
-                }
-                //preguntar a Gerard
-                else if (!usuario.email.equals(email)) {
-                    callback.cuandoEmailYUsuarioNoCoinciden();
+                Usuario usuario1 = dao.comprobarNombreDisponible(username);
+                if (usuario1 == null) {
+                    callback.cuandoUsuarioNoExiste();
                 } else {
-                    dao.updateContrasenia(usuario);
+                    dao.cambiarContraUsuarioEmail(username, email, password);
                     callback.cuandoContraseniaCambiada();
                 }
 
@@ -194,6 +180,21 @@ public class AutenticacionManager {
         });
     }
 
+    //Cambiar contra no respeta programación reactiva, modificar después entrega Dani
+    public void cambiarContraUsuarioEmail(String userName, String email, String newPassword) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                dao.cambiarContraUsuarioEmail(userName, email, newPassword);
+            }
+        });
+    }
+
+
+    //Obtener contenidoUser segun Email
+    public LiveData<Usuario> obtenerContenidoUsuarioEmail(String email) {
+        return dao.obtenerContenidoSegunEmail(email);
+    }
 
 }
 

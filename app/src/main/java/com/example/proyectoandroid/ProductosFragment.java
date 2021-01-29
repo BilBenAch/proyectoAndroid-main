@@ -48,6 +48,12 @@ public class ProductosFragment extends BaseFragment {
                 binding.volverExplorador.setOnClickListener(v -> {
                     navController.navigate(R.id.action_global_bottom_explorar_fragment2);
                 });
+
+                binding.favoritosHome.setOnClickListener(v -> {
+                    navController.navigate(R.id.action_global_bottom_favoritos_fragment2);
+                });
+
+
                 binding.productosEncontrados.setText(productos.size()+" Resultados ");//Preguntar  a Gerard como obtener el nombre del elemento buscado
                 productosAdapter.establecerProductosList(productos);
             });

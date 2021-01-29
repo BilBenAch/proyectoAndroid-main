@@ -25,7 +25,7 @@
             android:drawablePadding="10dp"
             android:focusable="true"
             android:fontFamily="@font/poppins"
-            android:text="Tu dirección"
+            android:text="@string/tu_direcci_n"
             android:textColor="@color/rojo_general_texto"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -47,9 +47,9 @@
         android:id="@+id/botonPagar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="pagar"
+        android:text="@string/pagar"
         android:textColor="@color/white"
-        android:background="@drawable/mybutton"/>
+        android:background="@drawable/mybutton" />
 
 
     <androidx.core.widget.NestedScrollView
@@ -61,7 +61,8 @@
             android:id="@+id/zeroresults"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:paddingBottom="40dp">
 
             <TextView
                 android:id="@+id/text0results"
@@ -87,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Ninguna dirección encontrada"
+                android:text="@string/ninguna_direcci_n_encontrada"
                 android:textAlignment="center"
                 android:textColor="@color/rojo_general_texto"
                 android:textSize="35sp"
@@ -101,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Gracias por comprar en Doble B"
+                android:text="@string/gracias_por_comprar_en_doble_b"
                 android:textAlignment="center"
                 android:textColor="@color/grist_texto_logins"
                 android:textSize="12sp"
@@ -118,7 +119,7 @@
                 android:background="@drawable/mybutton"
                 android:fontFamily="@font/poppins_light"
                 android:padding="21dp"
-                android:text="Pulsa para añadir una direccion"
+                android:text="@string/pulsa_para_a_adir_una_direccion"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"

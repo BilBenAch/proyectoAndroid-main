@@ -1,54 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="20dp"
+    android:fillViewport="false"
     tools:context=".RecuperarContraseniaFragment">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ImageView>
+        android:layout_height="match_parent"
+        android:paddingBottom="35dp">
 
-    <TextView
-        android:id="@+id/bienvenido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/logo"
-        android:layout_marginTop="8dp"
-        android:gravity="bottom"
-        android:text="Bienvenido a Doble B"
-        android:textColor="@color/granate_principal"
-        android:textSize="10.4413sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo">
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </TextView>
+        <TextView
+            android:id="@+id/bienvenido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_marginTop="8dp"
+            android:gravity="bottom"
+            android:text="@string/bienvenido_a_doble_b"
+            android:textColor="@color/granate_principal"
+            android:textSize="10.4413sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo">
 
-    <TextView
-        android:id="@+id/iniciarSesionPagPrincipal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bienvenido"
-        android:layout_marginTop="24dp"
-        android:gravity="bottom"
-        android:text="Inicia sesion para poder continuar"
-        android:textColor="@color/gris_texto"
-        android:textSize="7.83sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bienvenido">
-    </TextView>
+        </TextView>
+
+        <TextView
+            android:id="@+id/iniciarSesionPagPrincipal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bienvenido"
+            android:layout_marginTop="24dp"
+            android:gravity="bottom"
+            android:text="@string/inicia_sesion_para_poder_continuar"
+            android:textColor="@color/gris_texto"
+            android:textSize="7.83sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bienvenido" />
 
         <Button
             android:id="@+id/botonCambiarContrasenia"
@@ -60,7 +64,7 @@
             android:background="@drawable/mybutton"
             android:fontFamily="@font/poppins_light"
             android:padding="21dp"
-            android:text="Enviar Email"
+            android:text="@string/enviar_email"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,13 +84,13 @@
             android:drawablePadding="15dp"
             android:ems="10"
             android:fontFamily="@font/poppins"
-            android:hint="Introduce el nombre de usuario"
+            android:hint="@string/introduce_el_nombre_de_usuario"
             android:inputType="textPersonName"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iniciarSesionPagPrincipal"></EditText>
+            app:layout_constraintTop_toBottomOf="@+id/iniciarSesionPagPrincipal" />
 
         <EditText
             android:id="@+id/introducirEmail"
@@ -100,13 +104,13 @@
             android:drawablePadding="15dp"
             android:ems="10"
             android:fontFamily="@font/poppins"
-            android:hint="Introduce tu email"
+            android:hint="@string/introduce_tu_email"
             android:inputType="textPersonName"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/introducirUsuario"></EditText>
+            app:layout_constraintTop_toBottomOf="@+id/introducirUsuario" />
 
         <EditText
             android:id="@+id/introducirContrasenia"
@@ -120,13 +124,13 @@
             android:drawablePadding="15dp"
             android:ems="10"
             android:fontFamily="@font/poppins"
-            android:hint="Introduce tu nueva contraseña"
-            android:inputType="textPersonName"
+            android:hint="@string/introduce_tu_nueva_contrase_a"
+            android:inputType="textPassword"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/introducirEmail"></EditText>
+            app:layout_constraintTop_toBottomOf="@+id/introducirEmail" />
 
         <TextView
             android:id="@+id/YaEresMiembroIniciaSesion"
@@ -144,4 +148,4 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/botonCambiarContrasenia" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</androidx.core.widget.NestedScrollView>

@@ -57,7 +57,7 @@ public class DireccionEnvioFragment extends BaseFragment {
                     binding.listaDirecciones.setVisibility(View.VISIBLE);
                     binding.botonPagar.setVisibility(View.VISIBLE);
                     binding.botonPagar.setOnClickListener(v -> {
-                        navController.navigate(R.id.action_global_pagarFragment);
+                        navController.navigate(R.id.action_global_metodoPagoFragment);
                     });
                     binding.zeroresults.setVisibility(View.GONE);
                 }
@@ -65,14 +65,15 @@ public class DireccionEnvioFragment extends BaseFragment {
                 direccionAdapter.establecerDireccionList(direccionList);
             });
         });
-            binding.volverPerfil.setOnClickListener(v -> {
-                navController.navigate(R.id.action_global_bottom_carrito_fragment);
-            });
+        binding.volverPerfil.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_bottom_carrito_fragment);
+        });
 
     }
 
     class DireccionAdapter extends RecyclerView.Adapter<DireccionesViewHolder> {
         List<Direccion> direcciones;
+
         @NonNull
         @Override
         public DireccionesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -107,7 +108,7 @@ public class DireccionEnvioFragment extends BaseFragment {
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                               // Log.d("MainActivity", "Aborting mission...");
+                                // Log.d("MainActivity", "Aborting mission...");
                             }
                         })
                         .show();

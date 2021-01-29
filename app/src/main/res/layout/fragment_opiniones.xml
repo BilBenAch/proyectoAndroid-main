@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="50dp">
 
         <TextView
             android:id="@+id/volver"
@@ -22,7 +23,7 @@
             android:drawablePadding="10dp"
             android:fontFamily="@font/poppins"
             android:inputType="textPersonName"
-            android:text="Opiniones"
+            android:text="@string/opiniones"
             android:textColor="@color/rojo_general_texto"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -72,7 +73,7 @@
                     android:fontFamily="@font/poppins"
                     android:inputType="textPersonName"
                     android:padding="20dp"
-                    android:text="Todas Opiniones"
+                    android:text="@string/todas_opiniones"
                     android:textColor="@color/rojo_general_texto"
                     android:textSize="16sp"
                     android:textStyle="bold" />
