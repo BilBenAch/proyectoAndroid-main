@@ -57,10 +57,13 @@ public class MiCuentaFragment extends BaseFragment {
 
 
         //queda el del cumple
-        /*binding.terceroMicuenta.setOnClickListener(v -> {
-            navController.navigate(R.id.cambiar);
+        binding.terceroMicuenta.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_cambiarFechaNacimientoFragment);
         });
-         */
+
+
+
+
         binding.cuartoMicuenta.setOnClickListener(v -> {
             navController.navigate(R.id.action_global_miCuentaEmailFragment);
         });

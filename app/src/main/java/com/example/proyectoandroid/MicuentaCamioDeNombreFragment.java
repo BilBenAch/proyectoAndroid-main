@@ -67,9 +67,7 @@ public class MicuentaCamioDeNombreFragment extends BaseFragment {
 
                     if (!error) {
                         appViewModel.cambiarNombreApellido(nombre, apellido, userId);
-                        Snackbar snackbar = Snackbar.make(view, "Nombre y apellidos cambiados correctamente", Snackbar.LENGTH_SHORT);
-                        snackbar.setAnchorView(navBar);
-                        snackbar.show();
+                        showToastDireccion("Nombre cambiado correctamente");
                     }
                 }
             });

@@ -4,6 +4,9 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.proyectoandroid.model.Direccion;
+
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -13,37 +16,44 @@ public class AutenticacionManager {
 
     public interface IniciarSesionCallback {
         void cuandoUsuarioAutenticado(Usuario usuario);
+
         void cuandoAutenticacionNoValida();
     }
 
     public interface RegistrarCallback {
         void cuandoRegistroCompletado();
+
         void cuandoNombreNoDisponible();
 
 
     }
+
     //cambiar contrasenia aqui añado los errores
     public interface CambiarContraseniaCallback {
         void cuandoContraseniaCambiada();
+
         void cuandoEmailYUsuarioNoCoinciden();
+
         void cuandoUsuariooEsVacio();
+
         void cuandoEmailEsVacio();
+
         void cuandoConstraseniaEsVacio();
     }
 
     AppBaseDeDatos.UsuariosDao dao;
 
-    public AutenticacionManager(Application application){
+    public AutenticacionManager(Application application) {
         dao = AppBaseDeDatos.getInstance(application).usuariosDao();
     }
 
-    public void iniciarSesion(String username, String password, IniciarSesionCallback callback){
+    public void iniciarSesion(String username, String password, IniciarSesionCallback callback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 Usuario usuario = dao.autenticar(username, password);
 
-                if (usuario != null){
+                if (usuario != null) {
                     callback.cuandoUsuarioAutenticado(usuario);
                 } else {
                     callback.cuandoAutenticacionNoValida();
@@ -57,7 +67,7 @@ public class AutenticacionManager {
             @Override
             public void run() {
                 Usuario usuario = dao.comprobarNombreDisponible(username);
-                if (usuario == null ){
+                if (usuario == null) {
                     dao.insertarUsuario(new Usuario(username, email, password, password2));
                     callback.cuandoRegistroCompletado();
                 } else {
@@ -68,25 +78,23 @@ public class AutenticacionManager {
     }
 
     //cambiar contraseña incompleto
-    public void cambiarContrasenia(String username, String email,String password, CambiarContraseniaCallback callback) {
+    public void cambiarContrasenia(String username, String email, String password, CambiarContraseniaCallback callback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                Usuario usuario = dao.comprobarContraseniaCorrecta(username,email,password);
+                Usuario usuario = dao.comprobarContraseniaCorrecta(username, email, password);
                 Usuario usuario1 = dao.autenticar(username, password);
-                if (usuario == null){
+                if (usuario == null) {
                     callback.cuandoUsuariooEsVacio();
-                } else if(email == null){
+                } else if (email == null) {
                     callback.cuandoEmailEsVacio();
-                }
-                else if(password == null){
+                } else if (password == null) {
                     callback.cuandoConstraseniaEsVacio();
                 }
                 //preguntar a Gerard
-                else if(!usuario.email.equals(email)){
+                else if (!usuario.email.equals(email)) {
                     callback.cuandoEmailYUsuarioNoCoinciden();
-                }
-                else{
+                } else {
                     dao.updateContrasenia(usuario);
                     callback.cuandoContraseniaCambiada();
                 }
@@ -96,9 +104,7 @@ public class AutenticacionManager {
     }
 
 
-
-
-    public void cambiarNombreApellido(String nombre,String apellido, int userId) {
+    public void cambiarNombreApellido(String nombre, String apellido, int userId) {
         {
             executor.execute(new Runnable() {
                 @Override
@@ -145,9 +151,49 @@ public class AutenticacionManager {
     }
 
 
-    public LiveData<Usuario> obtenerUsuario(int userId){
+    public LiveData<Usuario> obtenerUsuario(int userId) {
         return dao.getUser(userId);
     }
+
+
+    public LiveData<List<Direccion>> obtenerDirecciones(int userId) {
+        return dao.obtenerDireciones(userId);
+    }
+
+    public void updateDireccion(String direccion, String telefono, int userId) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                dao.updateDireccion(userId, direccion, telefono);
+            }
+        });
+    }
+
+    public void eliminarDireccion(String direccion, String telefono, int userId) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                dao.eliminarDireccion(new Direccion(userId, direccion, telefono));
+            }
+        });
+    }
+
+    //no está del todo bien, mdodificar después de la entrega de Dani
+    public void insertUpdateDireccion(String direccion, String telefono, int userId) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                Direccion direccion1 = dao.comprobarDireccionUsuario(userId);
+                if(direccion1 == null){
+                    dao.insertarDireccion(new Direccion(userId, direccion, telefono));
+                }
+                else {
+                    dao.updateDireccion(userId, direccion, telefono);
+                }
+            }
+        });
+    }
+
 
 }
 

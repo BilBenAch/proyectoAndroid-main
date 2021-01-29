@@ -51,9 +51,7 @@ public class MiCuentaEmailFragment extends BaseFragment {
 
                 if (!error) {
                     appViewModel.cambiarEmail(email, userId);
-                    Snackbar snackbar = Snackbar.make(view, "Email cambiado correctamente", Snackbar.LENGTH_SHORT);
-                    snackbar.setAnchorView(navBar);
-                    snackbar.show();
+                    showToastDireccion("Email cambiado correctamente");
                 }
             }
         });

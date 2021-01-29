@@ -16,8 +16,10 @@ import androidx.navigation.Navigation;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import static com.example.proyectoandroid.AppViewModel.EstadoDelRegistro.REGISTRO_COMPLETADO;
 
-public class CuentaCreadaFragment extends Fragment {
+
+public class CuentaCreadaFragment extends BaseFragment {
 
     Executor executor = Executors.newSingleThreadExecutor();
 
@@ -42,6 +44,8 @@ public class CuentaCreadaFragment extends Fragment {
             @Override
             public void onChanged(Boolean aBoolean) {
                 navController.navigate(R.id.action_cuentaCreada_to_loginFragment);
+                //añadido nuevo
+                appViewModel.usuarioRegistrado.postValue(REGISTRO_COMPLETADO);
             }
         });
 

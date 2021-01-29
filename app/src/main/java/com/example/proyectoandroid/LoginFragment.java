@@ -17,6 +17,10 @@ import androidx.navigation.Navigation;
 import com.example.proyectoandroid.databinding.FragmentLoginBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import static com.example.proyectoandroid.AppViewModel.EstadoDelRegistro.INICIO_DEL_REGISTRO;
+import static com.example.proyectoandroid.AppViewModel.EstadoDelRegistro.NOMBRE_NO_DISPONIBLE;
+import static com.example.proyectoandroid.AppViewModel.EstadoDelRegistro.REGISTRO_COMPLETADO;
+
 public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
     private NavController navController;
@@ -49,6 +53,8 @@ public class LoginFragment extends Fragment {
         appViewModel = new ViewModelProvider(requireActivity()).get(AppViewModel.class);
         navController = Navigation.findNavController(view);
         binding.noEresMiembroRegsitrate.setOnClickListener(v ->{
+            //no hace nada
+            //appViewModel.usuarioRegistrado.postValue(NOMBRE_NO_DISPONIBLE);
             navController.navigate(R.id.action_loginFragment_to_registrarse);
         } );
 

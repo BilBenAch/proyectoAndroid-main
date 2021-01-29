@@ -31,6 +31,10 @@ public class bottom_perfil_fragment extends BaseFragment {
         binding.misNotificaciones.setOnClickListener(v -> {
             navController.navigate(R.id.action_global_bandeja_notificaciones);
         });
+
+        binding.segundo.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_pedidoFragment);
+        });
         binding.cuarto.setOnClickListener(v -> {
             navController.navigate(R.id.action_global_anadirProductoFragment);
             //anadir etiquetas hombre o mujer

@@ -1,6 +1,9 @@
 package com.example.proyectoandroid;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.proyectoandroid.databinding.FragmentBottomFavoritosBinding;
 import com.example.proyectoandroid.databinding.ViewholderProductoFavoritosBinding;
 import com.example.proyectoandroid.model.Producto;
+import com.example.proyectoandroid.model.ProductoFavorito;
 import com.example.proyectoandroid.modelLogin.Usuario;
 
 import java.util.List;
@@ -99,8 +103,22 @@ public class bottom_favoritos_fragment extends Fragment {
 
             holder.binding.precio.setText(String.valueOf(producto.precioProducto) + "€");
 
-            holder.binding.imagen.setOnClickListener(v -> {
-                appViewModel.invertirFavorito(userId, producto.id);
+            holder.binding.desechar.setOnClickListener(v -> {
+                new AlertDialog.Builder(getContext())
+                        .setTitle("¿Estás seguro que desas eliminar el producto de tu lista de favoritos?")
+//                .setMessage("Note that nuking planet Jupiter will destroy everything in there.")
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                appViewModel.invertirFavorito(userId, producto.id);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .show();
 
             });
         }

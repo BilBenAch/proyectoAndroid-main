@@ -76,9 +76,7 @@ public class MiCuentaCambiarContraseniaFragment extends BaseFragment {
 
                     if (!error) {
                         appViewModel.cambiarContra(segundaContra, userId);
-                        Snackbar snackbar = Snackbar.make(view, "Contraseña cambiada correctamente", Snackbar.LENGTH_SHORT);
-                        snackbar.setAnchorView(navBar);
-                        snackbar.show();
+                        showToastDireccion("Contraseña cambiada correctamente");
                     }
                 }
             });

@@ -1,7 +1,9 @@
 package com.example.proyectoandroid;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -93,8 +97,9 @@ public class MostrarProductoFragment extends BaseFragment {
 
                         if (fav != 1) {
                             Snackbar snackbar = Snackbar.make(view, "Producto añadido a favoritos", Snackbar.LENGTH_SHORT);
-                            snackbar.setAnchorView(navBar);
-                            snackbar.show();
+                            showToast();
+                            //snackbar.setAnchorView(navBar);
+                            //snackbar.show();
 
                         } else {
                             Snackbar snackbar = Snackbar.make(view, "Producto quitado de favoritos", Snackbar.LENGTH_SHORT);
@@ -133,6 +138,29 @@ public class MostrarProductoFragment extends BaseFragment {
                                 Snackbar snackbar = Snackbar.make(view, "Talla " + item, Snackbar.LENGTH_SHORT);
                                 snackbar.setAnchorView(navBar);
                                 snackbar.show();
+
+                              AlertDialog alertDialog =   new AlertDialog.Builder(getContext())
+                                        .setTitle("Actualmente no tenemos stock. ¿Deseas recibir un email notificativo?")
+//                .setMessage("Note that nuking planet Jupiter will destroy everything in there.")
+                                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                navController.navigate(R.id.action_global_enviarMensajeStockFragment);
+                                            }
+                                        })
+                                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                            }
+                                        })
+                                        .show();
+                                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+                                Window window = alertDialog.getWindow();
+                                lp.copyFrom(window.getAttributes());
+                                //This makes the dialog take up the full width
+                                lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+                                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                                window.setAttributes(lp);
                             } else {
                                 comprobar = true;
                                 comprobarTalla(comprobar);
@@ -175,6 +203,7 @@ public class MostrarProductoFragment extends BaseFragment {
 
         return comprobar;
     }
+
 
 
 }

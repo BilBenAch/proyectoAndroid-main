@@ -214,7 +214,7 @@
             android:layout_marginTop="30dp">
 
             <Button
-                android:id="@+id/botonInicioSesion"
+                android:id="@+id/botonPagar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/mybutton"

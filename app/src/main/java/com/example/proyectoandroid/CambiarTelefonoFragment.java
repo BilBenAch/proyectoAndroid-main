@@ -64,9 +64,7 @@ public class CambiarTelefonoFragment extends BaseFragment {
 
                     if (!error) {
                         appViewModel.cambiarTelefono(telefono, userId);
-                        Snackbar snackbar = Snackbar.make(view, "Telefono cambiado correctamente", Snackbar.LENGTH_SHORT);
-                        snackbar.setAnchorView(navBar);
-                        snackbar.show();
+                        showToastDireccion("Telefono cambiado correctamente");
                     }
                 }
             });

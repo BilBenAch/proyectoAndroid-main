@@ -77,7 +77,7 @@
         tools:layout="@layout/fragment_bottom_perfil" />
     <fragment
         android:id="@+id/productosFragment"
-        android:name="com.example.proyectoandroid.productosFragment"
+        android:name="com.example.proyectoandroid.ProductosFragment"
         android:label="fragment_productos"
         tools:layout="@layout/fragment_productos" /><action android:id="@+id/action_global_productosFragment" app:destination="@id/productosFragment"/>
     <fragment
@@ -141,5 +141,66 @@
         android:name="com.example.proyectoandroid.MiCuentaCambiarContraseniaFragment"
         android:label="fragment_mi_cuenta_cambiar_contrasenia"
         tools:layout="@layout/fragment_mi_cuenta_cambiar_contrasenia" /><action android:id="@+id/action_global_miCuentaCambiarContraseniaFragment" app:destination="@id/miCuentaCambiarContraseniaFragment"/><action android:id="@+id/action_global_bottom_perfil_fragment" app:destination="@id/bottom_perfil_fragment"/><action android:id="@+id/action_global_bottom_home_fragment2" app:destination="@id/bottom_home_fragment2"/>
+    <fragment
+        android:id="@+id/direccionEnvioFragment"
+        android:name="com.example.proyectoandroid.DireccionEnvioFragment"
+        android:label="fragment_direccion_envio"
+        tools:layout="@layout/fragment_direccion_envio" />
+    <action android:id="@+id/action_global_direccionEnvioFragment" app:destination="@id/direccionEnvioFragment" />
+    <fragment
+        android:id="@+id/insertarDireccionFragment"
+        android:name="com.example.proyectoandroid.InsertarDireccionFragment"
+        android:label="fragment_insertar_direccion"
+        tools:layout="@layout/fragment_insertar_direccion" />
+    <action android:id="@+id/action_global_insertarDireccionFragment" app:destination="@id/insertarDireccionFragment" />
+    <action android:id="@+id/action_global_bottom_carrito_fragment" app:destination="@id/bottom_carrito_fragment" />
+    <action android:id="@+id/action_global_recuperarContraseniaEmail" app:destination="@id/recuperarContraseniaEmail" />
+    <action android:id="@+id/action_global_recuperarContrasenia" app:destination="@id/recuperarContrasenia" />
+    <action android:id="@+id/action_global_contraseniaCambiada" app:destination="@id/contraseniaCambiada" />
+    <fragment
+        android:id="@+id/metodoPagoFragment"
+        android:name="com.example.proyectoandroid.MetodoPagoFragment"
+        android:label="fragment_metodo_pago"
+        tools:layout="@layout/fragment_metodo_pago" />
+    <action android:id="@+id/action_global_metodoPagoFragment" app:destination="@id/metodoPagoFragment" />
+    <fragment
+        android:id="@+id/pagarFragment"
+        android:name="com.example.proyectoandroid.PagarFragment"
+        android:label="fragment_pagar"
+        tools:layout="@layout/fragment_pagar" />
+    <action android:id="@+id/action_global_pagarFragment" app:destination="@id/pagarFragment" />
+    <fragment
+        android:id="@+id/pagoCorrectoFragment"
+        android:name="com.example.proyectoandroid.PagoCorrectoFragment"
+        android:label="fragment_pago_correcto"
+        tools:layout="@layout/fragment_pago_correcto" /><action android:id="@+id/action_global_pagoCorrectoFragment" app:destination="@id/pagoCorrectoFragment"/>
+    <fragment
+        android:id="@+id/enviarMensajeStockFragment"
+        android:name="com.example.proyectoandroid.EnviarMensajeStockFragment"
+        android:label="fragment_enviar_mensaje_stock"
+        tools:layout="@layout/fragment_enviar_mensaje_stock" />
+    <action android:id="@+id/action_global_enviarMensajeStockFragment" app:destination="@id/enviarMensajeStockFragment" />
+    <fragment
+        android:id="@+id/escribirOpinionFragment"
+        android:name="com.example.proyectoandroid.EscribirOpinionFragment"
+        android:label="fragment_escribir_opinion"
+        tools:layout="@layout/fragment_escribir_opinion" />
+    <action android:id="@+id/action_global_escribirOpinionFragment" app:destination="@id/escribirOpinionFragment" />
+    <fragment
+        android:id="@+id/pedidoFragment"
+        android:name="com.example.proyectoandroid.PedidoFragment"
+        android:label="fragment_pedido"
+        tools:layout="@layout/fragment_pedido" />
+    <fragment
+        android:id="@+id/detallaesPedidoFragment"
+        android:name="com.example.proyectoandroid.DetallaesPedidoFragment"
+        android:label="fragment_detallaes_pedido"
+        tools:layout="@layout/fragment_detallaes_pedido" />
+    <action android:id="@+id/action_global_detallaesPedidoFragment" app:destination="@id/detallaesPedidoFragment" />
+    <fragment
+        android:id="@+id/cambiarFechaNacimientoFragment"
+        android:name="com.example.proyectoandroid.CambiarFechaNacimientoFragment"
+        android:label="fragment_cambiar_fecha_nacimiento"
+        tools:layout="@layout/fragment_cambiar_fecha_nacimiento" /><action android:id="@+id/action_global_cambiarFechaNacimientoFragment" app:destination="@id/cambiarFechaNacimientoFragment"/><action android:id="@+id/action_global_pedidoFragment" app:destination="@id/pedidoFragment"/>
 
 </navigation>

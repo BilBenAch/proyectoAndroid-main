@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 
+import com.example.proyectoandroid.model.Direccion;
 import com.example.proyectoandroid.model.Producto;
 import com.example.proyectoandroid.model.ProductoFavorito;
 import com.example.proyectoandroid.model.productosRepositorio;
@@ -285,6 +286,28 @@ public class AppViewModel extends AndroidViewModel {
     LiveData<Usuario> obtenerUsuario(int userId){
         return autenticacionManager.obtenerUsuario(userId);
     }
+
+
+    //obtener contenido usuario para ver cambio nombre irl
+    LiveData<List<Direccion>> obtenerDirecciones(int userId){
+        return autenticacionManager.obtenerDirecciones(userId);
+    }
+
+//    //cambiar datos direccion
+//    public void updateDireccion(int userId, String direccion, String telefono){
+//        autenticacionManager.updateDireccion(direccion, telefono, userId);
+//    }
+
+    //actualiza una direccion para ese user
+    public void insertUpdateDireccion(int userId, String direccion, String telefono) {
+        autenticacionManager.insertUpdateDireccion(direccion, telefono, userId);
+    }
+
+    //eliminar una nueva direccion para ese user
+    public void eliminarDireccion(int userId, String direccion, String telefono) {
+        autenticacionManager.eliminarDireccion(direccion, telefono, userId);
+    }
+
 
 
 }

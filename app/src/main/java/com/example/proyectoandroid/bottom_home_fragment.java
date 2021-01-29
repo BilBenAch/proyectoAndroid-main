@@ -49,7 +49,8 @@ public class bottom_home_fragment extends Fragment {
         });
 
         binding.notificacionesHome.setOnClickListener(v -> {
-            navController.navigate(R.id.action_global_bandeja_notificaciones);
+            //navController.navigate(R.id.action_global_bandeja_notificaciones);
+            navController.navigate(R.id.action_global_direccionEnvioFragment);
         });
 
         binding.favoritosHome.setOnClickListener(v -> {

@@ -58,4 +58,8 @@ dependencies {
 
     compile 'com.jaredrummler:material-spinner:1.2.5'
 
+    compile 'com.zolad:zoominimageview:1.0.0'
+
+
+
 }

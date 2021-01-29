@@ -1,5 +1,7 @@
 package com.example.proyectoandroid;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -153,8 +155,7 @@ public class bottom_carrito_fragment extends BaseFragment {
                 appViewModel.isFavorite(userId, producto.id).observe(getViewLifecycleOwner(), integer5 -> {
                     fav = integer5;
                     if (fav == 1) {
-                        Toast.makeText(getContext(), "Producto añadido de favs", Toast.LENGTH_SHORT).show();
-
+                        showToast();
                     }
                     else {
                         Toast.makeText(getContext(), "Producto quitado de favs", Toast.LENGTH_SHORT).show();
@@ -174,9 +175,9 @@ public class bottom_carrito_fragment extends BaseFragment {
 
             });
 
-            holder.binding.eliminarProducto.setOnClickListener(v -> {
-                appViewModel.eliminarDelCarrito(userId, producto.id);
-            });
+//            holder.binding.eliminarProducto.setOnClickListener(v -> {
+//                appViewModel.eliminarDelCarrito(userId, producto.id);
+//            });
 
             appViewModel.getincremento(userId, producto.id).observe(getViewLifecycleOwner(), integer2 -> {
                 cantidadIndividual = integer2;
@@ -188,7 +189,31 @@ public class bottom_carrito_fragment extends BaseFragment {
                 binding.precioTotal.setText(String.valueOf(precioTotal) + " €");
                 binding.cantidadPrecioTotal.setText(String.valueOf(precioTotal) + " €");
             });
+
+            binding.botonPagar.setOnClickListener(v -> {
+                navController.navigate(R.id.action_global_direccionEnvioFragment);
+            });
+
+
+            holder.binding.eliminarProducto.setOnClickListener(v -> {
+                new AlertDialog.Builder(getContext())
+                        .setTitle("¿Estás seguro que desas eliminar el producto del carrito?")
+//                .setMessage("Note that nuking planet Jupiter will destroy everything in there.")
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                appViewModel.eliminarDelCarrito(userId, producto.id);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .show();
+            });
         }
+
 
         @Override
         public int getItemCount() {

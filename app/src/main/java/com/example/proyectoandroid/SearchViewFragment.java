@@ -128,7 +128,7 @@ public class SearchViewFragment extends BaseFragment {
                 if (producto.esFavorito) {
                     Toast.makeText(getContext(), "Producto quitado de favs", Toast.LENGTH_SHORT).show();
                 } else
-                    Toast.makeText(getContext(), "Producto añadido a favs", Toast.LENGTH_SHORT).show();
+                    showToast();
             });
 
             holder.binding.nombre.setOnClickListener(v -> {

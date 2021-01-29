@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/fondo_general"
     android:layout_height="match_parent"
-    tools:context=".RecuperarContraseniaEmail">
+    android:background="@color/fondo_general"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".EnviarMensajeStockFragment">
 
     <ImageView
         android:id="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:src="@drawable/logo" />
 
     <TextView
         android:id="@+id/bienvenido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
@@ -27,15 +30,15 @@
         android:text="Bienvenido a Doble B"
         android:textColor="@color/granate_principal"
         android:textSize="10.4413sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo">
+        android:textStyle="bold">
 
     </TextView>
 
     <TextView
         android:id="@+id/iniciarSesionPagPrincipal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bienvenido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/bienvenido"
@@ -43,28 +46,28 @@
         android:gravity="bottom"
         android:text="Introduce tu email para poder"
         android:textColor="@color/gris_texto"
-        android:textSize="7.83sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bienvenido"/>
+        android:textSize="7.83sp" />
 
 
     <TextView
         android:id="@+id/emailRecuperarContra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iniciarSesionPagPrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/bienvenido"
         android:layout_marginTop="5dp"
         android:gravity="bottom"
-        android:text="Recuperar la contraseña"
+        android:text="Notificarte de stock"
         android:textColor="@color/gris_texto"
-        android:textSize="7.83sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iniciarSesionPagPrincipal"/>
+        android:textSize="7.83sp" />
 
     <EditText
         android:id="@+id/crearCuentaNombreUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailRecuperarContra"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -77,13 +80,13 @@
         android:fontFamily="@font/poppins"
         android:hint="Introduce tu email"
         android:inputType="textPersonName"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailRecuperarContra"/>
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/botonEnviarEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crearCuentaNombreUsuario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -94,23 +97,7 @@
         android:padding="21dp"
         android:text="Enviar Email"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crearCuentaNombreUsuario" />
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/YaEresMiembroIniciaSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/ya_eres_miembro_inicia"
-        android:textAlignment="center"
-        android:textColor="@color/rojo_general_texto"
-        android:textSize="11.44sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonEnviarEmail" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

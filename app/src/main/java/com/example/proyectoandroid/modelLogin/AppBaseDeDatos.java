@@ -14,6 +14,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.Update;
 
 import com.example.proyectoandroid.model.Carrito;
+import com.example.proyectoandroid.model.Direccion;
 import com.example.proyectoandroid.model.Favorito;
 import com.example.proyectoandroid.model.Producto;
 //import com.example.proyectoandroid.model.ProductoCarritoFavorito;
@@ -22,7 +23,7 @@ import com.example.proyectoandroid.model.ProductoFavorito;
 
 import java.util.List;
 
-@Database(entities = {Usuario.class, Producto.class, Favorito.class, Carrito.class}, version =  5, exportSchema = false)
+@Database(entities = {Usuario.class, Producto.class, Favorito.class, Carrito.class, Direccion.class}, version =  6, exportSchema = false)
 public abstract class AppBaseDeDatos extends RoomDatabase {
 
     //public abstract AppDao obtenerDao();
@@ -84,6 +85,32 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         @Query("Update Usuario SET password = :contrasenia, password2 = :contrasenia  WHERE id = :userId")
         void cambiarContrasenia(String contrasenia, int userId);
 
+
+
+        //Direccion
+
+        //insertar direccion
+        @Insert
+        void insertarDireccion(Direccion direccion);
+
+        //obtener direcciones del usuario
+        @Query("SELECT * FROM direccion WHERE userId = :userId")
+        LiveData<List<Direccion>>obtenerDireciones(int userId);
+
+        @Delete
+        void eliminarDireccion(Direccion direccion);
+
+        @Query("Update Direccion SET direccion = :direccion, telefono = :telefono WHERE userId = :userId")
+        void  updateDireccion(int userId, String direccion, String telefono);
+
+
+        //Comprobar direccion no repetida no está del todo bien
+        @Query("SELECT * FROM Direccion WHERE direccion = :direccion AND userId = :userId")
+        Direccion comprobarDireccionRepetida(String direccion, int userId);
+
+        //compruebo que existe el usuario en la bdd (es temporal modificar luego)
+        @Query("SELECT * FROM Direccion WHERE userId = :userId")
+        Direccion comprobarDireccionUsuario(int userId);
 
     }
         //Producto
