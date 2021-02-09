@@ -55,24 +55,17 @@ public class MostrarProductoFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-//        if(comprobarFavorito()){
-//            binding.imagen.setImageResource(R.drawable.favoritostodorojo);
-//        }
-//        else binding.imagen.setImageResource(R.drawable.logofavoritosprueba);
-//            //Preguntar a Gerard porque no me funciona esto y el de debajo si
-//       /* appViewModel.usuarioAutenticado.observe(getViewLifecycleOwner(), usuario -> {
-//            userId = usuario.id;
-//        });
-//
-//        */
         BottomNavigationView navBar = getActivity().findViewById(R.id.bottom_navigation);
         //preguntar a Gerard si es lo mismo ponerlo asi o no
         usuario = appViewModel.usuarioAutenticado.getValue();
         userId = usuario.id;
-        //System.out.println("para");
 //        appViewModel.usuarioAutenticado.observe(getViewLifecycleOwner(), usuario -> {
 //            userId = usuario.id;
 //        });
+
+        binding.buscarProducto.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_bottom_explorar_fragment2);
+        });
 
         appViewModel.seleccionado().observe(getViewLifecycleOwner(), new Observer<ProductoFavorito>() {
 
@@ -92,19 +85,18 @@ public class MostrarProductoFragment extends BaseFragment {
 
                 appViewModel.isFavorite(userId, productoFavorito.id).observe(getViewLifecycleOwner(), integer3 -> {
                     fav = integer3;
+
                     binding.favorito.setOnClickListener(v -> {
                         appViewModel.invertirFavorito(userId, productoFavorito.id);
 
-                        if (fav != 1) {
-                            Snackbar snackbar = Snackbar.make(view, "Producto añadido a favoritos", Snackbar.LENGTH_SHORT);
-                            showToast();
-                            //snackbar.setAnchorView(navBar);
-                            //snackbar.show();
-
-                        } else {
+                        if (fav == 1) {
                             Snackbar snackbar = Snackbar.make(view, "Producto quitado de favoritos", Snackbar.LENGTH_SHORT);
                             snackbar.setAnchorView(navBar);
                             snackbar.show();
+
+                        } else {
+                            //Snackbar snackbar = Snackbar.make(view, "Producto añadido a favoritos", Snackbar.LENGTH_SHORT);
+                            showToast();
                         }
 
                     });
@@ -139,7 +131,7 @@ public class MostrarProductoFragment extends BaseFragment {
                                 snackbar.setAnchorView(navBar);
                                 snackbar.show();
 
-                              AlertDialog alertDialog =   new AlertDialog.Builder(getContext())
+                                AlertDialog alertDialog = new AlertDialog.Builder(getContext())
                                         .setTitle("Actualmente no tenemos stock. ¿Deseas recibir un email notificativo?")
 //                .setMessage("Note that nuking planet Jupiter will destroy everything in there.")
                                         .setPositiveButton("Si", new DialogInterface.OnClickListener() {
@@ -164,7 +156,7 @@ public class MostrarProductoFragment extends BaseFragment {
                             } else {
                                 comprobar = true;
                                 comprobarTalla(comprobar);
-                                Snackbar snackbar = Snackbar.make(view, "Talla " + item +" Seleccionada", Snackbar.LENGTH_SHORT);
+                                Snackbar snackbar = Snackbar.make(view, "Talla " + item + " Seleccionada", Snackbar.LENGTH_SHORT);
                                 snackbar.setAnchorView(navBar);
                                 snackbar.show();
                             }
@@ -196,14 +188,12 @@ public class MostrarProductoFragment extends BaseFragment {
         });
 
 
-
     }
 
     public boolean comprobarTalla(boolean comprobar) {
 
         return comprobar;
     }
-
 
 
 }

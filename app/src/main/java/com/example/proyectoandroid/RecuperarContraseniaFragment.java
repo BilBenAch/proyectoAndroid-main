@@ -76,7 +76,7 @@ public class RecuperarContraseniaFragment extends BaseFragment {
                 }
             }
         });
-        //Preguntar a Gerard
+
         appViewModel.estadoUsuarioContrasenia.observe(getViewLifecycleOwner(), new Observer<AppViewModel.EstadoDelCambioDePassword>() {
             @Override
             public void onChanged(AppViewModel.EstadoDelCambioDePassword estadoDelCambioDePassword) {

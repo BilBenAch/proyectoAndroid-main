@@ -1,6 +1,7 @@
 package com.example.proyectoandroid.modelLogin;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -34,6 +35,8 @@ public class AutenticacionManager {
         void cuandoUsuarioNoExiste();
 
     }
+
+
 
     AppBaseDeDatos.UsuariosDao dao;
 
@@ -146,14 +149,14 @@ public class AutenticacionManager {
         return dao.obtenerDireciones(userId);
     }
 
-    public void updateDireccion(String direccion, String telefono, int userId) {
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
-                dao.updateDireccion(userId, direccion, telefono);
-            }
-        });
-    }
+//    public void updateDireccion(String direccion, String telefono, int userId) {
+//        executor.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                dao.updateDireccion(userId, direccion, telefono);
+//            }
+//        });
+//    }
 
     public void eliminarDireccion(String direccion, String telefono, int userId) {
         executor.execute(new Runnable() {
@@ -170,7 +173,12 @@ public class AutenticacionManager {
             @Override
             public void run() {
                 Direccion direccion1 = dao.comprobarDireccionUsuario(userId);
+//                int direccion2 = dao.comprobarDireccionRepetida(direccion, userId);
+//                if (direccion2 == 1){
+//                    dao.insertarDireccion(new Direccion(userId, direccion, telefono));
+//                }
                 if(direccion1 == null){
+                    //Log.e("ABC", "VALOR COMPROBAR DIRECCION");
                     dao.insertarDireccion(new Direccion(userId, direccion, telefono));
                 }
                 else {
@@ -179,6 +187,26 @@ public class AutenticacionManager {
             }
         });
     }
+
+    //
+//    public void cambiarContrasenia(String username, String email, String password, CambiarContraseniaCallback callback) {
+//        executor.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                Usuario usuario = dao.comprobarContraseniaCorrecta(username, email, password);
+//                Usuario usuario1 = dao.comprobarNombreDisponible(username);
+//                if (usuario1 == null) {
+//                    callback.cuandoUsuarioNoExiste();
+//                } else {
+//                    dao.cambiarContraUsuarioEmail(username, email, password);
+//                    callback.cuandoContraseniaCambiada();
+//                }
+//
+//            }
+//        });
+//    }
+
+
 
     //Cambiar contra no respeta programación reactiva, modificar después entrega Dani
     public void cambiarContraUsuarioEmail(String userName, String email, String newPassword) {

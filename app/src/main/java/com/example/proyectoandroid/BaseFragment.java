@@ -43,7 +43,7 @@ public class BaseFragment extends Fragment {
                 .inflate(R.layout.custom_toast, null);
 
        TextView tvMessage = view.findViewById(R.id.tvMessage);
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0,0);
+        toast.setGravity(Gravity.FILL_VERTICAL, 0,0);
         toast.setView(view);
         toast.show();
 
@@ -59,7 +59,7 @@ public class BaseFragment extends Fragment {
 
         TextView tvMessage = view.findViewById(R.id.tvMessage);
         tvMessage.setText(text);
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0,-250);
+        toast.setGravity(Gravity.FILL_VERTICAL, 0,0);
         toast.setView(view);
         toast.show();
 

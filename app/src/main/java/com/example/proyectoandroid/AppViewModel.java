@@ -50,12 +50,27 @@ public class AppViewModel extends AndroidViewModel {
 
     */
 
+
+//    enum EstadoDelCambioDePassword {
+//        INICIO_DEL_CAMBIO,
+//        USUARIO_INCORRECTO,
+//        CONTRASENIA_CAMBIADA
+//    }
+
+        enum EstadoDireccion {
+        INSERTANDO_DIRECCION,
+        DIRECCION_REPETIDA,
+        DIRECCION_ACTUALIZADA
+    }
+
     MutableLiveData<EstadoDeLaAutenticacion> estadoDeLaAutenticacion = new MutableLiveData<>(EstadoDeLaAutenticacion.NO_AUTENTICADO);
     MutableLiveData<Usuario> usuarioAutenticado = new MutableLiveData<>();
     MutableLiveData<EstadoDelRegistro> estadoDelRegistro = new MutableLiveData<>(EstadoDelRegistro.INICIO_DEL_REGISTRO);
     MutableLiveData<EstadoDelRegistro> usuarioRegistrado = new MutableLiveData<>();
     //cambio contrasenia
     MutableLiveData<EstadoDelCambioDePassword> estadoUsuarioContrasenia = new MutableLiveData<>();
+
+    MutableLiveData<EstadoDireccion> comprobarDireccion = new MutableLiveData<>();
 
     //estado cambio y apellido
     //MutableLiveData<EstadoDelCambioDeNombre> estadoDelCambiodeNombre = new MutableLiveData<>(EstadoDelCambioDeNombre.INICIO_DEL_CAMBIO);
@@ -183,8 +198,8 @@ public class AppViewModel extends AndroidViewModel {
         productosRepositorio.invertirFavorito(userId, productoId);
     }
 
-    LiveData<List<Producto>> obtenerProductosFavoritos(int userId) {
-        return productosRepositorio.obtenerProductosFavoritos(userId);
+    LiveData<List<ProductoFavorito>> productosFavoritos(int userId) {
+        return productosRepositorio.productosFavoritos(userId);
     }
 
 
@@ -314,5 +329,6 @@ public class AppViewModel extends AndroidViewModel {
     public LiveData<Usuario> obtenerContenidoUsuarioEmail(String email) {
         return autenticacionManager.obtenerContenidoUsuarioEmail(email);
     }
+
 
 }

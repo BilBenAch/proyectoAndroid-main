@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 
 import com.example.proyectoandroid.databinding.FragmentDireccionEnvioBinding;
 import com.example.proyectoandroid.databinding.FragmentInsertarDireccionBinding;
@@ -18,6 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class InsertarDireccionFragment extends BaseFragment {
     FragmentInsertarDireccionBinding binding;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -57,7 +59,7 @@ public class InsertarDireccionFragment extends BaseFragment {
                     }
 
                     if (!error) {
-                        appViewModel.insertUpdateDireccion(userId, direccion,telefono);
+                        appViewModel.insertUpdateDireccion(userId, direccion, telefono);
                         showToastDireccion("Direccion guardada correctamente");
 
 

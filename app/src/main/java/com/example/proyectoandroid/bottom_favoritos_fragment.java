@@ -60,7 +60,7 @@ public class bottom_favoritos_fragment extends Fragment {
         appViewModel.usuarioAutenticado.observe(getViewLifecycleOwner(), usuario -> {
             userId = usuario.id;
 
-            appViewModel.obtenerProductosFavoritos(usuario.id).observe(getViewLifecycleOwner(), productosList -> {
+            appViewModel.productosFavoritos(usuario.id).observe(getViewLifecycleOwner(), productosList -> {
                 if (productosList == null || productosList.size() == 0) {
                     // Log.e("ZERO", "RESULTS");
                     binding.listaProductos.setVisibility(View.GONE);
@@ -79,7 +79,7 @@ public class bottom_favoritos_fragment extends Fragment {
     }
 
     class FavoritosAdapter extends RecyclerView.Adapter<FavoritosViewHolder> {
-        List<Producto> listaProductos;
+        List<ProductoFavorito> listaProductos;
 
         @NonNull
         @Override
@@ -89,13 +89,11 @@ public class bottom_favoritos_fragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull FavoritosViewHolder holder, int position) {
-            Producto producto = listaProductos.get(position);
-
-            //modificar esto
-            //binding.numeroApariciones.setText(getItemCount() + "productos encontrados");
-
+            ProductoFavorito producto = listaProductos.get(position);
             holder.binding.nombre.setText(producto.nombre);
+
             holder.binding.nombre.setOnClickListener(v -> {
+                appViewModel.seleccionar(producto);
                 navController.navigate(R.id.action_global_mostrarProducto);
             });
 
@@ -128,12 +126,12 @@ public class bottom_favoritos_fragment extends Fragment {
             return listaProductos == null ? 0 : listaProductos.size();
         }
 
-        void establecerFavoritoList(List<Producto> producto) {
+        void establecerFavoritoList(List<ProductoFavorito> producto) {
             this.listaProductos = producto;
             notifyDataSetChanged();
         }
 
-        public Producto obtenerProductos(int posicion) {
+        public ProductoFavorito obtenerProductos(int posicion) {
 
             return listaProductos.get(posicion);
         }

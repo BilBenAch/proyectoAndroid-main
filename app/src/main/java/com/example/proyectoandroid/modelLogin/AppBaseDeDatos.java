@@ -1,6 +1,7 @@
 package com.example.proyectoandroid.modelLogin;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -111,18 +112,21 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         void  updateDireccion(int userId, String direccion, String telefono);
 
 
-        //Comprobar direccion no repetida no está del todo bien
-        @Query("SELECT * FROM Direccion WHERE direccion = :direccion AND userId = :userId")
-        Direccion comprobarDireccionRepetida(String direccion, int userId);
+//        //Comprobar direccion no repetida no está del todo bien
+        @Query("SELECT EXISTS ( SELECT 1 FROM Direccion WHERE direccion = :direccion AND userId = :userId)")
+        int comprobarDireccionRepetida(String direccion, int userId);
 
-        //compruebo que existe el usuario en la bdd (es temporal modificar luego)
+        //compruebo que existe el usuario en la bdd
         @Query("SELECT * FROM Direccion WHERE userId = :userId")
         Direccion comprobarDireccionUsuario(int userId);
 
 
-
         @Query("SELECT * FROM Usuario WHERE username = :nombre AND email = :email AND password = :password")
         Usuario comprobarCambioContra(String nombre, String email, String password);
+
+//        @Query("SELECT EXISTS (SELECT 1 FROM Favorito WHERE userId=:userId AND productoId = :productId)")
+
+
 
     }
         //Producto
@@ -138,8 +142,16 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         @Query("SELECT * FROM Favorito WHERE userId = :userId AND productoId = :productoId")
         Favorito obtenerFavorito(int userId, int productoId);
 
+       //No carga el mostrarPoructo con esta query
         @Query("SELECT * FROM Producto AS p JOIN Favorito as fav ON p.id = fav.productoId WHERE fav.userId = :userId")
         LiveData<List<Producto>> obtenerProductosFavoritos(int userId);
+
+
+        //OBTENER PRODUCTOS FAVORITOS correcta
+        @Query("SELECT *, CASE WHEN userId IS NOT NULL THEN 1 ELSE 0 END as esFavorito FROM Producto AS p LEFT JOIN FAVORITO AS Fav ON p.id = Fav.productoId WHERE Fav.userId = :userId")
+        LiveData<List<ProductoFavorito>> productosFavoritos( int userId);
+
+
 
         @Insert
         void insertarFavorito(Favorito favorito);
@@ -184,7 +196,7 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         //@Query("SELECT Producto.id, Producto.nombre, Producto.imagenes, CASE WHEN userId IS NOT NULL THEN 1 ELSE 0 END as isFavorito FROM Producto LEFT JOIN (SELECT * FROM Favorito WHERE userId = :userId) AS Fav ON Producto.id = Fav.productoId")
         //LiveData<List<ProductoCarritoFavorito>> obtenerProductosCarrito(int userId);
 
-
+        //aqui
         @Query("SELECT * FROM Producto AS p JOIN Carrito as carr  ON p.id = carr.productoId WHERE carr.userId = :userId")
         LiveData<List<Producto>> obtenerProductosCarrito(int userId);
 
@@ -201,8 +213,6 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         //comprobar si un producto es favorito en carrito
         @Query("SELECT EXISTS (SELECT 1 FROM Favorito WHERE userId=:userId AND productoId = :productId)")
         LiveData<Integer> isFavorite(int userId, int productId);
-
-
 
 
         //Devuelve Suma de la cantidad total de productos en carrito

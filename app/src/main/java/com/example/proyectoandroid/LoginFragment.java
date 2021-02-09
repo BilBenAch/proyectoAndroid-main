@@ -42,9 +42,11 @@ public class LoginFragment extends Fragment {
         //appViewModel.noAutenticado();
         appViewModel = new ViewModelProvider(requireActivity()).get(AppViewModel.class);
         navController = Navigation.findNavController(view);
+
+//        appViewModel.usuarioRegistrado.postValue(INICIO_DEL_REGISTRO);
         binding.noEresMiembroRegsitrate.setOnClickListener(v -> {
             //no hace nada
-            //appViewModel.usuarioRegistrado.postValue(NOMBRE_NO_DISPONIBLE);
+            appViewModel.estadoDelRegistro.postValue(INICIO_DEL_REGISTRO);
             navController.navigate(R.id.action_loginFragment_to_registrarse);
         });
 
@@ -77,13 +79,12 @@ public class LoginFragment extends Fragment {
         });
 
         binding.textoHasOlvidadoLaContrasenya.setOnClickListener(v -> {
-           // appViewModel.estadoDeLaAutenticacion.postValue(AppViewModel.EstadoDeLaAutenticacion.AUTENTICADO);
+            // appViewModel.estadoDeLaAutenticacion.postValue(AppViewModel.EstadoDeLaAutenticacion.AUTENTICADO);
             navController.navigate(R.id.action_global_recuperarContraseniaEmail);
         });
 
 
-
-                appViewModel.estadoDeLaAutenticacion.observe(getViewLifecycleOwner(), new Observer<AppViewModel.EstadoDeLaAutenticacion>() {
+        appViewModel.estadoDeLaAutenticacion.observe(getViewLifecycleOwner(), new Observer<AppViewModel.EstadoDeLaAutenticacion>() {
             @Override
             public void onChanged(AppViewModel.EstadoDeLaAutenticacion estadoDeLaAutenticacion) {
                 switch (estadoDeLaAutenticacion) {
@@ -98,6 +99,7 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
+
     }
 
 }

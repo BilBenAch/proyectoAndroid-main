@@ -32,6 +32,7 @@ public class bottom_carrito_fragment extends BaseFragment {
     private int contadorProducto;
     private int userId;
     private int fav;
+    private int fav2;
     Integer precioTotal;
     Integer cantidadIndividual;
     Favorito favorito;
@@ -148,17 +149,16 @@ public class bottom_carrito_fragment extends BaseFragment {
                     //Toast.makeText(getContext(), "Producto quitado de favs", Toast.LENGTH_SHORT).show();
                 }
             });
+            appViewModel.isFavorite(userId, producto.id).observe(getViewLifecycleOwner(), integer5 -> {
+                fav2 = integer5;
+                holder.binding.favoritosProductos.setOnClickListener(v -> {
+                    //comprobar si es favorito
+                    appViewModel.invertirFavorito(userId, producto.id);
 
-            holder.binding.favoritosProductos.setOnClickListener(v -> {
-                //comprobar si es favorito
-                appViewModel.invertirFavorito(userId, producto.id);
-                appViewModel.isFavorite(userId, producto.id).observe(getViewLifecycleOwner(), integer5 -> {
-                    fav = integer5;
-                    if (fav == 1) {
-                        showToast();
-                    }
-                    else {
+                    if (fav2 == 1) {
                         Toast.makeText(getContext(), "Producto quitado de favs", Toast.LENGTH_SHORT).show();
+                    } else {
+                        showToast();
                     }
                 });
             });

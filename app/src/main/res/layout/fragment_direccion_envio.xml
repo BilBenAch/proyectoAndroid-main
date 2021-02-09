@@ -38,18 +38,19 @@
         android:id="@+id/listaDirecciones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="70dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="70dp"
         android:background="@color/fondo_general"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="1" />
+
     <Button
         android:id="@+id/botonPagar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
         android:text="@string/pagar"
-        android:textColor="@color/white"
-        android:background="@drawable/mybutton" />
+        android:textColor="@color/white" />
 
 
     <androidx.core.widget.NestedScrollView

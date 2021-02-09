@@ -48,8 +48,8 @@ public class productosRepositorio {
     }
 
 
-    public LiveData<List<Producto>> obtenerProductosFavoritos(int userId) {
-        return ProductosDao.obtenerProductosFavoritos(userId);
+    public LiveData<List<ProductoFavorito>> productosFavoritos(int userId) {
+        return ProductosDao.productosFavoritos(userId);
     }
 
 
