@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.proyectoandroid.databinding.FragmentOpinionesBinding;
 import com.example.proyectoandroid.model.ProductoFavorito;
-import com.example.proyectoandroid.modelLogin.Usuario;
+import com.example.proyectoandroid.model.Usuario;
 
 
  public class OpinionesFragment extends BaseFragment {

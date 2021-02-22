@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.example.proyectoandroid.modelLogin.Usuario;
+import com.example.proyectoandroid.model.Usuario;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

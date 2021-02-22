@@ -1,4 +1,4 @@
-package com.example.proyectoandroid.modelLogin;
+package com.example.proyectoandroid.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

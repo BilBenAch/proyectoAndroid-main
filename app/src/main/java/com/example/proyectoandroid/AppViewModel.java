@@ -10,11 +10,13 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 
 import com.example.proyectoandroid.model.Direccion;
+import com.example.proyectoandroid.model.Pedido;
+import com.example.proyectoandroid.model.PedidoCarrito;
 import com.example.proyectoandroid.model.Producto;
 import com.example.proyectoandroid.model.ProductoFavorito;
 import com.example.proyectoandroid.model.productosRepositorio;
-import com.example.proyectoandroid.modelLogin.AutenticacionManager;
-import com.example.proyectoandroid.modelLogin.Usuario;
+import com.example.proyectoandroid.model.AutenticacionManager;
+import com.example.proyectoandroid.model.Usuario;
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -23,6 +25,7 @@ import java.util.concurrent.Executors;
 
 public class AppViewModel extends AndroidViewModel {
     Executor executor = Executors.newSingleThreadExecutor();
+
 
     enum EstadoDeLaAutenticacion {
         NO_AUTENTICADO,
@@ -57,11 +60,11 @@ public class AppViewModel extends AndroidViewModel {
 //        CONTRASENIA_CAMBIADA
 //    }
 
-        enum EstadoDireccion {
-        INSERTANDO_DIRECCION,
-        DIRECCION_REPETIDA,
-        DIRECCION_ACTUALIZADA
-    }
+//        enum EstadoDireccion {
+//        INSERTANDO_DIRECCION,
+//        DIRECCION_REPETIDA,
+//        DIRECCION_ACTUALIZADA
+//    }
 
     MutableLiveData<EstadoDeLaAutenticacion> estadoDeLaAutenticacion = new MutableLiveData<>(EstadoDeLaAutenticacion.NO_AUTENTICADO);
     MutableLiveData<Usuario> usuarioAutenticado = new MutableLiveData<>();
@@ -70,7 +73,7 @@ public class AppViewModel extends AndroidViewModel {
     //cambio contrasenia
     MutableLiveData<EstadoDelCambioDePassword> estadoUsuarioContrasenia = new MutableLiveData<>();
 
-    MutableLiveData<EstadoDireccion> comprobarDireccion = new MutableLiveData<>();
+//    MutableLiveData<EstadoDireccion> comprobarDireccion = new MutableLiveData<>();
 
     //estado cambio y apellido
     //MutableLiveData<EstadoDelCambioDeNombre> estadoDelCambiodeNombre = new MutableLiveData<>(EstadoDelCambioDeNombre.INICIO_DEL_CAMBIO);
@@ -330,5 +333,27 @@ public class AppViewModel extends AndroidViewModel {
         return autenticacionManager.obtenerContenidoUsuarioEmail(email);
     }
 
+
+    //Insertar pedido
+    public void insertPedido(int userId, String referencia, String fecha) {
+        productosRepositorio.insertPedido(userId, referencia, fecha);
+    }
+
+    //obtener pedidos de un usuario por su id
+    public LiveData<List<Pedido>> obtenerPedidoUserId (int userId) {
+        return productosRepositorio.obtenerPedidoUserId(userId);
+    }
+
+    public LiveData<List<PedidoCarrito>> obtenerElementosPedidoReferencia (String referencia) {
+        return productosRepositorio.obtenerElementosPedidoReferencia(referencia);
+    }
+
+    public LiveData<Double> consultarPrecioProductoId(int prductoId) {
+        return productosRepositorio. consultarPrecioProductoId( prductoId);
+    }
+//
+//    public void insertarPrecioTotal(int precioTotal){
+//        productosRepositorio.insertarPrecioTotal(precioTotal);
+//    }
 
 }

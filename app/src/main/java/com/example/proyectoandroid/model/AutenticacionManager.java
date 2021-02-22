@@ -1,11 +1,8 @@
-package com.example.proyectoandroid.modelLogin;
+package com.example.proyectoandroid.model;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
-
-import com.example.proyectoandroid.model.Direccion;
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -14,6 +11,7 @@ import java.util.concurrent.Executors;
 public class AutenticacionManager {
 
     Executor executor = Executors.newSingleThreadExecutor();
+
 
     public interface IniciarSesionCallback {
         void cuandoUsuarioAutenticado(Usuario usuario);
@@ -32,10 +30,10 @@ public class AutenticacionManager {
     //cambiar contrasenia aqui añado los errores
     public interface CambiarContraseniaCallback {
         void cuandoContraseniaCambiada();
+
         void cuandoUsuarioNoExiste();
 
     }
-
 
 
     AppBaseDeDatos.UsuariosDao dao;
@@ -177,11 +175,10 @@ public class AutenticacionManager {
 //                if (direccion2 == 1){
 //                    dao.insertarDireccion(new Direccion(userId, direccion, telefono));
 //                }
-                if(direccion1 == null){
+                if (direccion1 == null) {
                     //Log.e("ABC", "VALOR COMPROBAR DIRECCION");
                     dao.insertarDireccion(new Direccion(userId, direccion, telefono));
-                }
-                else {
+                } else {
                     dao.updateDireccion(userId, direccion, telefono);
                 }
             }
@@ -207,7 +204,6 @@ public class AutenticacionManager {
 //    }
 
 
-
     //Cambiar contra no respeta programación reactiva, modificar después entrega Dani
     public void cambiarContraUsuarioEmail(String userName, String email, String newPassword) {
         executor.execute(new Runnable() {
@@ -223,6 +219,7 @@ public class AutenticacionManager {
     public LiveData<Usuario> obtenerContenidoUsuarioEmail(String email) {
         return dao.obtenerContenidoSegunEmail(email);
     }
+
 
 }
 
