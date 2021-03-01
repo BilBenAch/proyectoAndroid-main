@@ -18,8 +18,13 @@ import android.view.ViewGroup;
 import com.example.proyectoandroid.databinding.FragmentMetodoPagoBinding;
 import com.example.proyectoandroid.databinding.FragmentPagarBinding;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
+
 public class PagarFragment extends BaseFragment {
     FragmentPagarBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,7 +50,6 @@ public class PagarFragment extends BaseFragment {
         });
 
 
-
         binding.botonConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,28 +61,36 @@ public class PagarFragment extends BaseFragment {
                 boolean error = false;
 
 
-                if (numeroTarjeta.isEmpty()) {
-                    binding.editTextTarjeta.setError("Este campo no puede estar vacío ");
-                    error = true;
-                }
-
-                if (fechaCaducidad.isEmpty()) {
-                    binding.editCaducidad.setError("Este campo no puede estar vacío ");
-                    error = true;
-                }
-
-                if (codigoSeguridad.isEmpty()) {
-                    binding.editTextCodigoSEGURIDAD.setError("Este campo no puede estar vacío ");
-                    error = true;
-                }
-
-                if (nombre.isEmpty()) {
-                    binding.editTextNombre.setError("Este campo no puede estar vacío ");
-                    error = true;
-                }
+//                if (numeroTarjeta.isEmpty()) {
+//                    binding.editTextTarjeta.setError("Este campo no puede estar vacío ");
+//                    error = true;
+//                }
+//
+//                if (fechaCaducidad.isEmpty()) {
+//                    binding.editCaducidad.setError("Este campo no puede estar vacío ");
+//                    error = true;
+//                }
+//
+//                if (codigoSeguridad.isEmpty()) {
+//                    binding.editTextCodigoSEGURIDAD.setError("Este campo no puede estar vacío ");
+//                    error = true;
+//                }
+//
+//                if (nombre.isEmpty()) {
+//                    binding.editTextNombre.setError("Este campo no puede estar vacío ");
+//                    error = true;
+//                }
 
                 if (!error) {
                     navController.navigate(R.id.action_global_pagoCorrectoFragment);
+
+                    appViewModel.usuarioAutenticado.observe(getViewLifecycleOwner(), usuario -> {
+                        userId = usuario.id;
+                    String referencia = UUID.randomUUID().toString().replace("-", "");
+                    Date cDate = new Date();
+                    String fDate = new SimpleDateFormat("yyyy-MM-dd").format(cDate);
+                    appViewModel.insertPedido(userId, referencia, fDate);
+                    });
                 }
             }
         });

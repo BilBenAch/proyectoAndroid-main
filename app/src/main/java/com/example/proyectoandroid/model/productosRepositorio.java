@@ -4,12 +4,10 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.proyectoandroid.model.Carrito;
-import com.example.proyectoandroid.model.Favorito;
-import com.example.proyectoandroid.model.Producto;
-import com.example.proyectoandroid.model.ProductoFavorito;
-import com.example.proyectoandroid.modelLogin.AppBaseDeDatos;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -66,7 +64,9 @@ public class productosRepositorio {
         executor.execute(() -> {
             if (ProductosDao.obtenerCarrito(userId, productoId) == null) {
                 ProductosDao.insertarCarrito(new Carrito(userId, productoId));
-            } else {ProductosDao.incrementarCarrito(userId, productoId);}
+            } else {
+                ProductosDao.incrementarCarrito(userId, productoId);
+            }
         });
     }
 
@@ -123,14 +123,14 @@ public class productosRepositorio {
         }
     }
 
-//comprobar si es favorito un producto en carrito o en cualquier otro fragment sin necesidad de joins
+    //comprobar si es favorito un producto en carrito o en cualquier otro fragment sin necesidad de joins
     public LiveData<Integer> isFavorite(int userId, int productId) {
         return ProductosDao.isFavorite(userId, productId);
     }
 
-    public void eliminarDelCarrito(int userId, int productoId){
+    public void eliminarDelCarrito(int userId, int productoId) {
         executor.execute(() -> {
-        ProductosDao.eliminarCarrito(new Carrito(userId, productoId));
+            ProductosDao.eliminarCarrito(new Carrito(userId, productoId));
         });
     }
 
@@ -140,6 +140,37 @@ public class productosRepositorio {
     }
 
 
+    public void insertPedido(int userId, String referencia, String fecha) {
+        executor.execute(() -> {
+            ProductosDao.obtenerElementosCarritoUserId(userId);
+            List<Carrito> carritos = new ArrayList<>(ProductosDao.obtenerElementosCarritoUserId(userId));
+            ProductosDao.insertarPedido(new Pedido(userId, referencia, fecha, carritos));
+            //descomentar luego
+            //ProductosDao.eliminarCarritoUserID(userId);
 
+        });
+    }
+
+    public LiveData<List<Pedido>> obtenerPedidoUserId(int userId) {
+        return ProductosDao.obtenerPedidoUserId(userId);
+    }
+
+
+    public LiveData<List<PedidoCarrito>> obtenerElementosPedidoReferencia(String referencia) {
+        return ProductosDao.obtenerElementosPedidoReferencia(referencia);
+    }
+
+
+    public LiveData<Double> consultarPrecioProductoId(int productoId) {
+        return ProductosDao.consultarPrecioProductoId(productoId);
+    }
+
+//
+//    public void insertarPrecioTotal(int precioTotal) {
+//        executor.execute(() -> {
+//            ProductosDao.insertarPrecioTotal(precioTotal);
+//        });
+//    }
 }
+
 

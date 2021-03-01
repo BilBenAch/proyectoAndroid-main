@@ -1,36 +1,25 @@
 package com.example.proyectoandroid;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.proyectoandroid.databinding.FragmentMostrarProductoBinding;
 import com.example.proyectoandroid.model.ProductoFavorito;
-import com.example.proyectoandroid.modelLogin.Usuario;
+import com.example.proyectoandroid.model.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.jaredrummler.materialspinner.MaterialSpinner;
-
-import static android.widget.Toast.LENGTH_SHORT;
 
 
 public class MostrarProductoFragment extends BaseFragment {

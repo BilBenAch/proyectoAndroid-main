@@ -175,9 +175,6 @@ public class bottom_carrito_fragment extends BaseFragment {
 
             });
 
-//            holder.binding.eliminarProducto.setOnClickListener(v -> {
-//                appViewModel.eliminarDelCarrito(userId, producto.id);
-//            });
 
             appViewModel.getincremento(userId, producto.id).observe(getViewLifecycleOwner(), integer2 -> {
                 cantidadIndividual = integer2;
@@ -188,6 +185,7 @@ public class bottom_carrito_fragment extends BaseFragment {
                 precioTotal = integer4;
                 binding.precioTotal.setText(String.valueOf(precioTotal) + " €");
                 binding.cantidadPrecioTotal.setText(String.valueOf(precioTotal) + " €");
+               // appViewModel.insertarPrecioTotal(integer4);
             });
 
             binding.botonPagar.setOnClickListener(v -> {

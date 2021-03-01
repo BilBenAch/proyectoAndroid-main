@@ -4,15 +4,13 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.proyectoandroid.databinding.FragmentBottomPerfilBinding;
 import com.example.proyectoandroid.databinding.FragmentMiCuentaBinding;
-import com.example.proyectoandroid.modelLogin.Usuario;
+import com.example.proyectoandroid.model.Usuario;
 
 public class MiCuentaFragment extends BaseFragment {
     FragmentMiCuentaBinding binding;

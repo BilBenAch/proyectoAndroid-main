@@ -4,18 +4,13 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.proyectoandroid.databinding.FragmentMiCuentaBinding;
 import com.example.proyectoandroid.databinding.FragmentMicuentaCambioDeNombreBinding;
-import com.example.proyectoandroid.modelLogin.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 public class MicuentaCamioDeNombreFragment extends BaseFragment {
     FragmentMicuentaCambioDeNombreBinding binding;

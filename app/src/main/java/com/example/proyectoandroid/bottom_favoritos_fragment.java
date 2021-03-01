@@ -3,7 +3,6 @@ package com.example.proyectoandroid;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.proyectoandroid.databinding.FragmentBottomFavoritosBinding;
 import com.example.proyectoandroid.databinding.ViewholderProductoFavoritosBinding;
-import com.example.proyectoandroid.model.Producto;
 import com.example.proyectoandroid.model.ProductoFavorito;
-import com.example.proyectoandroid.modelLogin.Usuario;
+import com.example.proyectoandroid.model.Usuario;
 
 import java.util.List;
 
