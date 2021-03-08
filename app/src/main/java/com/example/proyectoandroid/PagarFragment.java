@@ -59,8 +59,22 @@ public class PagarFragment extends BaseFragment {
                 String nombre = binding.editTextNombre.getText().toString();
 
                 boolean error = false;
-
-
+                if (numeroTarjeta.isEmpty()) {
+                    binding.editTextTarjeta.setError("Este campo no puede estar vacío ");
+                    error = true;
+                }
+                if (fechaCaducidad.isEmpty()) {
+                    binding.editCaducidad.setError("Este campo no puede estar vacío ");
+                    error = true;
+                }
+                if (codigoSeguridad.isEmpty()) {
+                    binding.editTextCodigoSEGURIDAD.setError("Este campo no puede estar vacío ");
+                    error = true;
+                }
+                if (nombre.isEmpty()) {
+                    binding.editTextNombre.setError("Este campo no puede estar vacío ");
+                    error = true;
+                }
 
 
                 if (!error) {
