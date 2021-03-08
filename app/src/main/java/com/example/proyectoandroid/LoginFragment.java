@@ -25,7 +25,6 @@ public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
     private NavController navController;
     private AppViewModel appViewModel;
-    //private TextView textView = binding.noEresMiembroRegsitrate;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

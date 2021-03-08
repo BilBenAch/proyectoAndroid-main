@@ -51,14 +51,6 @@ public class productosRepositorio {
     }
 
 
-   /* public void insertarCarrito(int userId, int productoId) {
-        executor.execute(() -> {
-            ProductosDao.insertarCarrito(new Carrito(userId, productoId));
-        });
-    }
-
-    */
-
     //metodo para incrementar o decrementar un producto en carrito
     public void insertarCarritoUpdate(int userId, int productoId) {
         executor.execute(() -> {
@@ -82,15 +74,6 @@ public class productosRepositorio {
         });
     }
 
-    //update carrito incrementar
-   /* void incrementarCarrito(int userId, int productoId) {
-        executor.execute(() -> {
-           if (ProductosDao.obtenerCarrito(userId,productoId) != null) ProductosDao.incrementarCarrito(userId, productoId);
-        });
-    }
-
-    */
-
 
     //productos carrito
     public LiveData<List<Producto>> obtenerProductosCarrito(int userId) {
@@ -103,18 +86,12 @@ public class productosRepositorio {
     }
 
 
-    //devuelve la cantidad de un producto en carrito
-    //public LiveData<Integer> getCantidadUnProducuto(int userId, int productoId) {
-    //  return ProductosDao.getCantidadUnProducuto(userId, productoId);
-    //}
-
-
     public LiveData<Integer> getincremento(int userId, int productoId) {
         return ProductosDao.getincremento(userId, productoId);
     }
 
 
-    //    buscar
+    //   buscar
     public LiveData<List<ProductoFavorito>> buscar(String d, int userId) {
         if (d.isEmpty()) {
             return null;
@@ -145,8 +122,7 @@ public class productosRepositorio {
             ProductosDao.obtenerElementosCarritoUserId(userId);
             List<Carrito> carritos = new ArrayList<>(ProductosDao.obtenerElementosCarritoUserId(userId));
             ProductosDao.insertarPedido(new Pedido(userId, referencia, fecha, carritos));
-            //descomentar luego
-            //ProductosDao.eliminarCarritoUserID(userId);
+            ProductosDao.eliminarCarritoUserID(userId);
 
         });
     }
@@ -165,12 +141,4 @@ public class productosRepositorio {
         return ProductosDao.consultarPrecioProductoId(productoId);
     }
 
-//
-//    public void insertarPrecioTotal(int precioTotal) {
-//        executor.execute(() -> {
-//            ProductosDao.insertarPrecioTotal(precioTotal);
-//        });
-//    }
 }
-
-

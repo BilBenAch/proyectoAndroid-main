@@ -142,11 +142,9 @@ public class bottom_carrito_fragment extends BaseFragment {
                 fav = integer3;
                 if (fav == 1) {
                     holder.binding.favoritosProductos.setImageResource(R.drawable.favoritostodorojo);
-                    //Toast.makeText(getContext(), "Producto añadido de favs", Toast.LENGTH_SHORT).show();
 
                 } else {
                     holder.binding.favoritosProductos.setImageResource(R.drawable.logofavoritosprueba);
-                    //Toast.makeText(getContext(), "Producto quitado de favs", Toast.LENGTH_SHORT).show();
                 }
             });
             appViewModel.isFavorite(userId, producto.id).observe(getViewLifecycleOwner(), integer5 -> {
@@ -185,7 +183,7 @@ public class bottom_carrito_fragment extends BaseFragment {
                 precioTotal = integer4;
                 binding.precioTotal.setText(String.valueOf(precioTotal) + " €");
                 binding.cantidadPrecioTotal.setText(String.valueOf(precioTotal) + " €");
-               // appViewModel.insertarPrecioTotal(integer4);
+                // appViewModel.insertarPrecioTotal(integer4);
             });
 
             binding.botonPagar.setOnClickListener(v -> {

@@ -17,7 +17,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
-@Database(entities = {Usuario.class, Producto.class, Favorito.class, Carrito.class, Direccion.class, Pedido.class}, version = 5, exportSchema = false)
+@Database(entities = {Usuario.class, Producto.class, Favorito.class, Carrito.class, Direccion.class, Pedido.class}, version = 6, exportSchema = false)
 public abstract class AppBaseDeDatos extends RoomDatabase {
 
     //public abstract AppDao obtenerDao();
@@ -101,11 +101,12 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         @Delete
         void eliminarDireccion(Direccion direccion);
 
+        //actualizar dirección
         @Query("Update Direccion SET direccion = :direccion, telefono = :telefono WHERE userId = :userId")
         void updateDireccion(int userId, String direccion, String telefono);
 
 
-        //        //Comprobar direccion no repetida no está del todo bien
+        //Comprobar direccion no repetida no está del todo bien
         @Query("SELECT EXISTS ( SELECT 1 FROM Direccion WHERE direccion = :direccion AND userId = :userId)")
         int comprobarDireccionRepetida(String direccion, int userId);
 
@@ -167,9 +168,6 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         Carrito obtenerCarrito(int userId, int productoId);
 
 
-        //@Query("SELECT * FROM Carrito AS ca JOIN Producto AS p WHERE userId = :userId AND p.id = :productoId")
-        //Carrito obtenerCarritoprueba(int userId, int productoId);
-
         @Insert(onConflict = OnConflictStrategy.REPLACE)
         void insertarCarrito(Carrito carrito);
 
@@ -184,9 +182,6 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         //Resta uno a la cantidad del carrito
         @Query("UPDATE carrito  SET cantidad = cantidad - 1  WHERE userId = :userId AND productoId = :productoId")
         void updateCantidadDecrementar(int userId, int productoId);
-
-        //@Query("SELECT Producto.id, Producto.nombre, Producto.imagenes, CASE WHEN userId IS NOT NULL THEN 1 ELSE 0 END as isFavorito FROM Producto LEFT JOIN (SELECT * FROM Favorito WHERE userId = :userId) AS Fav ON Producto.id = Fav.productoId")
-        //LiveData<List<ProductoCarritoFavorito>> obtenerProductosCarrito(int userId);
 
         //aqui
         @Query("SELECT * FROM Producto AS p JOIN Carrito as carr  ON p.id = carr.productoId WHERE carr.userId = :userId")
@@ -221,33 +216,20 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
         void insertarPedido(Pedido pedido);
 
 
-        //terminar esto
-//        @Query("Select *, carritoList FROM Pedido WHERE referencia = :referencia")
-//        List<Pedido> obtenerElementosPedidoUserId(String referencia);
-
         @Query("SELECT carritoList FROM Pedido AS p WHERE p.referencia = :referencia")
         LiveData<List<PedidoCarrito>> obtenerElementosPedidoReferencia(String referencia);
 
-//        @Query("SELECT SUM (carritoList) FROM pedido WHERE userId = :userId")
-//        LiveData<Integer> numeroTotalPdidos(int userId);
 
         @Query("SELECT * FROM PEDIDO WHERE userId = :userId")
         LiveData<List<Pedido>> obtenerPedidoUserId(int userId);
 
-        @Query("SELECT SUM (precioProducto * cantidad) FROM producto AS PROD JOIN Carrito AS CARR ON PROD.id = CARR.productoId WHERE CARR.userId = :userId")
-        Integer precioTotalCarrito(int userId);
+
         //Precio de cada producto para pedido
         @Query("SELECT   precioProducto  FROM Producto where id = :productoId")
         LiveData<Double> consultarPrecioProductoId(int productoId);
-//
-//        @Query("Insert INTO  Carrito (precioTotal) Values (:precioTotal)")
-//        void insertarPrecioTotal(int precioTotal);
+
 
     }
 }
 
-/*
-
-
- */
 

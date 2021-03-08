@@ -51,32 +51,31 @@ public class RegistrarseFragment extends Fragment {
                 String password2 = binding.crearCuentaContrasenia2.getText().toString();
 
                 boolean error = false;
-                //descomentar esto
 
-//                if (username.isEmpty()) {
-//                    binding.crearCuentaNombreUsuario.setError("El campo nombre de usuario no puede estar vacío ");
-//                    error = true;
-//                }
-//                if (email.isEmpty()) {
-//                    binding.crearCrearCuentaEmail.setError("El campo email no puede estar vacío ");
-//                    error = true;
-//                }
-//                if (password.isEmpty()) {
-//                    binding.crearCuentaContrasenia1.setError("El campo password no puede estar vacío ");
-//                    error = true;
-//                }
-//                if (password2.isEmpty()) {
-//                    binding.crearCuentaContrasenia2.setError("El campo password no puede estar vacío ");
-//                    error = true;
-//                }
-//                if (password.length() < 5) {
-//                    binding.crearCuentaContrasenia1.setError("Password menor a 5");
-//                    error = true;
-//                }
-//                if (!password.equals(password2)) {
-//                    binding.crearCuentaContrasenia2.setError("Passwords no cinciden");
-//                    error = true;
-//                }
+                if (username.isEmpty()) {
+                    binding.crearCuentaNombreUsuario.setError("El campo nombre de usuario no puede estar vacío ");
+                    error = true;
+                }
+                if (email.isEmpty()) {
+                    binding.crearCrearCuentaEmail.setError("El campo email no puede estar vacío ");
+                    error = true;
+                }
+                if (password.isEmpty()) {
+                    binding.crearCuentaContrasenia1.setError("El campo password no puede estar vacío ");
+                    error = true;
+                }
+                if (password2.isEmpty()) {
+                    binding.crearCuentaContrasenia2.setError("El campo password no puede estar vacío ");
+                    error = true;
+                }
+                if (password.length() < 5) {
+                    binding.crearCuentaContrasenia1.setError("Password menor a 5");
+                    error = true;
+                }
+                if (!password.equals(password2)) {
+                    binding.crearCuentaContrasenia2.setError("Passwords no cinciden");
+                    error = true;
+                }
 
 
                 if (!error) {
@@ -84,7 +83,6 @@ public class RegistrarseFragment extends Fragment {
                 }
             }
         });
-        //preguntar al gerard porque entra de nuevo al crearcuenta
         appViewModel.estadoDelRegistro.observe(getViewLifecycleOwner(), new Observer<AppViewModel.EstadoDelRegistro>() {
             @Override
             public void onChanged(AppViewModel.EstadoDelRegistro estadoDelRegistro) {

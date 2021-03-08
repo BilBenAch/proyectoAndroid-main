@@ -59,6 +59,8 @@ import java.util.List;
     }
 }
 
+
+//No implementado
 /*
 
 CREATE TABLE PEDIDO (idPedido integer, fecha Data, userId int)
