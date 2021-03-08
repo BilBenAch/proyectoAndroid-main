@@ -49,14 +49,9 @@ public class PedidoFragment extends BaseFragment {
         });
 
 
-//        binding.flexboxDetallesPedido.setOnClickListener(v -> {
-//            navController.navigate(R.id.action_global_detallaesPedidoFragment);
-//        });
-
         appViewModel.usuarioAutenticado.observe(getViewLifecycleOwner(), usuario -> {
             userId = usuario.id;
             appViewModel.obtenerPedidoUserId(usuario.id).observe(getViewLifecycleOwner(), pedidoList -> {
-                //pedidoCarritoList2.add(pedidoList.get(0));
                 //convertidoJson();
                 pedidoAdapter.establecerPedidoList(pedidoList);
                 Log.e("ABC", String.valueOf(pedidoList.size()));
@@ -79,17 +74,12 @@ public class PedidoFragment extends BaseFragment {
         @Override
         public void onBindViewHolder(@NonNull PedidoViewHolder holder, int position) {
             Pedido pedido = pedidoList.get(position);
-
-//            for(int i = 0; i<pedidoList.get(position).getCarritoID().size(); i++){
-//
-//            }
             //Log.e("ABC", String.valueOf(pedidoList.get(position)));
 
             //holder.binding.estadoPedidoActual.setText("En reparto");
 
             for (int i = 0; i < pedidoList.get(position).carritoList.size(); ++i) {
                 suma = suma + pedidoList.get(position).carritoList.get(i).cantidad;
-                //carritoList.add(pedidoList.get(position).carritoList.get(i));
 
                 int finalI1 = i;
 
@@ -98,8 +88,6 @@ public class PedidoFragment extends BaseFragment {
                     // Log.e("ABC", "contador --> " + String.valueOf(contador));
 
                     Log.e("ABC", "cantidad --> " + String.valueOf(pedidoList.get(position).carritoList.get(finalI1).cantidad));
-                    // Log.e("ABC", "POSICION LISTA --> " + String.valueOf(pedidoList.get(position).getReferencia()));
-                    // Log.e("ABC", String.valueOf(precioUnitario) + "pedido Id --> " + String.valueOf(pedidoList.get(position).carritoList.get(finalI).productoId) + " {cantidad--> " + String.valueOf(pedidoList.get(position).carritoList.get(finalI).cantidad));
 
                     precioTotal += (precioUnitario * pedidoList.get(position).carritoList.get(finalI1).cantidad);
 

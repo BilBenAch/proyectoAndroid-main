@@ -73,12 +73,6 @@ public class AppViewModel extends AndroidViewModel {
     //cambio contrasenia
     MutableLiveData<EstadoDelCambioDePassword> estadoUsuarioContrasenia = new MutableLiveData<>();
 
-//    MutableLiveData<EstadoDireccion> comprobarDireccion = new MutableLiveData<>();
-
-    //estado cambio y apellido
-    //MutableLiveData<EstadoDelCambioDeNombre> estadoDelCambiodeNombre = new MutableLiveData<>(EstadoDelCambioDeNombre.INICIO_DEL_CAMBIO);
-
-
     AutenticacionManager autenticacionManager;
     private final com.example.proyectoandroid.model.productosRepositorio productosRepositorio;
 
@@ -117,11 +111,6 @@ public class AppViewModel extends AndroidViewModel {
     }
 
 
-//    void noAutenticado() {
-//        estadoDeLaAutenticacion.postValue(EstadoDeLaAutenticacion.NO_AUTENTICADO);
-//
-//    }
-
     //Seguir aqui
     void crearCuenta(String username, String email, String password, String password2) {
         executor.execute(new Runnable() {
@@ -158,7 +147,7 @@ public class AppViewModel extends AndroidViewModel {
         });
     }
 
-    //seguir aqui
+    //sActualizar password
     void actualizarPassword(String usuario, String email, String password) {
         executor.execute(new Runnable() {
             @Override
@@ -170,8 +159,7 @@ public class AppViewModel extends AndroidViewModel {
                         if (estadoUsuarioContrasenia.equals(EstadoDelCambioDePassword.CONTRASENIA_CAMBIADA)) {
                             //actualizarPassword(usuario, email, password);
                             estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.INICIO_DEL_CAMBIO);
-                        }
-                        else {
+                        } else {
                             estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.CONTRASENIA_CAMBIADA);
                         }
                     }
@@ -307,11 +295,6 @@ public class AppViewModel extends AndroidViewModel {
         return autenticacionManager.obtenerDirecciones(userId);
     }
 
-//    //cambiar datos direccion
-//    public void updateDireccion(int userId, String direccion, String telefono){
-//        autenticacionManager.updateDireccion(direccion, telefono, userId);
-//    }
-
     //actualiza una direccion para ese user
     public void insertUpdateDireccion(int userId, String direccion, String telefono) {
         autenticacionManager.insertUpdateDireccion(direccion, telefono, userId);
@@ -322,7 +305,6 @@ public class AppViewModel extends AndroidViewModel {
         autenticacionManager.eliminarDireccion(direccion, telefono, userId);
     }
 
-//no respeta programación reactiva, borrar después o modificar
 
     public void cambiarContraUsuarioEmail(String userName, String email, String newPassword) {
         autenticacionManager.cambiarContraUsuarioEmail(userName, email, newPassword);
@@ -340,20 +322,16 @@ public class AppViewModel extends AndroidViewModel {
     }
 
     //obtener pedidos de un usuario por su id
-    public LiveData<List<Pedido>> obtenerPedidoUserId (int userId) {
+    public LiveData<List<Pedido>> obtenerPedidoUserId(int userId) {
         return productosRepositorio.obtenerPedidoUserId(userId);
     }
 
-    public LiveData<List<PedidoCarrito>> obtenerElementosPedidoReferencia (String referencia) {
+    public LiveData<List<PedidoCarrito>> obtenerElementosPedidoReferencia(String referencia) {
         return productosRepositorio.obtenerElementosPedidoReferencia(referencia);
     }
 
     public LiveData<Double> consultarPrecioProductoId(int prductoId) {
-        return productosRepositorio. consultarPrecioProductoId( prductoId);
+        return productosRepositorio.consultarPrecioProductoId(prductoId);
     }
-//
-//    public void insertarPrecioTotal(int precioTotal){
-//        productosRepositorio.insertarPrecioTotal(precioTotal);
-//    }
 
 }

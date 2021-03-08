@@ -54,9 +54,6 @@ public class SearchViewFragment extends BaseFragment {
             }
         });
 
-        // navegar atras:
-       // navController.popBackStack();
-
         SearchAdapter productosAdapter = new SearchAdapter();
         binding.listaProductos.setAdapter(productosAdapter);
 
@@ -79,13 +76,9 @@ public class SearchViewFragment extends BaseFragment {
                     binding.zeroresults.setVisibility(View.GONE);
                 }
                 productosAdapter.establecerProductosList(productos);
-//                 if(productos.size() == 0){
-//                     navController.navigate(R.id.action_global_productosFragment);
-//                 }
+
             });
         });
-        //LiveData<List<ProductoFavorito>> obtenerElementos(){
-        //  return elementosViewModel.obtener();
 
         binding.notificacionesHome.setOnClickListener(v -> {
             navController.navigate(R.id.action_global_bandeja_notificaciones);

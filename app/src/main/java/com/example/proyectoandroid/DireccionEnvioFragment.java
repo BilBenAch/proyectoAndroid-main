@@ -97,7 +97,6 @@ public class DireccionEnvioFragment extends BaseFragment {
             holder.binding.desechar.setOnClickListener(v -> {
                 new AlertDialog.Builder(getContext())
                         .setTitle("¿Seguro que deseas eliminar la dirección?")
-//                .setMessage("Note that nuking planet Jupiter will destroy everything in there.")
                         .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -108,7 +107,6 @@ public class DireccionEnvioFragment extends BaseFragment {
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                // Log.d("MainActivity", "Aborting mission...");
                             }
                         })
                         .show();

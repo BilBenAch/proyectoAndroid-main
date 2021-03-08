@@ -33,9 +33,6 @@ public class MiCuentaFragment extends BaseFragment {
 
         appViewModel.obtenerUsuario(userId).observe(getViewLifecycleOwner(), usuario -> {
 
-
-            //usuario = appViewModel.usuarioAutenticado.getValue();
-            //userId = usuario.id;
             binding.nombre.setText(String.valueOf(usuario.nombre));
             binding.apellido.setText(String.valueOf(usuario.apellido));
             binding.segundoNombre.setText(String.valueOf(usuario.username));
@@ -58,8 +55,6 @@ public class MiCuentaFragment extends BaseFragment {
         binding.terceroMicuenta.setOnClickListener(v -> {
             navController.navigate(R.id.action_global_cambiarFechaNacimientoFragment);
         });
-
-
 
 
         binding.cuartoMicuenta.setOnClickListener(v -> {
